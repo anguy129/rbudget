@@ -9,9 +9,9 @@
 
 /* GLOBAL */
 .nav_container{
-	width:80%;
-	margin:auto;
-	overflow:hidden;
+	width: 90%;
+	margin: -60px 0 75px 0;
+
 }
 #navigation h1{
 	float:left;
