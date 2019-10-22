@@ -299,9 +299,9 @@
 						});
 
 				// Prevent clicks from inside article from bubbling.
-					$this.on('click', function(event) {
-						event.stopPropagation();
-					});
+				//	$this.on('click', function(event) {
+				//		event.stopPropagation();
+				//	});
 
 			});
 
