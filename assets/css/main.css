@@ -411,7 +411,9 @@ input, select, textarea {
 		margin: 0 0 1rem 0;
 		text-transform: uppercase;
 	}
-
+	input[type=signUp_password0],
+	input[type=signUp_password1],
+	input[type=signUp_email],
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
@@ -435,8 +437,11 @@ input, select, textarea {
 		padding: 0 1rem;
 		text-decoration: none;
 		width: 100%;
+		margin-bottom: 2.5%;
 	}
-
+		input[type=signUp_password0]:invalid,
+		input[type=signUp_password1]:invalid,
+		input[type=signUp_email]:invalid,
 		input[type="text"]:invalid,
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
@@ -446,6 +451,9 @@ input, select, textarea {
 			box-shadow: none;
 		}
 
+		input[type=signUp_password0]:focus,
+		input[type=signUp_password1]:focus,
+		input[type=signUp_email]:focus,
 		input[type="text"]:focus,
 		input[type="password"]:focus,
 		input[type="email"]:focus,
@@ -479,7 +487,9 @@ input, select, textarea {
 		select::-ms-expand {
 			display: none;
 		}
-
+	input[type=signUp_password0],
+	input[type=signUp_password1],
+	input[type=signUp_email],
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
