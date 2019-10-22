@@ -232,7 +232,7 @@ input, select, textarea {
 	}
 
 	h2 {
-		font-size: 1.5rem;
+		font-size: 2rem;
 		line-height: 1.4;
 		letter-spacing: 0.5rem;
 	}
@@ -411,6 +411,8 @@ input, select, textarea {
 		margin: 0 0 1rem 0;
 		text-transform: uppercase;
 	}
+    
+
 	input[type=signUp_password0],
 	input[type=signUp_password1],
 	input[type=signUp_email],

@@ -362,8 +362,8 @@
 							.val('');
 
 				});
+			// Password.
 
-		// Password.
 			$this.find('input[type=password]')
 				.each(function() {
 
