@@ -362,8 +362,8 @@
 							.val('');
 
 				});
+			// Password.
 
-		// Password.
 			$this.find('input[type=password]')
 				.each(function() {
 
@@ -517,6 +517,8 @@
 		return $this;
 
 	};*/
+
+	
 
 	/**
 	 * Moves elements to/from the first positions of their respective parents.
