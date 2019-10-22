@@ -1,5 +1,4 @@
 /* Create new password based user on Firebase */
-(
 function signUp() {
 	email = document.getElementById("signUp_email").value;
 	password = document.getElementById("signUp_password0").value;
