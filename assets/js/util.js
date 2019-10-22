@@ -431,7 +431,7 @@
 				});
 
 		// Events.
-			$this
+			/*$this
 				.on('submit', function() {
 
 					$this.find('input[type=text],input[type=password],textarea')
@@ -516,7 +516,7 @@
 
 		return $this;
 
-	};
+	};*/
 
 	/**
 	 * Moves elements to/from the first positions of their respective parents.
