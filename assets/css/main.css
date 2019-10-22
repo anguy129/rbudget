@@ -11,8 +11,8 @@
 .nav_container{
 	width: 90%;
 	margin: -60px 0 75px 0;
-
 }
+
 #navigation h1{
 	float:left;
 	font-size: 16pt;
@@ -170,7 +170,7 @@ input, select, textarea {
 		color: #ffffff;
 		font-family: "Source Sans Pro", sans-serif;
 		font-weight: 300;
-		font-size: 1rem;
+		font-size: 2rem;
 		line-height: 1.65;
 	}
 
@@ -488,7 +488,7 @@ input, select, textarea {
 	}
 
 	textarea {
-		padding: 0.75rem 1rem;
+		padding: 1rem 1rem;
 	}
 
 	input[type="checkbox"],
