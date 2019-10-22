@@ -37,7 +37,7 @@
 						<div class="content">
 							<div class="inner">
 								<h1>Sign Up</h1>
-								<form  action="homepage.html">
+								<form onsubmit="signUp()">
 									<input id="signUp_email" type="email" placeholder="Enter Email...">
 									<input id="signUp_password0" type="password" placeholder="Enter Password...">
 									<input id="signUp_password1" type="password" placeholder="ReEnter Password...">
@@ -368,21 +368,29 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<div id="bg"></div>
 
 		<!-- Scripts -->
-			<script src="/__/firebase/7.2.1/firebase-app.js"></script>
-			<script src="/__/firebase/7.2.1/firebase-auth.js"></script>
+			<!-- The core Firebase JS SDK is always required and must be listed first -->
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+
+			<!-- TODO: Add SDKs for Firebase products that you want to use
+			     https://firebase.google.com/docs/web/setup#available-libraries -->
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+
 			<script>
 			  // Your web app's Firebase configuration
 			  var firebaseConfig = {
-			    apiKey: "AIzaSyBcJ6WOnzfoy7zhgBKTxbKmpkbPimn5NlM",
-			    authDomain: "cs180-sample-proj-41e74.firebaseapp.com",
-			    databaseURL: "https://cs180-sample-proj-41e74.firebaseio.com",
-			    projectId: "cs180-sample-proj-41e74",
-			    storageBucket: "cs180-sample-proj-41e74.appspot.com",
-			    messagingSenderId: "361462545293",
-			    appId: "1:361462545293:web:4a5e6763bb823da1041bc4"
+			    apiKey: "AIzaSyB2qbMEfgBqH98Pdbmm3kYPzTTyip0la3U",
+			    authDomain: "rbudget-a870b.firebaseapp.com",
+			    databaseURL: "https://rbudget-a870b.firebaseio.com",
+			    projectId: "rbudget-a870b",
+			    storageBucket: "rbudget-a870b.appspot.com",
+			    messagingSenderId: "893639759319",
+			    appId: "1:893639759319:web:c9e9cb3c47d609eed26792",
+			    measurementId: "G-JZDK060R21"
 			  };
 			  // Initialize Firebase
 			  firebase.initializeApp(firebaseConfig);
+			  firebase.analytics();
 			</script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
