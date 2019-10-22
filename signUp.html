@@ -37,7 +37,7 @@
 						<div class="content">
 							<div class="inner">
 								<h1>Sign Up</h1>
-								<form  action="homepage.html">
+								<form  action="homepage.html" onsubmit="signUp()">
 									<input id="signUp_email" type="email" placeholder="Enter Email...">
 									<input id="signUp_password0" type="password" placeholder="Enter Password...">
 									<input id="signUp_password1" type="password" placeholder="ReEnter Password...">
@@ -368,8 +368,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<div id="bg"></div>
 
 		<!-- Scripts -->
-			<script src="/__/firebase/7.2.1/firebase-app.js"></script>
-			<script src="/__/firebase/7.2.1/firebase-auth.js"></script>
+			<!-- The core Firebase JS SDK is always required and must be listed first -->
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+
+			<!-- TODO: Add SDKs for Firebase products that you want to use
+			     https://firebase.google.com/docs/web/setup#available-libraries -->
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
 			<script>
 			  // Your web app's Firebase configuration
 			  var firebaseConfig = {
