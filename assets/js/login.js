@@ -10,9 +10,8 @@ function login() {
 	  alert("Error : " + errorMessage);
 	});
 
-	//window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
-
 	var user = firebase.auth().currentUser;
+	alert("beginning check");
     if (user) {
     	alert("Signing you in");
         console.log(user);
