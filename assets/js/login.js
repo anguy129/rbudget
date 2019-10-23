@@ -8,7 +8,8 @@ function login() {
 	  var errorMessage = error.message;
 	  // ...
 	  window.alert("Error : " + errorMessage);
-	  
+	  	  	window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
+
 	});
 	if(error){
         window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
@@ -25,6 +26,8 @@ function login() {
     	window.location.replace("https://anguy129.github.io/rbudget/signIn.html?");
 
     }*/
+    	  	window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
+
 };
 
 function logout(){
