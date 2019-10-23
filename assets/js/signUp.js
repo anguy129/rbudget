@@ -15,6 +15,6 @@ function signUp() {
 	  		var errorMessage = error.message;
 	  		// ...
 		});
-		window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
+		document.location.replace('https://developer.mozilla.org/en-US/docs/Web/API/Location.reload');
 	}
 };
