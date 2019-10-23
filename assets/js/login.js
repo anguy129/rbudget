@@ -30,7 +30,11 @@ function login() {
 	  // ...
 	  alert("Error : " + errorMessage);
 	  //var problem = works(error);
+	  if(!error){
+	  	window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
+	  }
 	});
+
 	//return problem;
 	
 };
