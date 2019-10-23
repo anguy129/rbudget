@@ -20,9 +20,9 @@ function login() {
 	  // ...
 	  alert("Error : " + errorMessage);
 	  //var problem = works(error);
-	  if(!error){
-	  	window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
-	  }
+	  //if(!error){
+	 // 	window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
+	  //}
 	});
 	firebase.auth().onAuthStateChanged(function(user){
     if (user) {
@@ -30,8 +30,8 @@ function login() {
         //console.log(user);
     	window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
     } else {
-    	alert("User not found");
-    	window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
+    	//alert("User not found");
+    	//window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
 
    	}
 });
