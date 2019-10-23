@@ -8,6 +8,9 @@ function signUp() {
 	if (password !== confirmPw) {
 		alert("Passwords don't match");
 	}
+	else if (password.length < 8) {
+		alert("Your password must be at least 8 characters long.");
+	}
 	else {
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  		// Handle Errors here.
@@ -15,6 +18,6 @@ function signUp() {
 	  		var errorMessage = error.message;
 	  		// ...
 		});
-		document.location.replace('https://developer.mozilla.org/en-US/docs/Web/API/Location.reload');
+		document.location.replace('https://anguy129.github.io/rbudget/homepage');
 	}
 };
