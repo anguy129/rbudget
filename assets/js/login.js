@@ -25,5 +25,6 @@ function login() {
 };
 
 function logout(){
+	alert("Logging out");
   firebase.auth().signOut();
 }

@@ -365,6 +365,30 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 		<!-- BG -->
 			<div id="bg"></div>
 
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+
+			<!-- TODO: Add SDKs for Firebase products that you want to use
+			     https://firebase.google.com/docs/web/setup#available-libraries -->
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+
+			<script>
+			  // Your web app's Firebase configuration
+			  var firebaseConfig = {
+			    apiKey: "AIzaSyB2qbMEfgBqH98Pdbmm3kYPzTTyip0la3U",
+			    authDomain: "rbudget-a870b.firebaseapp.com",
+			    databaseURL: "https://rbudget-a870b.firebaseio.com",
+			    projectId: "rbudget-a870b",
+			    storageBucket: "rbudget-a870b.appspot.com",
+			    messagingSenderId: "893639759319",
+			    appId: "1:893639759319:web:c9e9cb3c47d609eed26792",
+			    measurementId: "G-JZDK060R21"
+			  };
+			  // Initialize Firebase
+			  firebase.initializeApp(firebaseConfig);
+			  firebase.analytics();
+			</script>
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
