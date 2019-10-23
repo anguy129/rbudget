@@ -7,27 +7,21 @@ function login() {
 	  var errorCode = error.code;
 	  var errorMessage = error.message;
 	  // ...
-	  window.alert("Error : " + errorMessage);
-	  	  	window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
-
+	  alert("Error : " + errorMessage);
 	});
-	if(error){
+
+	//window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
+
+	var user = firebase.auth().currentUser;
+    if (user) {
+    	alert("Signing you in");
+        console.log(user);
         window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
 
-	  }
-	  else{
-	  	window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
-
-	  }
-	/*var user = firebase.auth().currentUser;
-    if (user) {
-        console.log(user);
     } else {
+    	alert("User not found");
     	window.location.replace("https://anguy129.github.io/rbudget/signIn.html?");
-
-    }*/
-    	  	window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
-
+    }
 };
 
 function logout(){
