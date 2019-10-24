@@ -7,7 +7,7 @@ function signIn() {
 	firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
 		// Successful login
 		alert("logging in as: " + email);
-		window.location.replace("https://anguy129.github.io/rbudget/homepage.html");
+		location.href = "homepage.html";
 	}).catch(function(error) {
 	// Handle Errors here.
 		var errorCode = error.code;

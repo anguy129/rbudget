@@ -21,6 +21,6 @@ function signUp() {
 	  		alert(errorMessage);
 	  		// ...
 		});
-		document.location.replace('https://anguy129.github.io/rbudget/homepage.html');
+		location.href = 'homepage.html';
 	}
 };
