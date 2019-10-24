@@ -12,6 +12,7 @@ function signUp() {
 		alert("Your password must be at least 8 characters long.");
 	}
 	else {
+		alert("about to create new user");
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  		// Handle Errors here.
 	  		alert("wtf");
@@ -19,6 +20,6 @@ function signUp() {
 	  		var errorMessage = error.message;
 	  		// ...
 		});
-		document.location.replace('https://anguy129.github.io/rbudget/homepage');
+		document.location.replace('/homepage');
 	}
 };
