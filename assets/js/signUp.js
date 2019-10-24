@@ -20,6 +20,6 @@ function signUp() {
 	  		var errorMessage = error.message;
 	  		// ...
 		});
-		document.location.replace('/homepage');
+		document.location.replace('https://anguy129.github.io/rbudget/homepage.html');
 	}
 };
