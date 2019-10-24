@@ -17,6 +17,7 @@ function signUp() {
 	  		// Handle Errors here.
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
+	  		// github didn't deploy new code
 	  		alert(errorMessage);
 	  		// ...
 		});
