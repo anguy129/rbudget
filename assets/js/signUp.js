@@ -15,7 +15,6 @@ function signUp() {
 		alert("about to create new user");
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  		// Handle Errors here.
-	  		alert("wtf");
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
 	  		// ...
