@@ -21,7 +21,7 @@ function userState() {
 function signOut() {
 	firebase.auth().signOut().then(function() {
 	  // Sign-out successful.
-	  alert("signing out");
+	  alert("signing out user: " + email);
 	  window.location.replace("https://anguy129.github.io/rbudget/index.html");
 	}).catch(function(error) {
 	  // An error happened.

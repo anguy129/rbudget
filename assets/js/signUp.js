@@ -17,6 +17,7 @@ function signUp() {
 	  		// Handle Errors here.
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
+	  		alert(errorMessage);
 	  		// ...
 		});
 		document.location.replace('https://anguy129.github.io/rbudget/homepage.html');
