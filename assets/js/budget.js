@@ -1,11 +1,17 @@
 
-var budgetVal;
 
-function getBudget(){
-	//var budgetVal = document.getElementById("budget").value;
-	var budgetVal = 420;
-	return budgetVal;
 
+function setBudget(){
+	var budgetSet = document.getElementById("budget");
+	budgetSet.value = getBudget();
 }
 
-budgetVal = getBudget();
+
+function getBudget(){
+	var budgetGet = document.getElementById("budget").value;
+	//var budgetGet = 420;
+	alert("Grabbed value" + budgetGet);
+	return budgetGet;
+}
+
+
