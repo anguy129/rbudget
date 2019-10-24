@@ -310,7 +310,8 @@
 
 				// Article visible? Hide.
 					if ($body.hasClass('is-article-visible'))
-						$main._hide(true);
+						alert("hello");
+						//$main._hide(true);
 
 			});
 

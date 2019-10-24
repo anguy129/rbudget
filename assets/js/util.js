@@ -299,7 +299,7 @@
 	/**
 	 * Apply "placeholder" attribute polyfill to one or more forms.
 	 * @return {jQuery} jQuery object.
-	 */
+	 
 	$.fn.placeholder = function() {
 
 		// Browser natively supports placeholders? Bail.
@@ -517,7 +517,7 @@
 		return $this;
 
 	};
-
+*/
 	
 
 	/**

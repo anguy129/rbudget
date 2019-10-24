@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body class="is-preload">
+	<body class="is-preload" onload="userState()">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -21,7 +21,7 @@
 						<h1>Money Management</h1>
 						<nav>
 							<ul>
-								<li><a href="index.html" onclick="logout()">Logout</a></li>
+								<li><a href="index.html" onclick="signOut()">Logout</a></li>
 								<li><a href="homepage.html">Home</a></li>
 							</ul>
 						</nav>
@@ -392,9 +392,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/login.js"></script>
-			<script src="assets/js/signUp.js"></script>
-
-
+			<script src="assets/js/userState.js"></script>
 	</body>
 </html>

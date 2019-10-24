@@ -28,7 +28,7 @@ function login() {
     if (user) {
     	alert("User Found");
         //console.log(user);
-    	window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");
+    	window.location.replace("/homepage");
     } else {
     	//alert("User not found");
     	//window.location.replace("https://anguy129.github.io/rbudget/homepage.html?");

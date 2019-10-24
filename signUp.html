@@ -37,11 +37,11 @@
 						<div class="content">
 							<div class="inner">
 								<h1>Sign Up</h1>
-								<form onsubmit="signUp()">
+								<form>
 									<input id="signUp_email" type="email" placeholder="Enter Email...">
 									<input id="signUp_password0" type="password" placeholder="Enter Password...">
 									<input id="signUp_password1" type="password" placeholder="ReEnter Password...">
-									<button type="submit" class="button_1">Enter</button>
+									<button type="button" class="button_1" onclick="signUp(); return false;">Enter</button>
 								</form>
 							</div>
 						</div>
@@ -375,6 +375,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<!-- TODO: Add SDKs for Firebase products that you want to use
 			https://firebase.google.com/docs/web/setup#available-libraries -->
 			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
 
 			<script>
 				// Your web app's Firebase configuration
