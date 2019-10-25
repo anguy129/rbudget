@@ -5,7 +5,7 @@ function setBudget(){
 	//var budgetGet = 420;
 	alert("grabbed value " + budgetInput);
 	var db = firebase.firestore();
-	
+
 	db.collection("My Budget").add({
 		budget: budgetInput
 		//document.getElementById("budget").value
@@ -18,6 +18,13 @@ function setBudget(){
 	});	
 	alert("Added to collection");
 }
+
+function getBudget(){
+	//var budgetSet = document.getElementById("budget").value;
+	//budgetSet.value = getBudget();
+	//comment
+}
+
 
 /*
 form.addEventListener('submit', (e) => {
@@ -43,10 +50,5 @@ docRef.get().then(function(doc){
 
 //const form = document.querySelector('#main_budget');
 //var docRef =  db.collection("main_budget").doc("latest"); 
-
-//function setBudget(){
-	//var budgetSet = document.getElementById("budget").value;
-	//budgetSet.value = getBudget();
-//}
-
 */
+
