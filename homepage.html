@@ -21,7 +21,7 @@
 						<h1>Money Management</h1>
 						<nav>
 							<ul>
-								<li><a href="index.html" onclick="signOut()">Logout</a></li>
+								<li><a href="index.html" >Logout</a></li>
 								<li><a href="homepage.html">Home</a></li>
 							</ul>
 						</nav>
@@ -36,8 +36,8 @@
 							<div class="inner">
 								<form id = "main_budget">
 									My Budget: <br>
-									<input name="budget" type="text">
-									<button type="button" class="button_1">Enter</button>
+									<input id="budget" type="text">
+									<button type="button" class="button_1" onclick="getBudget(); return false;" >Enter</button>
 								</form>						
 							</div>
 						</div>
@@ -366,13 +366,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 		<!-- Scripts -->
 
-
-			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
-
 			<!-- TODO: Add SDKs for Firebase products that you want to use
 			     https://firebase.google.com/docs/web/setup#available-libraries -->
 			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
 			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
 
 			<script>
 			  // Your web app's Firebase configuration
@@ -389,7 +388,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			  // Initialize Firebase
 			  firebase.initializeApp(firebaseConfig);
 			  firebase.analytics();
-			  const db = firebase.firestore();
+			  var db = firebase.firestore();
 			</script>
 
 			<script src="assets/js/jquery.min.js"></script>
