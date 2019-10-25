@@ -1,3 +1,23 @@
+/*
+function userState() {
+	firebase.auth().onAuthStateChanged(function(user) {
+	  if (user) {
+	    // User is signed in.
+	    var displayName = user.displayName;
+	    var email = user.email;
+	    var emailVerified = user.emailVerified;
+	    var uid = user.uid;
+	    var providerData = user.providerData;
+	    alert("signed in with: " + email);
+	    // ...
+	  } else {
+	  	alert("no one signed in");
+	    // User is signed out.
+	    // ...
+	  }
+	});
+}
+*/
 function setBudget(){
 	alert("started db");
 	
@@ -23,8 +43,21 @@ function getBudget(){
 	//var budgetSet = document.getElementById("budget").value;
 	//budgetSet.value = getBudget();
 	//comment
+	alert("Get budget called");
+	var db = firebase.firestore();
+	db.collection("My Budget").get().then(function(doc) {
+		alert("inside collection");
+		alert(doc);
+		if(doc.exists){
+			console.log("Document data:", doc.data());
+	    } else {
+	        // doc.data() will be undefined in this case
+	        console.log("No such document!");
+	    }
+		}).catch(function(error) {
+		    console.log("Error getting document:", error);
+	});
 }
-
 
 /*
 form.addEventListener('submit', (e) => {
