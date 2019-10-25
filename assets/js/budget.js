@@ -4,8 +4,8 @@ function setBudget(){
 	var budgetInput = document.getElementById("budget").value;
 	//var budgetGet = 420;
 	alert("grabbed value " + budgetInput);
-	db.collection("My Budget").doc("data").add({
-		budget: budgetInput
+	db.collection("My Budget").add({
+		budget: 420
 		//document.getElementById("budget").value
 		})
 		.then(function(docRef) {
