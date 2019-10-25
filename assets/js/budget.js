@@ -4,8 +4,10 @@ function setBudget(){
 	var budgetInput = document.getElementById("budget").value;
 	//var budgetGet = 420;
 	alert("grabbed value " + budgetInput);
+	var db = firebase.firestore();
+	
 	db.collection("My Budget").add({
-		budget: 420
+		budget: budgetInput
 		//document.getElementById("budget").value
 		})
 		.then(function(docRef) {
