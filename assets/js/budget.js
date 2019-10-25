@@ -20,10 +20,23 @@ function setBudget(){
 }
 
 function getBudget(){
+	var db = firebase.firestore();
+	db.collection("My Budget").get().then(function(doc){
+		if(doc.exists){
+			console.log("Document data:", doc.data());
+			var db_data = doc.data();
+			alert(db_data);
+		}
+		else{
+			console.log("no such document");
+		}//else
+	}).catch(function(error){
+		console.log("error getting document:", error);
+	});
 	//var budgetSet = document.getElementById("budget").value;
 	//budgetSet.value = getBudget();
 	//comment
-}
+}//getBudget
 
 
 /*
@@ -40,13 +53,6 @@ docRef.get().then(function(doc){
 		budgetSet.value = doc.data();
 	}
 });
-
-
-
-
-
-
-
 
 //const form = document.querySelector('#main_budget');
 //var docRef =  db.collection("main_budget").doc("latest"); 
