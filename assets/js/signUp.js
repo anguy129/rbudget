@@ -13,7 +13,9 @@ function signUp() {
 	}
 	else {
 		alert("about to create new user");
-		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+		alert(email);
+		alert(password);
+		firebase.auth().createUserWithEmailAndPassword('sample@mail.com', 'samplepass').catch(function(error) {
 	  		// Handle Errors here.
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
