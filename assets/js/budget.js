@@ -1,25 +1,10 @@
-
-
-
-
-
-
-
-//const form = document.querySelector('#main_budget');
-//var docRef =  db.collection("main_budget").doc("latest"); 
-
-//function setBudget(){
-	//var budgetSet = document.getElementById("budget").value;
-	//budgetSet.value = getBudget();
-//}
-
-
 function setBudget(){
 	alert("started db");
+	
 	var budgetInput = document.getElementById("budget").value;
 	//var budgetGet = 420;
-	alert("grabbed" + budgetInput);
-	db.collection("My Budget").add({
+	alert("grabbed value " + budgetInput);
+	db.collection("My Budget").doc("data").add({
 		budget: budgetInput
 		//document.getElementById("budget").value
 		})
@@ -40,11 +25,26 @@ form.addEventListener('submit', (e) => {
 		budget: form.budget.value
 	});
 });
-*/
-/*
 docRef.get().then(function(doc){
 	if(doc.exists){
 		var budgetSet = document.getElementById("budget").value;
 		budgetSet.value = doc.data();
 	}
 });
+
+
+
+
+
+
+
+
+//const form = document.querySelector('#main_budget');
+//var docRef =  db.collection("main_budget").doc("latest"); 
+
+//function setBudget(){
+	//var budgetSet = document.getElementById("budget").value;
+	//budgetSet.value = getBudget();
+//}
+
+*/
