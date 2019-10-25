@@ -7,28 +7,29 @@
 
 //const form = document.querySelector('#main_budget');
 //var docRef =  db.collection("main_budget").doc("latest"); 
-/*
-function setBudget(){
-	//var budgetSet = document.getElementById("budget").value;
-	budgetSet.value = getBudget();
-}
 
-*/
-function getBudget(){
-	//var budgetGet = document.getElementById("budget").value;
-	//var budgetGet = 420;
+//function setBudget(){
+	//var budgetSet = document.getElementById("budget").value;
+	//budgetSet.value = getBudget();
+//}
+
+
+function setBudget(){
 	alert("started db");
-	db.collection("main_budget").add({
-		budget: 123
-		alert("inside db");
+	var budgetInput = document.getElementById("budget").value;
+	//var budgetGet = 420;
+	alert("grabbed" + budgetInput);
+	db.collection("My Budget").add({
+		budget: budgetInput
 		//document.getElementById("budget").value
 		})
-		.then(function() {
+		.then(function(docRef) {
 			console.log("Document written with ID: ", docRef.id);
 		})
 		.catch(function(error) {
 		    console.error("Error adding document: ", error);
 	});	
+	alert("Added to collection");
 }
 
 /*
