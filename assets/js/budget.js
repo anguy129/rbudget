@@ -43,21 +43,50 @@ function getBudget(){
 	//var budgetSet = document.getElementById("budget").value;
 	//budgetSet.value = getBudget();
 	//comment
+	//var value = document.getString("budget");
 	alert("Get budget called");
 	var db = firebase.firestore();
-	db.collection("My Budget").get().then(function(doc) {
-		alert("inside collection");
-		alert(doc);
-		if(doc.exists){
-			console.log("Document data:", doc.data());
-	    } else {
-	        // doc.data() will be undefined in this case
-	        console.log("No such document!");
-	    }
-		}).catch(function(error) {
-		    console.log("Error getting document:", error);
+	db.collection("My Budget").limit(1).get().then(snapshot => {
+		snapshot.forEach(doc => {
+			alert("inside collection");
+			alert(doc.data().budget);
+			if(doc.exists){
+				console.log("Document data:", doc.data());
+		    } else {
+		        // doc.data() will be undefined in this case
+		        console.log("No such document!");
+		    }
+			}).catch(function(error) {
+			    console.log("Error getting document:", error);
+		});
+	
 	});
 }
+/*
+function getBudget(){
+	//var budgetSet = document.getElementById("budget").value;
+	//budgetSet.value = getBudget();
+	//comment
+	//var value = document.getString("budget");
+
+	alert("Get budget called");
+	var db = firebase.firestore();
+	db.collection("My Budget").get().then(snapshot => {
+		snapshot.forEach(doc => {
+			alert("inside collection");
+			alert(doc.data().budget);
+			if(doc.exists){
+				console.log("Document data:", doc.data());
+		    } else {
+		        // doc.data() will be undefined in this case
+		        console.log("No such document!");
+		    }
+			}).catch(function(error) {
+			    console.log("Error getting document:", error);
+		});
+	});
+}
+*/
 
 /*
 form.addEventListener('submit', (e) => {
