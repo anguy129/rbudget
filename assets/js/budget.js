@@ -40,7 +40,7 @@ function setBudget(){
 }
 
 function getBudget(){
-	//var budgetSet = document.getElementById("budget").value;
+	//var budgetSet = document.getElementById("budget_field").value;
 	//budgetSet.value = getBudget();
 	//comment
 	//var value = document.getString("budget");
@@ -48,6 +48,8 @@ function getBudget(){
 	var db = firebase.firestore();
 	db.collection("My Budget").limit(1).get().then(snapshot => {
 		snapshot.forEach(doc => {
+			var budgetSet = document.getElementById("budget");
+			budgetSet.value = doc.data().budget;
 			alert("inside collection");
 			alert(doc.data().budget);
 			if(doc.exists){
@@ -59,6 +61,7 @@ function getBudget(){
 			}).catch(function(error) {
 			    console.log("Error getting document:", error);
 		});
+		
 	
 	});
 }
