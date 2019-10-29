@@ -23,7 +23,7 @@ function setBudget(){
 	
 	var budgetInput = document.getElementById("budget").value;
 	//var budgetGet = 420;
-	alert("grabbed value " + budgetInput);
+	//alert("grabbed value " + budgetInput);
 	var db = firebase.firestore();
 
 	db.collection("My Budget").add({
@@ -49,9 +49,10 @@ function getBudget(){
 	db.collection("My Budget").limit(1).get().then(snapshot => {
 		snapshot.forEach(doc => {
 			var budgetSet = document.getElementById("budget");
+			
 			budgetSet.value = doc.data().budget;
-			alert("inside collection");
-			alert(doc.data().budget);
+			//alert("inside collection");
+			//alert(doc.data().budget);
 			if(doc.exists){
 				console.log("Document data:", doc.data());
 		    } else {

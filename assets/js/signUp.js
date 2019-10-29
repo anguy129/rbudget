@@ -12,7 +12,7 @@ function signUp() {
 		alert("Your password must be at least 8 characters long.");
 	}
 	else {
-		alert("about to create new user");
+		//alert("about to create new user");
 		alert(email);
 		alert(password);
 		firebase.auth().createUserWithEmailAndPassword('sample@mail.com', 'samplepass').catch(function(error) {
