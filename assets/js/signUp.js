@@ -23,6 +23,6 @@ function signUp() {
 	  		alert(errorMessage);
 	  		// ...
 		});
-		location.href = 'homepage.html';
+		//location.href = 'homepage.html';
 	}
 };
