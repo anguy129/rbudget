@@ -44,7 +44,7 @@ function getBudget(){
 	//budgetSet.value = getBudget();
 	//comment
 	//var value = document.getString("budget");
-	alert("Get budget called");
+	//alert("Get budget called");
 	var db = firebase.firestore();
 	db.collection("My Budget").limit(1).get().then(snapshot => {
 		snapshot.forEach(doc => {
