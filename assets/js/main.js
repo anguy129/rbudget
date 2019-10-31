@@ -295,7 +295,7 @@
 					$('<div class="close">Close</div>')
 						.appendTo($this)
 						.on('click', function() {
-							location.hash = '';
+							$main._hide(true);
 						});
 
 				// Prevent clicks from inside article from bubbling.
@@ -306,13 +306,14 @@
 			});
 
 		// Events.
-			$body.on('click', function(event) {
+			// Activates when article body is clicked
+			//$body.on('click', function(event) {
 
 				// Article visible? Hide.
-					if ($body.hasClass('is-article-visible'))
-						$main._hide(true);
+				//	if ($body.hasClass('is-article-visible'))
+				//		$main._hide(false);
 
-			});
+			//});
 
 			$window.on('keyup', function(event) {
 

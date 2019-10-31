@@ -35,6 +35,26 @@
 	font-size: 16pt;
 }
 
+#budget {
+	letter-spacing: 0.1rem;
+	font-size: 2.5rem;
+	/*
+		bottom code is to give underline when unfocused
+		get rid of border: none; when using this code
+	*/
+	/*border: 0;
+	outline: 0;
+	-webkit-border-bottom: 1px solid #ffffff;
+	border-bottom: 1px solid #ffffff;*/
+	font-weight: 400;
+	font-style: italic;
+	text-align: center;
+	border: transparent;
+}
+
+#budget:hover {
+	border: 1px solid #ffffff;
+}
 
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -207,7 +227,7 @@ input, select, textarea {
 		color: #ffffff;
 		font-weight: 600;
 		line-height: 1.5;
-		margin: 0 0 1rem 0;
+		margin: 0 0 0.5rem 0;
 		text-transform: uppercase;
 		letter-spacing: 0.2rem;
 	}
@@ -215,6 +235,17 @@ input, select, textarea {
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 			color: inherit;
 			text-decoration: none;
+		}
+
+		h1.money, h2.money, h3.money, h4.money, h5.money, h6.money {
+			width: -moz-max-content;
+			width: -webkit-max-content;
+			width: -ms-max-content;
+			width: max-content;
+			margin: 0 0 0.5rem 0;
+			letter-spacing: 0.1rem;
+			font-weight: 400;
+			font-style: italic;
 		}
 
 		h1.major, h2.major, h3.major, h4.major, h5.major, h6.major {
@@ -419,6 +450,7 @@ input, select, textarea {
 	input[type=signUp_password1],
 	input[type=signUp_email],
 	input[type="text"],
+	input[type="number"],
 	input[type="password"],
 	input[type="email"],
 	input[type="tel"],
@@ -447,6 +479,7 @@ input, select, textarea {
 		input[type=signUp_password1]:invalid,
 		input[type=signUp_email]:invalid,
 		input[type="text"]:invalid,
+		input[type="number"]:invalid,
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
 		input[type="tel"]:invalid,
@@ -459,6 +492,7 @@ input, select, textarea {
 		input[type=signUp_password1]:focus,
 		input[type=signUp_email]:focus,
 		input[type="text"]:focus,
+		input[type="number"]:invalid,
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		input[type="tel"]:focus,
@@ -477,6 +511,7 @@ input, select, textarea {
 		height: 2.75rem;
 		padding-right: 2.75rem;
 		text-overflow: ellipsis;
+		font-size: 0.5rem;
 	}
 
 		select option {
@@ -495,6 +530,7 @@ input, select, textarea {
 	input[type=signUp_password1],
 	input[type=signUp_email],
 	input[type="text"],
+	input[type="number"],
 	input[type="password"],
 	input[type="email"],
 	select {
