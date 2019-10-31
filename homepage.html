@@ -65,15 +65,15 @@
 							<h3>Amount to Deposit</h3>
 							<input type="number" name="depositAmnt" id="depositAmnt">
 							<h3>Category</h3>
-							<select>
+							<select id="drop_deposit_category">
 								<option value="Income">Income</option>
 								<option value="Financial Aid + Grants">Financial Aid + Grants</option>
 							</select>
 							<h3>Description (optional)</h3>
-							<input type="text" name="description">
+							<input type="text" name="description" id="deposit_description">
 							<ul class="actions">
 								<li>
-									<input type="submit" id="submitDeposit" value="Submit" class="primary">
+									<button type="button" class="button_1" onclick="deposit();">Submit</button>
 								</li>
 								<li>
 									<input type="reset" value="Reset">
