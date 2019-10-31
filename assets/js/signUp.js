@@ -17,6 +17,8 @@ function signUp() {
 		//alert(password);
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  		// Handle Errors here.
+	  		var db = firebase.firestore();
+	  		db.collection(email);
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
 	  		// github didn't deploy new code
@@ -25,4 +27,15 @@ function signUp() {
 		});
 		//location.href = 'homepage.html';
 	}
+
+	var db = firebase.firestore();
+	db.collection(email).add({
+		//document.getElementById("budget").value
+		})
+		.then(function(docRef) {
+			console.log("Document written with ID: ", docRef.id);
+		})
+		.catch(function(error) {
+		    console.error("Error adding document: ", error);
+	});	
 };

@@ -6,7 +6,7 @@ function signIn() {
 
 	firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
 		// Successful login
-		alert("logging in as: " + email);
+		//alert("logging in as: " + email);
 		location.href = "homepage.html";
 	}).catch(function(error) {
 	// Handle Errors here.
@@ -20,4 +20,15 @@ function signIn() {
 		}
 		console.log(error);
     });
+
+    var db = firebase.firestore();
+	db.collection(email).add({
+		//document.getElementById("budget").value
+		})
+		.then(function(docRef) {
+			console.log("Document written with ID: ", docRef.id);
+		})
+		.catch(function(error) {
+		    console.error("Error adding document: ", error);
+	});	
 };

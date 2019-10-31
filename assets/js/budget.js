@@ -42,17 +42,8 @@ function deposit(){
 	//Getting user information
 	alert("deposit()");
 	
-	firebase.auth().onAuthStateChanged(function(user) {
-		alert("inside function");
-		  if (user) {
-		    alert("user found");
-		    var email;
-		    email = user.email;
-		    alert(email);
-		  } else {
-		  	alert("no user");
-		  }
-	});
+	var email = document.getElementById("login_email").value;
+	alert("email: " email);
 	
 
 	
