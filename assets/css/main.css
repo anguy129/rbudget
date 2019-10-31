@@ -445,6 +445,16 @@ input, select, textarea {
 		text-transform: uppercase;
 	}
     
+	/* For Firefox */
+	input[type='number'] {
+	    -moz-appearance:textfield;
+	}
+	/* Webkit browsers like Safari and Chrome */
+	input[type=number]::-webkit-inner-spin-button,
+	input[type=number]::-webkit-outer-spin-button {
+	    -webkit-appearance: none;
+	    margin: 0;
+	}
 
 	input[type=signUp_password0],
 	input[type=signUp_password1],
@@ -501,6 +511,7 @@ input, select, textarea {
 			background: rgba(255, 255, 255, 0.075);
 			border-color: #ffffff;
 			box-shadow: 0 0 0 1px #ffffff;
+			overflow: hidden;
 		}
 
 	select {
@@ -511,7 +522,7 @@ input, select, textarea {
 		height: 2.75rem;
 		padding-right: 2.75rem;
 		text-overflow: ellipsis;
-		font-size: 0.5rem;
+		font-size: 1.5rem;
 	}
 
 		select option {
