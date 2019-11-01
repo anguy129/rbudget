@@ -56,15 +56,17 @@ function deposit(){
 	alert("Description: " + depo_description);
 
 	var date = new Date();
-	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	var month = months[date.getMonth()];
-	var day = date.getDate();
-	var hours = date.getHour() + 1;
-	var minutes = date.getMinutes();
-	alert(months[date.getMonth()]);
+	var month = date.getMonth();
+	alert(month);
+	//var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	//var month = months[date.getMonth()];
+	//var day = date.getDate();
+	//var hours = date.getHour() + 1;
+	//var minutes = date.getMinutes();
+	//alert(months[date.getMonth()]);
 	//alert(month + day + hours + minutes);
 
-
+	alert("start db");
 	var db = firebase.firestore();
 
 	var docData = {
@@ -74,7 +76,7 @@ function deposit(){
 	};
 
 
-	db.collection(user_email).doc("Budget").collection("Statements").doc(months).update(docData).then(function(){
+	db.collection(user_email).doc("Budget").collection("Statements").doc(month).update(docData).then(function(){
 		console.log("Document successfully written!");
 	});
 
