@@ -67,7 +67,8 @@ function deposit(){
 
 	alert("start db");
 	var db = firebase.firestore();
-	alert("made db");
+
+
 	var docData = {
 		Date: day,
 		Category: depo_category,
@@ -77,9 +78,8 @@ function deposit(){
 
 	alert("passed doc data");
 
-	db.collection(user_email).doc("Budget").collection("Statements").doc(month).add(docData).then(function(){
+	db.collection(user_email).doc("Budget").collection("Statements").doc("October").update(docData).then(function(){
 		console.log("Document successfully written!");
-		alert("inside db collection");
 	});
 
 
