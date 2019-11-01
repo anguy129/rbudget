@@ -1,4 +1,5 @@
 /* Create new password based user on Firebase */
+var mainEmail;
 
 function signUp() {
 	email = document.getElementById("signUp_email").value;
@@ -12,9 +13,8 @@ function signUp() {
 		alert("Your password must be at least 8 characters long.");
 	}
 	else {
-		//alert("about to create new user");
-		//alert(email);
-		//alert(password);
+		setEmail(email);
+
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  		// Handle Errors here.
 	  		var db = firebase.firestore();
@@ -27,15 +27,9 @@ function signUp() {
 		});
 		//location.href = 'homepage.html';
 	}
-
-	var db = firebase.firestore();
-	db.collection(email).add({
-		//document.getElementById("budget").value
-		})
-		.then(function(docRef) {
-			console.log("Document written with ID: ", docRef.id);
-		})
-		.catch(function(error) {
-		    console.error("Error adding document: ", error);
-	});	
 };
+
+function setEmail(email){
+	mainEmail = email;
+	localStorage.setItem("user_Email", mainEmail);
+}

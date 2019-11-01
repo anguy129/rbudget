@@ -1,9 +1,10 @@
 /* Validate registered user sign in via Firebase */
+var mainEmail;
 
 function signIn() {
 	email = document.getElementById("login_email").value;
 	password = document.getElementById("login_password").value;
-
+	setEmail(email);
 	firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
 		// Successful login
 		//alert("logging in as: " + email);
@@ -20,15 +21,10 @@ function signIn() {
 		}
 		console.log(error);
     });
-
-    var db = firebase.firestore();
-	db.collection(email).add({
-		//document.getElementById("budget").value
-		})
-		.then(function(docRef) {
-			console.log("Document written with ID: ", docRef.id);
-		})
-		.catch(function(error) {
-		    console.error("Error adding document: ", error);
-	});	
 };
+
+function setEmail(email){
+	mainEmail = email;
+	localStorage.setItem("user_Email", mainEmail);
+}
+

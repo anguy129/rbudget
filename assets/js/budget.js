@@ -40,14 +40,9 @@ function getBudget(){
 
 function deposit(){
 	//Getting user information
-	alert("deposit()");
-	
-	var email = document.getElementById("login_email").value;
-	alert("email: " email);
-	
-
-	
-	
+	alert("Depositing");
+	var user_email = localStorage.getItem("user_Email");
+	alert("Email: " + user_email);
 
 	//Grabbing variables from fields.
 	var depo_budgetInput = document.getElementById("depositAmnt").value;
@@ -59,11 +54,29 @@ function deposit(){
 
 	var depo_description = document.getElementById("deposit_description").value;
 	alert("Description: " + depo_description);
-	
-	
-	
-
 
 	//var db = firebase.firestore();
 
 }
+
+function withdraw(){
+	//Getting user information
+	alert("Withdrawing");
+	var user_email = localStorage.getItem("user_Email");
+	alert("Email: " + user_email);
+
+	//Grabbing variables from fields.
+	var with_budgetInput = document.getElementById("withdrawAmnt").value;
+	alert("Withdrawing: " + with_budgetInput);
+
+	var cat = document.getElementById("drop_withdraw_category");
+	var with_category = cat.options[cat.selectedIndex].text;
+	alert("Category: " + with_category);
+
+	var with_description = document.getElementById("withdraw_description").value;
+	alert("Description: " + with_description);
+
+	//var db = firebase.firestore();
+
+}
+
