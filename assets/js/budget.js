@@ -62,6 +62,8 @@ function deposit(){
 	var day = date.getDate();
 	var hours = date.getHour() + 1;
 	var minutes = date.getMinutes();
+	var currDate = day.concat(hours, minutes);
+	alert(currDate);
 	//alert(months[date.getMonth()]);
 	//alert(month + day + hours + minutes);
 
@@ -70,7 +72,7 @@ function deposit(){
 
 
 	var docData = {
-		Date: day,
+		Date: currDate,
 		Category: depo_category,
 		Spent: depo_budgetInput,
 		Description: depo_description
