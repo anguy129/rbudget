@@ -59,20 +59,22 @@ function deposit(){
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var month = months[date.getMonth()];
 	alert(month);
-	//var day = date.getDate();
-	//var hours = date.getHour() + 1;
-	//var minutes = date.getMinutes();
+	var day = date.getDate();
+	var hours = date.getHour() + 1;
+	var minutes = date.getMinutes();
 	//alert(months[date.getMonth()]);
 	//alert(month + day + hours + minutes);
 
 	alert("start db");
 	var db = firebase.firestore();
-
+	alert("made db");
 	var docData = {
+		Date: day,
 		Category: depo_category,
 		Spent: depo_budgetInput,
 		Description: depo_description
 	};
+
 	alert("passed doc data");
 
 	db.collection(user_email).doc("Budget").collection("Statements").doc(month).add(docData).then(function(){
