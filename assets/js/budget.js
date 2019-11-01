@@ -40,7 +40,7 @@ function getBudget(){
 */
 function deposit(){
 	//Getting user information
-	alert("New test");
+	alert("test");
 	var user_email = localStorage.getItem("user_Email");
 	alert("Email: " + user_email);
 
