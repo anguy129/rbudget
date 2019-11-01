@@ -58,12 +58,16 @@ function deposit(){
 
 	var db = firebase.firestore();
 
-
-	db.collection(user_email).doc("Budget").collection("Statements").doc("October").add({
+	var docData = {
+		Date: firebase.firestore.Timestamp.fromDate(new Date("November 1, 2019")) 
 		Category: depo_category,
 		Spent: depo_budgetInput,
-		Overall Balance: "Balance",
 		Description: depo_description
+	};
+
+
+	db.collection(user_email).doc("Budget").collection("Statements").doc("October").set(docData).then(function(){
+		console.log("Document successfully written!");
 	});
 
 
