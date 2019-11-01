@@ -56,10 +56,9 @@ function deposit(){
 	alert("Description: " + depo_description);
 
 	var date = new Date();
-	var month = date.getMonth();
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var month = months[date.getMonth()];
 	alert(month);
-	//var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	//var month = months[date.getMonth()];
 	//var day = date.getDate();
 	//var hours = date.getHour() + 1;
 	//var minutes = date.getMinutes();
@@ -76,7 +75,7 @@ function deposit(){
 	};
 
 
-	db.collection(user_email).doc("Budget").collection("Statements").doc(month).update(docData).then(function(){
+	db.collection(user_email).doc("Budget").collection("Statements").doc(month).add(docData).then(function(){
 		console.log("Document successfully written!");
 	});
 
