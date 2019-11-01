@@ -61,8 +61,8 @@ function deposit(){
 	var day = date.getDate();
 	var hours = date.getHour() + 1;
 	var minutes = date.getMinutes();
-	alert(month);
-	alert(month + day + hours + minutes);
+	alert(months[date.getMonth()]);
+	//alert(month + day + hours + minutes);
 
 
 	var db = firebase.firestore();
@@ -74,7 +74,7 @@ function deposit(){
 	};
 
 
-	db.collection(user_email).doc("Budget").collection("Statements").doc(month).update(docData).then(function(){
+	db.collection(user_email).doc("Budget").collection("Statements").doc(months).update(docData).then(function(){
 		console.log("Document successfully written!");
 	});
 
