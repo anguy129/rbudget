@@ -55,6 +55,9 @@ function deposit(){
 	var depo_description = document.getElementById("deposit_description").value;
 	alert("Description: " + depo_description);
 
+	var date = new Date();
+	alert(date.getMonth());
+
 
 	var db = firebase.firestore();
 
