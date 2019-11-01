@@ -1,4 +1,4 @@
-
+/*
 function setBudget(){
 	var budgetInput = document.getElementById("budget").value;
 	//var budgetGet = 420;
@@ -37,10 +37,10 @@ function getBudget(){
 	
 	});
 }
-
+*/
 function deposit(){
 	//Getting user information
-	alert("Depositing");
+	alert("New test");
 	var user_email = localStorage.getItem("user_Email");
 	alert("Email: " + user_email);
 
@@ -55,12 +55,20 @@ function deposit(){
 	var depo_description = document.getElementById("deposit_description").value;
 	alert("Description: " + depo_description);
 
-
-
+/*
 	var db = firebase.firestore();
-	db.collection(user_email).add({
-			budget_test: depo_budgetInput
+	db.collection(user_email).doc("Budget").collection("Statements").doc("October").set({
+		Date: {
+			Category: depo_category,
+			Spent: depo_budgetInput,
+			Overall Balance: "Balance",
+			Description: depo_description
+		}
+
 	});
+	*/
+
+	alert("finished collection add");
 }
 
 function withdraw(){
@@ -80,7 +88,10 @@ function withdraw(){
 	var with_description = document.getElementById("withdraw_description").value;
 	alert("Description: " + with_description);
 
-	//var db = firebase.firestore();
+	var db = firebase.firestore();
+	db.collection(user_email).add({
+			budget_test: depo_budgetInput
+	});
 
 }
 
