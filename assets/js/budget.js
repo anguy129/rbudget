@@ -55,8 +55,12 @@ function deposit(){
 	var depo_description = document.getElementById("deposit_description").value;
 	alert("Description: " + depo_description);
 
-	//var db = firebase.firestore();
 
+
+	var db = firebase.firestore();
+	db.collection(user_email).add({
+			budget_test: depo_budgetInput
+	});
 }
 
 function withdraw(){
