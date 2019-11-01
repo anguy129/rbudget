@@ -78,7 +78,7 @@ function deposit(){
 
 	alert("passed doc data");
 
-	db.collection(user_email).doc("Budget").collection("Statements").doc("October").update(docData).then(function(){
+	db.collection(user_email).doc("Budget").collection("Statements").doc("October").set(docData).then(function(){
 		console.log("Document successfully written!");
 	});
 
