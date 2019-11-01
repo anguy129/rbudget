@@ -57,12 +57,13 @@ function deposit(){
 
 
 	var db = firebase.firestore();
+
+
 	db.collection(user_email).doc("Budget").collection("Statements").doc("October").add({
 		Category: depo_category,
 		Spent: depo_budgetInput,
 		Overall Balance: "Balance",
 		Description: depo_description
-
 	});
 
 
