@@ -59,7 +59,7 @@ function deposit(){
 	var db = firebase.firestore();
 
 	var docData = {
-		Date: firebase.firestore.Timestamp.fromDate(new Date("November 1, 2019")) 
+		//Date: firebase.firestore.Timestamp.fromDate(new Date("November 1, 2019")) 
 		Category: depo_category,
 		Spent: depo_budgetInput,
 		Description: depo_description
