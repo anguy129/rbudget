@@ -56,20 +56,25 @@ function deposit(){
 	alert("Description: " + depo_description);
 
 	var date = new Date();
-	alert(date.getMonth());
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var month = months[date.getMonth()];
+	var day = date.getDate();
+	var hours = date.getHour() + 1;
+	var minutes = date.getMinutes();
+	alert(month);
+	alert(month + day + hours + minutes);
 
 
 	var db = firebase.firestore();
 
 	var docData = {
-		//Date: firebase.firestore.Timestamp.fromDate(new Date("November 1, 2019")) 
 		Category: depo_category,
 		Spent: depo_budgetInput,
 		Description: depo_description
 	};
 
 
-	db.collection(user_email).doc("Budget").collection("Statements").doc("October").set(docData).then(function(){
+	db.collection(user_email).doc("Budget").collection("Statements").doc(month).update(docData).then(function(){
 		console.log("Document successfully written!");
 	});
 
