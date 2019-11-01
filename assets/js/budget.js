@@ -73,10 +73,11 @@ function deposit(){
 		Spent: depo_budgetInput,
 		Description: depo_description
 	};
-
+	alert("passed doc data");
 
 	db.collection(user_email).doc("Budget").collection("Statements").doc(month).add(docData).then(function(){
 		console.log("Document successfully written!");
+		alert("inside db collection");
 	});
 
 
