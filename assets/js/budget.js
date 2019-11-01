@@ -55,7 +55,7 @@ function deposit(){
 	var depo_description = document.getElementById("deposit_description").value;
 	alert("Description: " + depo_description);
 
-/*
+
 	var db = firebase.firestore();
 	db.collection(user_email).doc("Budget").collection("Statements").doc("October").set({
 		Date: {
@@ -66,7 +66,7 @@ function deposit(){
 		}
 
 	});
-	*/
+
 
 	alert("finished collection add");
 }
