@@ -59,11 +59,11 @@ function deposit(){
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var month = months[date.getMonth()];
 	alert(month);
-	var day = date.getDate();
-	var hours = date.getHour() + 1;
-	var minutes = date.getMinutes();
-	var currDate = day.concat(hours, minutes);
-	alert(currDate);
+	//var day = date.getDate();
+	//var hours = date.getHour() + 1;
+	//var minutes = date.getMinutes();
+	//var currDate = day.concat(hours, minutes);
+	//alert(currDate);
 	//alert(months[date.getMonth()]);
 	//alert(month + day + hours + minutes);
 
@@ -72,7 +72,7 @@ function deposit(){
 
 
 	var docData = {
-		Date: currDate,
+		//Date: currDate,
 		Category: depo_category,
 		Spent: depo_budgetInput,
 		Description: depo_description
