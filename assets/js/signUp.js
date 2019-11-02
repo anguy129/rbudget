@@ -18,14 +18,13 @@ function signUp() {
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  		// Handle Errors here.
 	  		var db = firebase.firestore();
-	  		db.collection(email);
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
 	  		// github didn't deploy new code
 	  		alert(errorMessage);
 	  		// ...
 		});
-		//location.href = 'homepage.html';
+		location.href = 'homepage.html';
 	}
 };
 
