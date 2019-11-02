@@ -40,75 +40,63 @@ function getBudget(){
 */
 function deposit(){
 	//Getting user information
-	alert("test");
 	var user_email = localStorage.getItem("user_Email");
-	alert("Email: " + user_email);
 
 	//Grabbing variables from fields.
-	var depo_budgetInput = document.getElementById("depositAmnt").value;
-	alert("Depositing: " + depo_budgetInput);
-
+	var depo_budgetInput = +document.getElementById("depositAmnt").value;
 	var cat = document.getElementById("drop_deposit_category");
 	var depo_category = cat.options[cat.selectedIndex].text;
-	alert("Category: " + depo_category);
-
 	var depo_description = document.getElementById("deposit_description").value;
-	alert("Description: " + depo_description);
-
+	
 	var date = new Date();
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	var month = months[date.getMonth()];
-	alert(month);
-	//var day = date.getDate();
-	//var hours = date.getHour() + 1;
-	//var minutes = date.getMinutes();
-	//var currDate = day.concat(hours, minutes);
-	//alert(currDate);
-	//alert(months[date.getMonth()]);
-	//alert(month + day + hours + minutes);
+	var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"];
 
-	alert("start db");
 	var db = firebase.firestore();
 
-
-	var docData = {
-		//Date: currDate,
-		Category: depo_category,
-		Spent: depo_budgetInput,
-		Description: depo_description
-	};
-
-	alert("passed doc data");
-
-	db.collection(user_email).doc("Budget").collection("Statements").doc(month).set(docData).then(function(){
-		console.log("Document successfully written!");
+	db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).doc("Day: " + numbers[date.getDate()] + ", " + numbers[date.getHours()] + ":" + numbers[date.getMinutes()]).set({
+	    Category: depo_category,
+	    Amount: depo_budgetInput,
+	    Description: depo_description,
+	    Type: "Deposit"
+		})
+		.then(function() {
+		    console.log("Document successfully written!");
+		})
+		.catch(function(error) {
+		    console.error("Error writing document: ", error);
 	});
-
-
-	alert("finished collection add");
+	alert("Thank You For Your Deposit");
 }
 
 function withdraw(){
 	//Getting user information
-	alert("Withdrawing");
 	var user_email = localStorage.getItem("user_Email");
-	alert("Email: " + user_email);
-
 	//Grabbing variables from fields.
-	var with_budgetInput = document.getElementById("withdrawAmnt").value;
-	alert("Withdrawing: " + with_budgetInput);
-
+	var with_budgetInput = +document.getElementById("withdrawAmnt").value;
 	var cat = document.getElementById("drop_withdraw_category");
 	var with_category = cat.options[cat.selectedIndex].text;
-	alert("Category: " + with_category);
-
 	var with_description = document.getElementById("withdraw_description").value;
-	alert("Description: " + with_description);
+
+	var date = new Date();
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"];
 
 	var db = firebase.firestore();
-	db.collection(user_email).add({
-			budget_test: depo_budgetInput
+
+	db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).doc("Day: " + numbers[date.getDate()] + ", " + numbers[date.getHours()] + ":" + numbers[date.getMinutes()]).set({
+	    Category: with_category,
+	    Amount: with_budgetInput,
+	    Description: with_description,
+	    Type: "Withdraw"
+		})
+		.then(function() {
+		    console.log("Document successfully written!");
+		})
+		.catch(function(error) {
+		    console.error("Error writing document: ", error);
 	});
+	alert("Thank You For Your Withdraw");
 
 }
 
