@@ -1,29 +1,7 @@
 /*
-function userState() {
-	firebase.auth().onAuthStateChanged(function(user) {
-	  if (user) {
-	    // User is signed in.
-	    var displayName = user.displayName;
-	    var email = user.email;
-	    var emailVerified = user.emailVerified;
-	    var uid = user.uid;
-	    var providerData = user.providerData;
-	    alert("signed in with: " + email);
-	    // ...
-	  } else {
-	  	alert("no one signed in");
-	    // User is signed out.
-	    // ...
-	  }
-	});
-}
-*/
 function setBudget(){
-	alert("started db");
-	
 	var budgetInput = document.getElementById("budget").value;
 	//var budgetGet = 420;
-	alert("grabbed value " + budgetInput);
 	var db = firebase.firestore();
 
 	db.collection("My Budget").add({
@@ -36,23 +14,16 @@ function setBudget(){
 		.catch(function(error) {
 		    console.error("Error adding document: ", error);
 	});	
-	alert("Added to collection");
 }
 
 function getBudget(){
-	//var budgetSet = document.getElementById("budget_field").value;
-	//budgetSet.value = getBudget();
-	//comment
-	//var value = document.getString("budget");
-	alert("Get budget called");
+
 	var db = firebase.firestore();
 	db.collection("My Budget").limit(1).get().then(snapshot => {
 		snapshot.forEach(doc => {
 			var budgetSet = document.getElementById("budget");
 			
 			budgetSet.value = doc.data().budget;
-			alert("inside collection");
-			alert(doc.data().budget);
 			if(doc.exists){
 				console.log("Document data:", doc.data());
 		    } else {
@@ -66,55 +37,66 @@ function getBudget(){
 	
 	});
 }
-/*
-function getBudget(){
-	//var budgetSet = document.getElementById("budget").value;
-	//budgetSet.value = getBudget();
-	//comment
-	//var value = document.getString("budget");
+*/
+function deposit(){
+	//Getting user information
+	var user_email = localStorage.getItem("user_Email");
 
-	alert("Get budget called");
+	//Grabbing variables from fields.
+	var depo_budgetInput = +document.getElementById("depositAmnt").value;
+	var cat = document.getElementById("drop_deposit_category");
+	var depo_category = cat.options[cat.selectedIndex].text;
+	var depo_description = document.getElementById("deposit_description").value;
+	
+	var date = new Date();
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"];
+
 	var db = firebase.firestore();
-	db.collection("My Budget").get().then(snapshot => {
-		snapshot.forEach(doc => {
-			alert("inside collection");
-			alert(doc.data().budget);
-			if(doc.exists){
-				console.log("Document data:", doc.data());
-		    } else {
-		        // doc.data() will be undefined in this case
-		        console.log("No such document!");
-		    }
-			}).catch(function(error) {
-			    console.log("Error getting document:", error);
-		});
+
+	db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).doc("Day: " + numbers[date.getDate()] + ", " + numbers[date.getHours()] + ":" + numbers[date.getMinutes()]).set({
+	    Category: depo_category,
+	    Amount: depo_budgetInput,
+	    Description: depo_description,
+	    Type: "Deposit"
+		})
+		.then(function() {
+		    console.log("Document successfully written!");
+		})
+		.catch(function(error) {
+		    console.error("Error writing document: ", error);
 	});
+	alert("Thank You For Your Deposit");
 }
-*/
 
-/*
-form.addEventListener('submit', (e) => {
-	e.preventDefault();
-	alert("Grabbing Value");
-	db.collection('main_budget').add({
-		budget: form.budget.value
+function withdraw(){
+	//Getting user information
+	var user_email = localStorage.getItem("user_Email");
+	//Grabbing variables from fields.
+	var with_budgetInput = +document.getElementById("withdrawAmnt").value;
+	var cat = document.getElementById("drop_withdraw_category");
+	var with_category = cat.options[cat.selectedIndex].text;
+	var with_description = document.getElementById("withdraw_description").value;
+
+	var date = new Date();
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"];
+
+	var db = firebase.firestore();
+
+	db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).doc("Day: " + numbers[date.getDate()] + ", " + numbers[date.getHours()] + ":" + numbers[date.getMinutes()]).set({
+	    Category: with_category,
+	    Amount: with_budgetInput,
+	    Description: with_description,
+	    Type: "Withdraw"
+		})
+		.then(function() {
+		    console.log("Document successfully written!");
+		})
+		.catch(function(error) {
+		    console.error("Error writing document: ", error);
 	});
-});
-docRef.get().then(function(doc){
-	if(doc.exists){
-		var budgetSet = document.getElementById("budget").value;
-		budgetSet.value = doc.data();
-	}
-});
+	alert("Thank You For Your Withdraw");
 
-
-
-
-
-
-
-
-//const form = document.querySelector('#main_budget');
-//var docRef =  db.collection("main_budget").doc("latest"); 
-*/
+}
 

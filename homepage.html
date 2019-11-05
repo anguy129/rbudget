@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body class="is-preload" onload="getBudget();">
+	<body class="is-preload">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -65,15 +65,15 @@
 							<h3>Amount to Deposit</h3>
 							<input type="number" name="depositAmnt" id="depositAmnt">
 							<h3>Category</h3>
-							<select>
+							<select id="drop_deposit_category">
 								<option value="Income">Income</option>
 								<option value="Financial Aid + Grants">Financial Aid + Grants</option>
 							</select>
 							<h3>Description (optional)</h3>
-							<input type="text" name="description">
+							<input type="text" name="description" id="deposit_description">
 							<ul class="actions">
 								<li>
-									<input type="submit" id="submitDeposit" value="Submit" class="primary">
+									<button type="button" class="button_1" onclick="deposit();">Submit</button>
 								</li>
 								<li>
 									<input type="reset" value="Reset">
@@ -89,7 +89,7 @@
 							<h3>Amount to Withdraw</h3>
 							<input type="number" name="withdrawAmnt" id="withdrawAmnt">
 							<h3>Category</h3>
-							<select>
+							<select id="drop_withdraw_category">
 								<option value="Entertainment">Entertainment</option>
 								<option value="Housing/Rent">Housing/Rent</option>
 								<option value="Utilities">Utilities</option>
@@ -101,10 +101,10 @@
 								<option value="Savings">Savings</option>
 							</select>
 							<h3>Description (optional)</h3>
-							<input type="text" name="description">
+							<input type="text" name="description" id="withdraw_description">
 							<ul class="actions">
 								<li>
-									<input type="submit" id="submitDeposit" value="Submit" class="primary">
+									<button type="button" class="button_1" onclick="withdraw();">Submit</button>
 								</li>
 								<li>
 									<input type="reset" value="Reset">
@@ -425,9 +425,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 			<!-- TODO: Add SDKs for Firebase products that you want to use
 			     https://firebase.google.com/docs/web/setup#available-libraries -->
+			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
 			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
 			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
-			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+			
 			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
 
 
@@ -456,6 +457,9 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/userState.js"></script>
+			<script src="assets/js/signIn.js"></script>
+			<script src="assets/js/signUp.js"></script>
 			<script src="assets/js/budget.js"></script>
+
 	</body>
 </html>

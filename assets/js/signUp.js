@@ -1,4 +1,5 @@
 /* Create new password based user on Firebase */
+var mainEmail;
 
 function signUp() {
 	email = document.getElementById("signUp_email").value;
@@ -12,17 +13,22 @@ function signUp() {
 		alert("Your password must be at least 8 characters long.");
 	}
 	else {
-		//alert("about to create new user");
-		//alert(email);
-		//alert(password);
+		setEmail(email);
+
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  		// Handle Errors here.
+	  		var db = firebase.firestore();
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
 	  		// github didn't deploy new code
 	  		alert(errorMessage);
 	  		// ...
 		});
-		//location.href = 'homepage.html';
+		location.href = 'homepage.html';
 	}
 };
+
+function setEmail(email){
+	mainEmail = email;
+	localStorage.setItem("user_Email", mainEmail);
+}
