@@ -100,3 +100,26 @@ function withdraw(){
 
 }
 
+function reset_deposit(){
+	var clear_deposit = document.getElementById("depositAmnt");		
+	clear_deposit.value = '';
+
+	var clear_description = document.getElementById("deposit_description");
+	clear_description.value = '';
+}
+
+function reset_deposit(){
+	var clear_deposit = document.getElementById("depositAmnt");		
+	clear_deposit.value = '';
+
+	var clear_deposit_description = document.getElementById("deposit_description");
+	clear_deposit_description.value = '';
+}
+
+function reset_withdraw(){
+	var clear_withdraw = document.getElementById("withdrawAmnt");		
+	clear_withdraw.value = '';
+
+	var clear_withdraw_description = document.getElementById("withdraw_description");
+	clear_description.value = '';
+}
