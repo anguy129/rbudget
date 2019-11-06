@@ -102,14 +102,6 @@ function withdraw(){
 
 function reset_deposit(){
 	var clear_deposit = document.getElementById("depositAmnt");		
-	clear_deposit.value = '';
-
-	var clear_description = document.getElementById("deposit_description");
-	clear_description.value = '';
-}
-
-function reset_deposit(){
-	var clear_deposit = document.getElementById("depositAmnt");		
 	var clear_deposit_description = document.getElementById("deposit_description");
 	clear_deposit_description.value = '';
 	clear_deposit.value = '';
