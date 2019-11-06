@@ -46,7 +46,7 @@
 						<nav>
 							<ul>
 								<li><a href="#profile">Profile</a></li>
-								<li><a href="#about">About</a></li>
+								<li><a href="#statement" onclick="statement()">Statement</a></li>
 								<li><a href="#demo">Work</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
@@ -103,7 +103,7 @@
 							<input type="text" name="description" id="withdraw_description">
 							<ul class="actions">
 								<li>
-									<button type="button" class="primary" onclick="withdraw();">Submit</button>
+									<button type="button" class="primary" onclick="deposit();">Submit</button>
 								</li>
 								<li>
 									<button type="button" class="primary" onclick="reset_withdraw();">Reset</button>
@@ -130,10 +130,9 @@
 							</article>
 
 						<!-- About -->
-							<article id="about">
-								<h2 class="major">About</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p>R'Budget is a new way of managing money.</p>
+							<article id="statement" >
+								<h2 class="major">Statement</h2>
+									<div>Log Here</div>
 							</article>
 
 						<!-- Contact -->
@@ -459,6 +458,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/signIn.js"></script>
 			<script src="assets/js/signUp.js"></script>
 			<script src="assets/js/budget.js"></script>
+			<script src="assets/js/statement.js"></script>
 
 	</body>
 </html>

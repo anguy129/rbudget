@@ -52,6 +52,7 @@ function withdraw(){
 	currDate = d.toString();
 
 	var db = firebase.firestore();
+	alert(date.getSeconds());
 
 	db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).doc("Day: " + numbers[date.getDate()] + ", " + numbers[date.getHours()] + ":" + numbers[date.getMinutes()] + ":" + numbers[date.getSeconds()]).set({
 	    Category: with_category,
