@@ -39,7 +39,7 @@ function renderStatement(doc){
 	//li.appendChild(Type);
 	//li.appendChild(Balance);
 
-	statementList.appendChild(li);
+	statementlist.appendChild(li);
 
 }//renderStatement
 
