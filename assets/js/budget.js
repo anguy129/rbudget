@@ -31,7 +31,7 @@ function deposit(){
 		.catch(function(error) {
 		    console.error("Error writing document: ", error);
 	});
-	alert("Thank You For Your Deposit");
+	alert("Thank You For!");
 }
 
 function withdraw(){
