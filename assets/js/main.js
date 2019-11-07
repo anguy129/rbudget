@@ -288,14 +288,18 @@
 
 		// Articles.
 			$main_articles.each(function() {
-
+				
 				var $this = $(this);
 
 				// Close.
 					$('<div class="close">Close</div>')
+					
 						.appendTo($this)
+						
 						.on('click', function() {
+							
 							$main._hide(true);
+							
 						});
 
 				// Prevent clicks from inside article from bubbling.

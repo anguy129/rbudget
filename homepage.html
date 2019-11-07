@@ -36,7 +36,7 @@
 							<div class="inner">
 								<h1> Budget</h1>
 								<form>
-									<input id="budget" type="text">
+									<input id="budget" type="text" value="666">
 									<!---<button type="button" class="button_1" onclick="setBudget();" >Enter</button>-->
 									<button type="button" class="button_1" onclick="window.location.href= '#deposit';">Deposit</button>
 									<button type="button" class="button_1" onclick="window.location.href='#withdraw';">Withdraw</button>
@@ -46,8 +46,8 @@
 						<nav>
 							<ul>
 								<li><a href="#profile">Profile</a></li>
-								<li><a href="#about">About</a></li>
-								<li><a href="#demo">Work</a></li>
+								<li><a href="#statement" onclick="statement()">Statement</a></li>
+								<li><a href="#visual">Visual</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
@@ -61,8 +61,8 @@
 						<article id="deposit">
 							<h1 class="major">Deposit</h1>
 							<h3>Current Budget</h3>
-							<h2 class="money" id="currentBudget">$420</h2>
-							<h3>Amount to Deposit</h3>
+							<input type="number" name="deposit_budget" id="deposit_budget" value="420">
+							<h3>Amount to Deposit</li>
 							<input type="number" name="depositAmnt" id="depositAmnt">
 							<h3>Category</h3>
 							<select id="drop_deposit_category">
@@ -76,7 +76,7 @@
 									<button type="button" class="primary" onclick="deposit();">Submit</button>
 								</li>
 								<li>
-									<input type="reset" value="Reset">
+									<button type="button" class="primary" onclick="reset_deposit();">Reset</button>
 								</li>
 							</ul>
 						</article>
@@ -85,8 +85,7 @@
 						<article id="withdraw">
 							<h1 class="major">Withdraw</h1>
 							<h3>Current Budget</h3>
-							<h2 class="money" id="currentBudget">$69</h2>
-							<h3>Amount to Withdraw</h3>
+							<input type="number" name="withdraw_budget" id="withdraw_budget" value="777">				<h3>Amount to Withdraw</h3>
 							<input type="number" name="withdrawAmnt" id="withdrawAmnt">
 							<h3>Category</h3>
 							<select id="drop_withdraw_category">
@@ -104,10 +103,10 @@
 							<input type="text" name="description" id="withdraw_description">
 							<ul class="actions">
 								<li>
-									<button type="button" class="button_1" onclick="withdraw();">Submit</button>
+									<button type="button" class="primary" onclick="deposit();">Submit</button>
 								</li>
 								<li>
-									<input type="reset" value="Reset">
+									<button type="button" class="primary" onclick="reset_withdraw();">Reset</button>
 								</li>
 							</ul>
 						</article>
@@ -122,19 +121,93 @@
 							</article>
 
 
-						<!-- Work -->
-							<article id="demo">
-								<h2 class="major">Work</h2>
-								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-								<p>tus ultrices.</p>
-								<p>Nullam endiequat tina sed nunc rhoncus amet feugiat tempus.</p>
+						<!-- Visual -->
+							<article id="visual">
+								<h2 class="major">Visual</h2>
+								<font size="4 px">
+								<style>
+									body { background-color: #30303d; color: #fff; }
+									#chartdiv {
+									  width: 100%;
+									  height: 500px;
+									}
+									
+									</style>
+									
+									<!-- Resources -->
+									<script src="https://www.amcharts.com/lib/4/core.js"></script>
+									<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+									<script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
+									<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+									
+									<!-- Chart code -->
+									<script>
+									am4core.ready(function() {
+									
+									// Themes begin
+									am4core.useTheme(am4themes_dark);
+									am4core.useTheme(am4themes_animated);
+									// Themes end
+									
+									// Create chart instance
+									var chart = am4core.create("chartdiv", am4charts.PieChart);
+									
+									// Add data
+									chart.data = [ {
+									  "country": "Lithuania",
+									  "litres": 501.9
+									}, {
+									  "country": "Czechia",
+									  "litres": 301.9
+									}, {
+									  "country": "Ireland",
+									  "litres": 201.1
+									}, {
+									  "country": "Germany",
+									  "litres": 165.8
+									}, {
+									  "country": "Australia",
+									  "litres": 139.9
+									}, {
+									  "country": "Austria",
+									  "litres": 128.3
+									}, {
+									  "country": "UK",
+									  "litres": 99
+									}, {
+									  "country": "Belgium",
+									  "litres": 60
+									}, {
+									  "country": "The Netherlands",
+									  "litres": 50
+									} ];
+									
+									// Add and configure Series
+									var pieSeries = chart.series.push(new am4charts.PieSeries());
+									pieSeries.dataFields.value = "litres";
+									pieSeries.dataFields.category = "country";
+									pieSeries.slices.template.stroke = am4core.color("#fff");
+									pieSeries.slices.template.strokeWidth = 1;
+									pieSeries.slices.template.strokeOpacity = 1;
+									
+									// This creates initial animation
+									pieSeries.hiddenState.properties.opacity = 1;
+									pieSeries.hiddenState.properties.endAngle = -90;
+									pieSeries.hiddenState.properties.startAngle = -90;
+									
+									}); // end am4core.ready()
+									</script>
+									
+									<!-- HTML -->
+									<div id="chartdiv"></div>
+								</font>
 							</article>
 
-						<!-- About -->
-							<article id="about">
-								<h2 class="major">About</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p>R'Budget is a new way of managing money.</p>
+						<!-- statement -->
+							<article id="statement" >
+								<h2 class="major">Statement</h2>
+								<ul id="statements_log"></ul>
+									<div></div>
 							</article>
 
 						<!-- Contact -->
@@ -460,6 +533,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/signIn.js"></script>
 			<script src="assets/js/signUp.js"></script>
 			<script src="assets/js/budget.js"></script>
+			<script src="assets/js/statement.js"></script>
 
 	</body>
 </html>
