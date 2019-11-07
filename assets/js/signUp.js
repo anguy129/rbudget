@@ -14,6 +14,7 @@ function signUp() {
 	}
 	else {
 		setEmail(email);
+		var db = firebase.firestore();
 
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  		// Handle Errors here.
@@ -23,6 +24,24 @@ function signUp() {
 	  		// github didn't deploy new code
 	  		alert(errorMessage);
 	  		// ...
+		});
+
+		db.collection(email).doc("Budget").set({
+			overallBudget: 0,
+			entertainment: 0,
+			housing: 0,
+			utilities: 0,
+			food: 0,
+			transportation: 0,
+			education: 0,
+			loanPayment: 0,
+			childCare: 0,
+			savings: 0,
+			income: 0,
+			financialAid: 0
+		})
+		.catch(function(error) {
+		    console.error("Error writing document: ", error);
 		});
 		location.href = 'homepage.html';
 	}
