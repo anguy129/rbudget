@@ -36,7 +36,7 @@
 							<div class="inner">
 								<h1> Budget</h1>
 								<form>
-									<input id="budget" type="text">
+									<input id="budget" type="text" value="666">
 									<!---<button type="button" class="button_1" onclick="setBudget();" >Enter</button>-->
 									<button type="button" class="button_1" onclick="window.location.href= '#deposit';">Deposit</button>
 									<button type="button" class="button_1" onclick="window.location.href='#withdraw';">Withdraw</button>
@@ -46,7 +46,7 @@
 						<nav>
 							<ul>
 								<li><a href="#profile">Profile</a></li>
-								<li><a href="#about">About</a></li>
+								<li><a href="#statement" onclick="statement()">Statement</a></li>
 								<li><a href="#demo">Work</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
@@ -61,8 +61,8 @@
 						<article id="deposit">
 							<h1 class="major">Deposit</h1>
 							<h3>Current Budget</h3>
-							<h2 class="money" id="currentBudget">$420</h2>
-							<h3>Amount to Deposit</h3>
+							<input type="number" name="deposit_budget" id="deposit_budget" value="420">
+							<h3>Amount to Deposit</li>
 							<input type="number" name="depositAmnt" id="depositAmnt">
 							<h3>Category</h3>
 							<select id="drop_deposit_category">
@@ -73,10 +73,10 @@
 							<input type="text" name="description" id="deposit_description">
 							<ul class="actions">
 								<li>
-									<button type="button" class="button_1" onclick="deposit();">Submit</button>
+									<button type="button" class="primary" onclick="deposit();">Submit</button>
 								</li>
 								<li>
-									<input type="reset" value="Reset">
+									<button type="button" class="primary" onclick="reset_deposit();">Reset</button>
 								</li>
 							</ul>
 						</article>
@@ -85,8 +85,7 @@
 						<article id="withdraw">
 							<h1 class="major">Withdraw</h1>
 							<h3>Current Budget</h3>
-							<h2 class="money" id="currentBudget">$69</h2>
-							<h3>Amount to Withdraw</h3>
+							<input type="number" name="withdraw_budget" id="withdraw_budget" value="777">				<h3>Amount to Withdraw</h3>
 							<input type="number" name="withdrawAmnt" id="withdrawAmnt">
 							<h3>Category</h3>
 							<select id="drop_withdraw_category">
@@ -104,10 +103,10 @@
 							<input type="text" name="description" id="withdraw_description">
 							<ul class="actions">
 								<li>
-									<button type="button" class="button_1" onclick="withdraw();">Submit</button>
+									<button type="button" class="primary" onclick="deposit();">Submit</button>
 								</li>
 								<li>
-									<input type="reset" value="Reset">
+									<button type="button" class="primary" onclick="reset_withdraw();">Reset</button>
 								</li>
 							</ul>
 						</article>
@@ -130,11 +129,11 @@
 								<p>Nullam endiequat tina sed nunc rhoncus amet feugiat tempus.</p>
 							</article>
 
-						<!-- About -->
-							<article id="about">
-								<h2 class="major">About</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p>R'Budget is a new way of managing money.</p>
+						<!-- statement -->
+							<article id="statement" >
+								<h2 class="major">Statement</h2>
+								<ul id="statements_log"></ul>
+									<div></div>
 							</article>
 
 						<!-- Contact -->
@@ -460,6 +459,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/signIn.js"></script>
 			<script src="assets/js/signUp.js"></script>
 			<script src="assets/js/budget.js"></script>
+			<script src="assets/js/statement.js"></script>
 
 	</body>
 </html>
