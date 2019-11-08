@@ -1,16 +1,12 @@
 const statementlist = document.querySelector('#statements_log');
 
-function  deleteStatements(){
-	//this function is needed to clean the old elements off the document 
-	//this helps to ensure that there are not repeat elements on the statements log
-	var elmnt = document.getElementById("statementlist");
-	elmnt.remove();
-}
+
 
 //create the element and render the log of statements 
 function renderStatement(doc){
 	//use li as a tag to identify the document
-	let li = document.createElement('li'); //list
+	 //list
+	 let li = document.createElement('li');
 
 	//let Amount = document.createElement('span');
 	//let Balance = document.createElement('span');
@@ -42,8 +38,8 @@ function renderStatement(doc){
 
 }//renderStatement
 
-
 function statement(){
+
 	var db = firebase.firestore();
 	var user_email = localStorage.getItem("user_Email");
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -59,3 +55,15 @@ function statement(){
 		})
 	})
 }
+
+function  deleteStatements(){
+	alert("inside delete");
+	//this function is needed to clean the old elements off the document 
+	//this helps to ensure that there are not repeat elements on the statements log
+	document.getElementById("statementlist").reset();
+	
+	alert("after remove");
+
+
+}
+
