@@ -295,8 +295,8 @@
 					$('<div class="close">Close</div>')
 					
 						.appendTo($this)
-						
 						.on('click', function() {
+							location.href= 'homepage.html';
 							$main._hide(true);
 							
 						});
