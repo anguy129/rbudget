@@ -297,7 +297,6 @@
 						.appendTo($this)
 						
 						.on('click', function() {
-							
 							$main._hide(true);
 							
 						});
