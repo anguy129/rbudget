@@ -22,7 +22,6 @@ function renderStatement(doc){
 	//set attributes of li tag to the id of the document
 	li.setAttribute('data-id', doc.id); 
 	li.setAttribute('id', 'statementlist');
-
 	li.textContent = "Date: " + doc.data().Date + " " + "Description: " + doc.data().Description + " " + "Category: " + doc.data().Category + " " + "Amount: " + doc.data().Amount + " " + "Type: " + doc.data().Type + " " + "Balance: " + doc.data().Balance ;
 
 	//Amount.textContent = doc.data().Amount;
