@@ -23,6 +23,8 @@ function signUp() {
 	  		// ...
 		});
 
+		var db = firebase.firestore();
+
 		db.collection(email).doc("Budget").set({
 			overallBudget: 0,
 			entertainment: 0,
