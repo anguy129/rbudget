@@ -22,8 +22,8 @@ function signUp() {
 	  		alert(errorMessage);
 	  		// ...
 		});
-
-		var db = firebase.firestore();
+		alert(email);
+		/*var db = firebase.firestore();
 
 		db.collection(email).doc("Budget").set({
 			overallBudget: 0,
@@ -41,7 +41,7 @@ function signUp() {
 		})
 		.catch(function(error) {
 		    alert("Error writing document: ", error);
-		});
+		});*/
 		location.href = 'homepage.html';
 	}
 };
