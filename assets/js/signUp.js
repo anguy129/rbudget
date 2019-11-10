@@ -1,6 +1,6 @@
 /* Create new password based user on Firebase */
 var mainEmail;
-
+//const db = firebase.firestore();
 function signUp() {
 	email = document.getElementById("signUp_email").value;
 	password = document.getElementById("signUp_password0").value;
@@ -14,11 +14,8 @@ function signUp() {
 	}
 	else {
 		setEmail(email);
-		var db = firebase.firestore();
-
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  		// Handle Errors here.
-	  		var db = firebase.firestore();
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
 	  		// github didn't deploy new code
@@ -41,7 +38,7 @@ function signUp() {
 			financialAid: 0
 		})
 		.catch(function(error) {
-		    console.error("Error writing document: ", error);
+		    console.log("Error writing document: ", error);
 		});
 		location.href = 'homepage.html';
 	}
