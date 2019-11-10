@@ -38,7 +38,7 @@ function signUp() {
 			financialAid: 0
 		})
 		.catch(function(error) {
-		    console.log("Error writing document: ", error);
+		    alert("Error writing document: ", error);
 		});
 		location.href = 'homepage.html';
 	}
