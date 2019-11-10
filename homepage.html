@@ -46,7 +46,7 @@
 						<nav>
 							<ul>
 								<li><a href="#profile">Profile</a></li>
-								<li><a href="#statement" onclick="statement()">Statement</a></li>
+								<li><a href="#statement" onclick="statement();">Statement</a></li>
 								<li><a href="#visual">Visual</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
@@ -154,38 +154,38 @@
 									
 									// Add data
 									chart.data = [ {
-									  "country": "Lithuania",
-									  "litres": 501.9
+									"category": "Entertainment",
+									"amount": 501.9
 									}, {
-									  "country": "Czechia",
-									  "litres": 301.9
+									"category": "Housing/Rent",
+									"amount": 301.9
 									}, {
-									  "country": "Ireland",
-									  "litres": 201.1
+									"category": "Utilities",
+									"amount": 201.1
 									}, {
-									  "country": "Germany",
-									  "litres": 165.8
+									"category": "Food",
+									"amount": 165.8
 									}, {
-									  "country": "Australia",
-									  "litres": 139.9
+									"category": "Transportation",
+									"amount": 139.9
 									}, {
-									  "country": "Austria",
-									  "litres": 128.3
+									"category": "Education",
+									"amount": 128.3
 									}, {
-									  "country": "UK",
-									  "litres": 99
+									"category": "Loan Repayment",
+									"amount": 99
 									}, {
-									  "country": "Belgium",
-									  "litres": 60
+									"category": "Child Care",
+									"amount": 60
 									}, {
-									  "country": "The Netherlands",
-									  "litres": 50
+									"category": "Savings",
+									"amount": 50
 									} ];
 									
 									// Add and configure Series
 									var pieSeries = chart.series.push(new am4charts.PieSeries());
-									pieSeries.dataFields.value = "litres";
-									pieSeries.dataFields.category = "country";
+									pieSeries.dataFields.value = "amount";
+									pieSeries.dataFields.category = "category";
 									pieSeries.slices.template.stroke = am4core.color("#fff");
 									pieSeries.slices.template.strokeWidth = 1;
 									pieSeries.slices.template.strokeOpacity = 1;
@@ -204,7 +204,7 @@
 							</article>
 
 						<!-- statement -->
-							<article id="statement" >
+							<article id="statement">
 								<h2 class="major">Statement</h2>
 								<ul id="statements_log"></ul>
 									<div></div>
