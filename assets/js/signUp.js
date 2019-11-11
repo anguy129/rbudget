@@ -24,6 +24,18 @@ function signUp() {
 	  		alert(errorMessage);
 	  		// ...
 		});
+		alert("collection start");
+		var db = firebase.firestore();
+		db.collection(email).doc("Budget").set({
+			overallBudget: ""
+			})
+			.then(function() {
+			    console.log("Document successfully written!");
+			})
+			.catch(function(error) {
+			    console.error("Error writing document: ", error);
+		});
+
 		location.href = 'homepage.html';
 	}
 };
