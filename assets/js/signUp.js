@@ -13,15 +13,46 @@ function signUp() {
 		alert("Your password must be at least 8 characters long.");
 	}
 	else {
+
+		var db = firebase.firestore();
+
 		setEmail(email);
+		//var budget = 0;
+
+		alert("sign up test");
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  		// Handle Errors here.
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
 	  		// github didn't deploy new code
-	  		alert(errorMessage);
+	  		//	alert(errorMessage);
 	  		// ...
 		});
+
+		alert("collection start");
+		alert(email);
+		db.collection(email).doc("Budget").set({
+			category: "test"
+			})
+			.then(function() {
+			    console.log("Document successfully written!");
+			})
+			.catch(function(error) {
+			    console.error("Error writing document: ", error);
+		});
+		alert("collection done");
+
+
+		location.href = 'homepage.html';
+
+	}
+};
+
+function setEmail(email){
+	mainEmail = email;
+	localStorage.setItem("user_Email", mainEmail);
+}
+
 		/*
 		alert("collection start");
 		var db = firebase.firestore();
@@ -37,7 +68,8 @@ function signUp() {
 
 
 		alert(email);
-		/*
+		*/
+		
 		/*var db = firebase.firestore();
 
 		db.collection(email).doc("Budget").set({
@@ -57,11 +89,3 @@ function signUp() {
 		.catch(function(error) {
 		    alert("Error writing document: ", error);
 		});*/
-		location.href = 'homepage.html';
-	}
-};
-
-function setEmail(email){
-	mainEmail = email;
-	localStorage.setItem("user_Email", mainEmail);
-}
