@@ -1,20 +1,4 @@
-function setUp(){
-	alert("collection start");
-	var user_email = localStorage.getItem("user_Email");
 
-	var db = firebase.firestore();
-	alert(user_email);
-	db.collection(user_email).doc("Budget").set({
-		category: "test"
-		})
-		.then(function() {
-		    console.log("Document successfully written!");
-		})
-		.catch(function(error) {
-		    console.error("Error writing document: ", error);
-	});
-	alert("collection done");
-}
 
 
 function deposit(){
