@@ -87,6 +87,37 @@ function reset_withdraw(){
 	clear_withdraw.value = '';
 }
 
+function getBudget(){
+
+	var user_email = localStorage.getItem("user_Email");
+	var budgetSet = document.getElementById("budget");
+	var deposit_budget = document.getElementById("deposit_budget");
+	var withdraw_budget = document.getElementById("withdraw_budget");
+
+	var db = firebase.firestore();
+	
+	var docRef = db.collection(user_email).doc("Budget");
+
+	docRef.get().then(function(doc) {
+
+		budgetSet.value = doc.data().overallBudget;
+		deposit_budget.value = doc.data().overallBudget;
+		withdraw_budget.value = doc.data().overallBudget;
+
+		if(doc.exists){
+			console.log("Document data:", doc.data());
+	    } else {
+	        // doc.data() will be undefined in this case
+	        console.log("No such document!");
+	    }
+
+		}).catch(function(error) {
+		    console.log("Error getting document:", error);
+	});
+	
+}
+
+
 
 /*
 function setBudget(){
@@ -105,26 +136,5 @@ function setBudget(){
 		    console.error("Error adding document: ", error);
 	});	
 }
-
-function getBudget(){
-
-	var db = firebase.firestore();
-	db.collection("My Budget").limit(1).get().then(snapshot => {
-		snapshot.forEach(doc => {
-			var budgetSet = document.getElementById("budget");
-			
-			budgetSet.value = doc.data().budget;
-			if(doc.exists){
-				console.log("Document data:", doc.data());
-		    } else {
-		        // doc.data() will be undefined in this case
-		        console.log("No such document!");
-		    }
-			}).catch(function(error) {
-			    console.log("Error getting document:", error);
-		});
-		
-	
-	});
-}
 */
+
