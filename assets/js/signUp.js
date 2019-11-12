@@ -13,36 +13,23 @@ function signUp() {
 		alert("Your password must be at least 8 characters long.");
 	}
 	else {
+
+		var db = firebase.firestore();
+
 		setEmail(email);
+		//var budget = 0;
+
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 	  		// Handle Errors here.
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
 	  		// github didn't deploy new code
-	  		alert(errorMessage);
+	  		//	alert(errorMessage);
 	  		// ...
 		});
-		alert(email);
-		/*var db = firebase.firestore();
 
-		db.collection(email).doc("Budget").set({
-			overallBudget: 0,
-			entertainment: 0,
-			housing: 0,
-			utilities: 0,
-			food: 0,
-			transportation: 0,
-			education: 0,
-			loanPayment: 0,
-			childCare: 0,
-			savings: 0,
-			income: 0,
-			financialAid: 0
-		})
-		.catch(function(error) {
-		    alert("Error writing document: ", error);
-		});*/
 		location.href = 'homepage.html';
+
 	}
 };
 

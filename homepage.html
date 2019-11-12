@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body class="is-preload">
+	<body class="is-preload" onload="getBudget()">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -36,7 +36,7 @@
 							<div class="inner">
 								<h1> Budget</h1>
 								<form>
-									<input id="budget" type="text" value="666">
+									<input id="budget" name="budget" type="text" >
 									<!---<button type="button" class="button_1" onclick="setBudget();" >Enter</button>-->
 									<button type="button" class="button_1" onclick="window.location.href= '#deposit';">Deposit</button>
 									<button type="button" class="button_1" onclick="window.location.href='#withdraw';">Withdraw</button>
@@ -61,7 +61,7 @@
 						<article id="deposit">
 							<h1 class="major">Deposit</h1>
 							<h3>Current Budget</h3>
-							<input type="number" name="deposit_budget" id="deposit_budget" value="420">
+							<input type="number" name="deposit_budget" id="deposit_budget" >
 							<h3>Amount to Deposit</li>
 							<input type="number" name="depositAmnt" id="depositAmnt">
 							<h3>Category</h3>
@@ -85,7 +85,7 @@
 						<article id="withdraw">
 							<h1 class="major">Withdraw</h1>
 							<h3>Current Budget</h3>
-							<input type="number" name="withdraw_budget" id="withdraw_budget" value="777">				<h3>Amount to Withdraw</h3>
+							<input type="number" name="withdraw_budget" id="withdraw_budget">				<h3>Amount to Withdraw</h3>
 							<input type="number" name="withdrawAmnt" id="withdrawAmnt">
 							<h3>Category</h3>
 							<select id="drop_withdraw_category">
