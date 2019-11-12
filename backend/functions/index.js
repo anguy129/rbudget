@@ -9,9 +9,8 @@ admin.initializeApp();
 // });
 
 exports.calcRecBudget = functions.firestore
-  .document('echai009@ucr.edu/Budget/November/{date}')
+  .document('{user}/Budget')
   .onWrite((change, context) => { 
   		const budget = change.after.exists ? change.after.data() : null;
-  		const val = budget.dummy;
-  		console.log(val);
+  		console.log(budget.overallBudget);
   });
