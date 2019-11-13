@@ -47,7 +47,7 @@
 							<ul>
 								<li><a href="#profile">Profile</a></li>
 								<li><a href="#statement" onclick="statement();">Statement</a></li>
-								<li><a href="#visual">Visual</a></li>
+								<li><a href="#visual" onclick="visual();">Visual</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
@@ -133,70 +133,6 @@
 									}
 									
 									</style>
-									
-									<!-- Resources -->
-									<script src="https://www.amcharts.com/lib/4/core.js"></script>
-									<script src="https://www.amcharts.com/lib/4/charts.js"></script>
-									<script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
-									<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-									
-									<!-- Chart code -->
-									<script>
-									am4core.ready(function() {
-									
-									// Themes begin
-									am4core.useTheme(am4themes_dark);
-									am4core.useTheme(am4themes_animated);
-									// Themes end
-									
-									// Create chart instance
-									var chart = am4core.create("chartdiv", am4charts.PieChart);
-									
-									// Add data
-									chart.data = [ {
-									"category": "Entertainment",
-									"amount": 501.9
-									}, {
-									"category": "Housing/Rent",
-									"amount": 301.9
-									}, {
-									"category": "Utilities",
-									"amount": 201.1
-									}, {
-									"category": "Food",
-									"amount": 165.8
-									}, {
-									"category": "Transportation",
-									"amount": 139.9
-									}, {
-									"category": "Education",
-									"amount": 128.3
-									}, {
-									"category": "Loan Repayment",
-									"amount": 99
-									}, {
-									"category": "Child Care",
-									"amount": 60
-									}, {
-									"category": "Savings",
-									"amount": 50
-									} ];
-									
-									// Add and configure Series
-									var pieSeries = chart.series.push(new am4charts.PieSeries());
-									pieSeries.dataFields.value = "amount";
-									pieSeries.dataFields.category = "category";
-									pieSeries.slices.template.stroke = am4core.color("#fff");
-									pieSeries.slices.template.strokeWidth = 1;
-									pieSeries.slices.template.strokeOpacity = 1;
-									
-									// This creates initial animation
-									pieSeries.hiddenState.properties.opacity = 1;
-									pieSeries.hiddenState.properties.endAngle = -90;
-									pieSeries.hiddenState.properties.startAngle = -90;
-									
-									}); // end am4core.ready()
-									</script>
 									
 									<!-- HTML -->
 									<div id="chartdiv"></div>
@@ -503,6 +439,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
 			
 			<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
+			<script src="https://www.amcharts.com/lib/4/core.js"></script>
+			<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+			<script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
+			<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
 
 
@@ -534,6 +474,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/signUp.js"></script>
 			<script src="assets/js/budget.js"></script>
 			<script src="assets/js/statement.js"></script>
+			<script src="assets/js/visual.js"></script>
+
 
 	</body>
 </html>
