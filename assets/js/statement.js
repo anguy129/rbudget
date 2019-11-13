@@ -53,8 +53,6 @@ function renderStatement(doc){
 */
 
 function statement(){
-	alert("new test:");
-
 
 	var db = firebase.firestore();
 	var user_email = localStorage.getItem("user_Email");
