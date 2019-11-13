@@ -40,6 +40,7 @@ function withdraw(){
 	//Getting user information
 	var user_email = localStorage.getItem("user_Email");
 	//Grabbing variables from fields.
+	var overallbudget = document.getElementById("withdraw_budget").value;
 	var with_budgetInput = +document.getElementById("withdrawAmnt").value;
 	var cat = document.getElementById("drop_withdraw_category");
 	var with_category = cat.options[cat.selectedIndex].text;
@@ -54,23 +55,30 @@ function withdraw(){
 	currDate = d.toString();
 
 	var db = firebase.firestore();
-	alert(date.getSeconds());
 
-	db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).doc("Day: " + numbers[date.getDate()] + ", " + numbers[date.getHours()] + ":" + numbers[date.getMinutes()] + ":" + numbers[date.getSeconds()]).set({
-	    Category: with_category,
-	    Amount: with_budgetInput,
-	    Description: with_description,
-	    Balance: total_Budget,
-	    Date: currDate,
-	    Type: "Withdraw"
-		})
-		.then(function() {
-		    console.log("Document successfully written!");
-		})
-		.catch(function(error) {
-		    console.error("Error writing document: ", error);
-	});
-	alert("Thank You For Your Withdraw");
+
+	if(overallbudget < with_budgetInput){
+		alert("Withdrawing too much!");
+		location.href= 'homepage.html';
+	}
+	else{
+
+		db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).doc("Day: " + numbers[date.getDate()] + ", " + numbers[date.getHours()] + ":" + numbers[date.getMinutes()] + ":" + numbers[date.getSeconds()]).set({
+		    Category: with_category,
+		    Amount: with_budgetInput,
+		    Description: with_description,
+		    Balance: total_Budget,
+		    Date: currDate,
+		    Type: "Withdraw"
+			})
+			.then(function() {
+			    console.log("Document successfully written!");
+			})
+			.catch(function(error) {
+			    console.error("Error writing document: ", error);
+		});
+		alert("Thank You");
+	}
 }
 
 function reset_deposit(){
