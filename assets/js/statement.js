@@ -1,42 +1,56 @@
 const statementlist = document.querySelector('#statements_log');
 
-
+//li
+//ul
 
 //create the element and render the log of statements 
 function renderStatement(doc){
 	//use li as a tag to identify the document
 	 //list
-	 let li = document.createElement('li');
-
-	//let Amount = document.createElement('span');
-	//let Balance = document.createElement('span');
-	//let Category = document.createElement('span');
-	//let Date = document.createElement('span');
-	//let Description = document.createElement('span');
-	//let Type = document.createElement('span');
+	let li = document.createElement('dt');
 
 	//set attributes of li tag to the id of the document
 	li.setAttribute('data-id', doc.id); 
 	li.setAttribute('id', 'statementlist');
-	li.textContent = "Date: " + doc.data().Date + " " + "Description: " + doc.data().Description + " " + "Category: " + doc.data().Category + " " + "Amount: " + doc.data().Amount + " " + "Type: " + doc.data().Type + " " + "Balance: " + doc.data().Balance ;
-
-	//Amount.textContent = doc.data().Amount;
-	//Balance.textContent = doc.data().Balance;
-	//Category.textContent = doc.data().Category;
-	//Date.textContent = doc.data().Date;
-	//Description.textContent = doc.data().Description;
-	//Type.textContent = doc.data().Type;
-	//date description category amount type balance
-	//li.appendChild(Date);
-	//li.appendChild(Description);
-	//li.appendChild(Category);
-	//li.appendChild(Amount);
-	//li.appendChild(Type);
-	//li.appendChild(Balance);
-
+	li.textContent = "Date: " + doc.data().Date ;
 	statementlist.appendChild(li);
+	//make an unordered list (indents from the main list)
+	let lis = document.createElement('dd');
+	lis.setAttribute('data-id', doc.id); 
+	lis.setAttribute('id', 'statementlist');
+	lis.textContent =  "Description: " + doc.data().Description + " " + "Category: " + doc.data().Category + " " ;//+ "Amount: " + doc.data().Amount + " " + "Type: " + doc.data().Type + " " + "Balance: " + doc.data().Balance ;
+	statementlist.appendChild(lis);
+	let lis2 = document.createElement('dd');
+	lis2.setAttribute('data-id', doc.id); 
+	lis2.setAttribute('id', 'statementlist');
+	lis2.textContent = "Amount: " + doc.data().Amount + " " + "Type: " + doc.data().Type + " " + "Balance: " + doc.data().Balance ;
+	statementlist.appendChild(lis2);
+
+	//Order: date 
+	//   description category amount type balance
+	
 
 }//renderStatement
+/*function renderStatement(doc){
+	//use li as a tag to identify the document
+	 //list
+	let li = document.createElement('li');
+
+	//set attributes of li tag to the id of the document
+	li.setAttribute('data-id', doc.id); 
+	li.setAttribute('id', 'statementlist');
+	li.textContent = "Date: " + doc.data().Date ;
+	statementlist.appendChild(li);
+	let lis = document.createElement('li');
+
+	lis.setAttribute('data-id', doc.id); 
+	lis.setAttribute('id', 'statementlist');
+	lis.textContent =  "Description: " + doc.data().Description + " " + "Category: " + doc.data().Category + " " + "Amount: " + doc.data().Amount + " " + "Type: " + doc.data().Type + " " + "Balance: " + doc.data().Balance ;
+	//date description category amount type balance
+	statementlist.appendChild(lis);
+
+}//renderStatement
+*/
 
 function statement(){
 
