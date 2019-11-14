@@ -76,7 +76,7 @@ function withdraw(){
 
 		db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).doc("Day: " + numbers[date.getDate()] + ", " + numbers[date.getHours()] + ":" + numbers[date.getMinutes()] + ":" + numbers[date.getSeconds()]).set({
 		    Category: with_category.toLowerCase(),
-		    Amount: with_budgetInput,
+		    Amount: with_budgetInput, 
 		    Description: with_description,
 		    Balance: total_Budget,
 		    Date: currDate,
@@ -101,7 +101,7 @@ function withdraw(){
 			catLoanRepay = doc.data().loanPayment;
 			catChildCare = doc.data().childCare;
 			catSavings = doc.data().savings;
-
+			
 			//Recommended Amounts of Budget
 			//Entertainment = 10%
 			//Housing/Rent = 40%
