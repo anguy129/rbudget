@@ -1,8 +1,10 @@
+//GLOBAL VARIABLES
 
-
+	//var overallBudget;
 
 function deposit(){
 	//Getting user information
+
 	var user_email = localStorage.getItem("user_Email");
 
 	//Grabbing variables from fields.
@@ -40,13 +42,6 @@ function withdraw(){
 	//Getting user information
 	var user_email = localStorage.getItem("user_Email");
 	//Grabbing variables from fields.
-	var overallbudget = document.getElementById("withdraw_budget").value;
-	var with_budgetInput = +document.getElementById("withdrawAmnt").value;
-	var cat = document.getElementById("drop_withdraw_category");
-	var with_category = cat.options[cat.selectedIndex].text;
-	var with_description = document.getElementById("withdraw_description").value;
-	var total_Budget = +document.getElementById("withdraw_budget").value;
-
 	var catEntertainment;
 	var catHousingRent;
 	var catUtilities;
@@ -56,8 +51,13 @@ function withdraw(){
 	var catLoanRepay;
 	var catChildCare;
 	var catSavings;
-	var overallBudget;
 
+	var overallbudget = document.getElementById("withdraw_budget").value;
+	var with_budgetInput = +document.getElementById("withdrawAmnt").value;
+	var cat = document.getElementById("drop_withdraw_category");
+	var with_category = cat.options[cat.selectedIndex].text;
+	var with_description = document.getElementById("withdraw_description").value;
+	var total_Budget = +document.getElementById("withdraw_budget").value;
 
 	var date = new Date();
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -74,32 +74,6 @@ function withdraw(){
 	}
 	else{
 
-		db.collection(user_email).doc("Budget").get().then(function(doc) {
-			catEntertainment = doc.data().entertainment;
-			catHousingRent = doc.data().housing;
-			catUtilities = doc.data().utilities;
-			catFood = doc.data().food;
-			catTransportation = doc.data().transportation;
-			catEducation = doc.data().education;
-			catLoanRepay = doc.data().loanPayment;
-			catChildCare = doc.data().childCare;
-			catSavings = doc.data().savings;
-
-		});
-
-		alert("Entertainment: " + catEntertainment);
-		alert("Housing: " + catHousingRent);
-		alert("Utilities: " + catUtilities);
-		alert("Food: " + catFood);
-		alert("Transportation: " + catTransportation);
-		alert("Education: " + catEducation);
-		alert("Loan: " + catLoanRepay);
-		alert("Child: " + Child);
-		alert("Savings: " + catSavings);
-
-
-
-
 		db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).doc("Day: " + numbers[date.getDate()] + ", " + numbers[date.getHours()] + ":" + numbers[date.getMinutes()] + ":" + numbers[date.getSeconds()]).set({
 		    Category: with_category.toLowerCase(),
 		    Amount: with_budgetInput,
@@ -114,7 +88,36 @@ function withdraw(){
 			.catch(function(error) {
 			    console.error("Error writing document: ", error);
 		});
-		alert("Thank You");
+
+		db.collection(user_email).doc("Budget").get().then(function(doc) {
+			
+
+			catEntertainment = doc.data().entertainment;
+			catHousingRent = doc.data().housing;
+			catUtilities = doc.data().utilities;
+			catFood = doc.data().food;
+			catTransportation = doc.data().transportation;
+			catEducation = doc.data().education;
+			catLoanRepay = doc.data().loanPayment;
+			catChildCare = doc.data().childCare;
+			catSavings = doc.data().savings;
+
+			alert("Entertainment: " + catEntertainment);
+			alert("Housing: " + catHousingRent);
+			alert("Utilities: " + catUtilities);
+			alert("Food: " + catFood);
+			alert("Transportation: " + catTransportation);
+			alert("Education: " + catEducation);
+			alert("Loan: " + catLoanRepay);
+			alert("Child: " + catChildCare);
+			alert("Savings: " + catSavings);
+
+			alert("overallbudget: " + overallbudget);	
+			alert("Category: " + with_category);
+			alert("Withdraw Amount: " + with_budgetInput);
+
+			alert("Thank You");
+		});
 	}
 }
 
