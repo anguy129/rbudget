@@ -116,6 +116,15 @@ function withdraw(){
 			alert("Category: " + with_category);
 			alert("Withdraw Amount: " + with_budgetInput);
 
+			//Recommended Amounts of Budget
+			//Entertainment = 10%
+			//Housing/Rent = 40%
+			//Utilities = 5%
+			//Food = 20%
+			//Transportation = 5%
+			//Debt: Education, Loans, ChildCare = 15%
+			//Savings = 5%
+
 			if(with_category == "Entertainment"){	//amount to withdraw for a specific Category
 				var recomEntertain = overallbudget * .10;	//take the recommended amount from overall
 				var tempEntertain = catEntertainment + with_budgetInput;
@@ -123,7 +132,53 @@ function withdraw(){
 					alert("Exceeding recommended amount for Entertainment");
 				}
 			}
-			
+			//Savings
+			else if(with_category == "Savings"){
+				var recomSavings = overallbudget * .05;	//take the recommended amount from overall
+				var tempSavings = catSavings + with_budgetInput;
+				if(tempSavings > recomSavings){
+					alert("Exceeding recommended amount for Savings. Nice Job!");
+				}
+			}
+			//Debts: Child Care & Loans = 10% OR 5% each
+			else if(with_category == ("Child Care")){
+				var recomChild = overallbudget * .05;
+				var tempChild = catChildCare + with_budgetInput;
+				if(tempChild > recomChild){
+					alert("Exceeding recommended amount for Child Care");
+				}
+			}
+			else if(with_category == ("Loan Repayment")){
+				var recomLoans = overallbudget * .05;
+				var tempLoans = catLoanRepay + with_budgetInput;
+				if(tempLoans > recomLoans){
+					alert("Exceeding recommended amount for Loan Repayment");
+				}
+			}
+			//Education
+			else if(with_category == ("Education")){
+				var recomLoans = overallbudget * .10;
+				var tempLoans = catLoanRepay + with_budgetInput;
+				if(tempLoans > recomLoans){
+					alert("Exceeding recommended amount for Education");
+				}
+			}
+			//Transportation
+			else if(with_category == "Transportation"){
+				var recomTransportation = overallbudget * .05;	//take the recommended amount from overall
+				var tempTransportation = catTransportation + with_budgetInput;
+				if(tempTransportation > recomTransportation){
+					alert("Exceeding recommended amount for Transportation");
+				}
+			}
+			//Food
+			else if (with_category == "Food"){
+				var recomFood = overallbudget * .20;	//take the recommended amount from overall
+				var tempFood = catFood + with_budgetInput;
+				if(tempFood > recomFood){
+					alert("Exceeding recommended amount for Food");
+				}
+			}
 			alert("Thank You");
 		});
 	}
