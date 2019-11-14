@@ -116,6 +116,9 @@ function withdraw(){
 			alert("Category: " + with_category);
 			alert("Withdraw Amount: " + with_budgetInput);
 
+			//if()
+			//overallbudget = overallbudget + 
+
 			alert("Thank You");
 		});
 	}
