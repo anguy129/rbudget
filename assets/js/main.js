@@ -297,12 +297,11 @@
 						.on('click', function() {
 						var user_email = localStorage.getItem("user_Email");
 							if(!user_email){
-								location.href = 'index.html';
+								$main._hide(true);
 							}
 							else{
 								location.href = 'homepage.html';
 							}
-							$main._hide(true);
 						});
 
 				// Prevent clicks from inside article from bubbling.
