@@ -19,7 +19,12 @@ function signUp() {
 		setEmail(email);
 		//var budget = 0;
 
-		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+		firebase.auth().createUserWithEmailAndPassword(email, password)
+		.then(function() {
+			alert('registered as: ' + email);
+			location.href = 'homepage.html';
+		})
+		.catch(function(error) {
 	  		// Handle Errors here.
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
@@ -27,9 +32,6 @@ function signUp() {
 	  		//	alert(errorMessage);
 	  		// ...
 		});
-
-		location.href = 'homepage.html';
-
 	}
 };
 
