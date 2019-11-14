@@ -119,7 +119,7 @@ function withdraw(){
 				}
 			}
 			//Savings
-			else if(with_category == "Savings"){
+			if(with_category == "Savings"){
 				var recomSavings = overallbudget * .05;	//take the recommended amount from overall
 				var tempSavings = catSavings + with_budgetInput;
 				if(tempSavings > recomSavings){
@@ -127,14 +127,14 @@ function withdraw(){
 				}
 			}
 			//Debts: Child Care & Loans = 10% OR 5% each
-			else if(with_category == ("Child Care")){
+			if(with_category == ("Child Care")){
 				var recomChild = overallbudget * .05;
 				var tempChild = catChildCare + with_budgetInput;
 				if(tempChild > recomChild){
 					alert("Exceeding recommended amount for Child Care");
 				}
 			}
-			else if(with_category == ("Loan Repayment")){
+			if(with_category == ("Loan Repayment")){
 				var recomLoans = overallbudget * .05;
 				var tempLoans = catLoanRepay + with_budgetInput;
 				if(tempLoans > recomLoans){
@@ -142,7 +142,7 @@ function withdraw(){
 				}
 			}
 			//Education
-			else if(with_category == ("Education")){
+			if(with_category == ("Education")){
 				var recomLoans = overallbudget * .10;
 				var tempLoans = catLoanRepay + with_budgetInput;
 				if(tempLoans > recomLoans){
@@ -150,7 +150,7 @@ function withdraw(){
 				}
 			}
 			//Transportation
-			else if(with_category == "Transportation"){
+			if(with_category == "Transportation"){
 				var recomTransportation = overallbudget * .05;	//take the recommended amount from overall
 				var tempTransportation = catTransportation + with_budgetInput;
 				if(tempTransportation > recomTransportation){
@@ -158,7 +158,7 @@ function withdraw(){
 				}
 			}
 
-			else if(with_category == "Housing/Rent"){
+			if(with_category == "Housing/Rent"){
 				var recomHousing = overallbudget * .35;
 				var tempHousing = catHousingRent + with_budgetInput;
 				if(tempHousing > recomHousing){
@@ -166,7 +166,7 @@ function withdraw(){
 				}
 			}
 
-			else if(with_category == "Utilities"){
+			if(with_category == "Utilities"){
 				var recomUtilities = overallbudget * .05;
 				var tempUtilities = catUtilities + with_budgetInput;
 				if(tempUtilities > recomUtilities){
@@ -175,7 +175,7 @@ function withdraw(){
 			}
 
 			//Food
-			else (with_category == "Food"){
+			if (with_category == "Food"){
 				var recomFood = overallbudget * .20;	//take the recommended amount from overall
 				var tempFood = catFood + with_budgetInput;
 				if(tempFood > recomFood){
