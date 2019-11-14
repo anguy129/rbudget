@@ -29,7 +29,7 @@ function setEmail(email){
 };
 
 function logout(){
-	alert("Logging out");
+	//alert("Logging out");
 	localStorage.clear();
  	firebase.auth().signOut();
  	location.href = "index.html";
