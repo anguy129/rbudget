@@ -283,7 +283,6 @@
 
 					}, delay);
 
-
 			};
 
 		// Articles.
@@ -296,9 +295,14 @@
 					
 						.appendTo($this)
 						.on('click', function() {
-							location.href= 'homepage.html';
+						var user_email = localStorage.getItem("user_Email");
+							if(!user_email){
+								location.href = 'index.html';
+							}
+							else{
+								location.href = 'homepage.html';
+							}
 							$main._hide(true);
-							
 						});
 
 				// Prevent clicks from inside article from bubbling.
