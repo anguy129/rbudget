@@ -102,20 +102,6 @@ function withdraw(){
 			catChildCare = doc.data().childCare;
 			catSavings = doc.data().savings;
 
-			alert("Entertainment: " + catEntertainment);
-			alert("Housing: " + catHousingRent);
-			alert("Utilities: " + catUtilities);
-			alert("Food: " + catFood);
-			alert("Transportation: " + catTransportation);
-			alert("Education: " + catEducation);
-			alert("Loan: " + catLoanRepay);
-			alert("Child: " + catChildCare);
-			alert("Savings: " + catSavings);
-
-			alert("overallbudget: " + overallbudget);	
-			alert("Category: " + with_category);
-			alert("Withdraw Amount: " + with_budgetInput);
-
 			//Recommended Amounts of Budget
 			//Entertainment = 10%
 			//Housing/Rent = 40%
@@ -171,8 +157,25 @@ function withdraw(){
 					alert("Exceeding recommended amount for Transportation");
 				}
 			}
+
+			else if(with_category == "Housing/Rent"){
+				var recomHousing = overallbudget * .35;
+				var tempHousing = catHousingRent + with_budgetInput;
+				if(tempHousing > recomHousing){
+					alert("Exceeding recommended amount for Housing");
+				}
+			}
+
+			else if(with_category == "Utilities"){
+				var recomUtilities = overallbudget * .05;
+				var tempUtilities = catUtilities + with_budgetInput;
+				if(tempUtilities > recomUtilities){
+					alert("Exceeding recommended amount for Utilities");
+				}
+			}
+
 			//Food
-			else if (with_category == "Food"){
+			else (with_category == "Food"){
 				var recomFood = overallbudget * .20;	//take the recommended amount from overall
 				var tempFood = catFood + with_budgetInput;
 				if(tempFood > recomFood){
