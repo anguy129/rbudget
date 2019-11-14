@@ -116,9 +116,14 @@ function withdraw(){
 			alert("Category: " + with_category);
 			alert("Withdraw Amount: " + with_budgetInput);
 
-			//if()
-			//overallbudget = overallbudget + 
-
+			if(with_category == "Entertainment"){	//amount to withdraw for a specific Category
+				var recomEntertain = overallbudget * .10;	//take the recommended amount from overall
+				var tempEntertain = catEntertainment + with_budgetInput;
+				if(tempEntertain > recomEntertain){
+					alert("Exceeding recommended amount for Entertainment");
+				}
+			}
+			
 			alert("Thank You");
 		});
 	}
