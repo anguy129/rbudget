@@ -35,36 +35,35 @@ function visual(){
 		catLoanRepay = doc.data().loanPayment;
 		catChildCare = doc.data().childCare;
 		catSavings = doc.data().savings;
-		overallBudget = doc.data().overallBudget;
 
 		if(doc.exists){
 			chart.data = [ {
 			"category": "Entertainment",
-			"amount": overallBudget * 0.1
+			"amount": catEntertainment
 			}, {
 			"category": "Housing/Rent",
-			"amount": overallBudget * 0.25
+			"amount": catHousingRent
 			}, {
 			"category": "Utilities",
-			"amount": overallBudget * 0.05
+			"amount": catUtilities
 			}, {
 			"category": "Food",
-			"amount": overallBudget * 0.1
+			"amount": catFood
 			}, {
 			"category": "Transportation",
-			"amount": overallBudget * 0.1
+			"amount": catTransportation
 			}, {
 			"category": "Education",
-			"amount": overallBudget * 0.05
+			"amount": catEducation
 			}, {
 			"category": "Loan Repayment",
-			"amount": overallBudget * 0.05
+			"amount": catLoanRepay
 			}, {
 			"category": "Child Care",
-			"amount": overallBudget * 0.1
+			"amount": catChildCare
 			}, {
 			"category": "Savings",
-			"amount": overallBudget * 0.2
+			"amount": catSavings
 			} ];
 			
 			// Add and configure Series
