@@ -75,7 +75,7 @@ function withdraw(){
 	else{
 
 		db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).doc("Day: " + numbers[date.getDate()] + ", " + numbers[date.getHours()] + ":" + numbers[date.getMinutes()] + ":" + numbers[date.getSeconds()]).set({
-		    Category: with_category.toLowerCase(),
+		    Category: with_category.replace(/ /g,"_").toLowerCase(),
 		    Amount: with_budgetInput,
 		    Description: with_description,
 		    Balance: total_Budget,
@@ -158,7 +158,7 @@ function withdraw(){
 				}
 			}
 
-			if(with_category == "Housing/Rent"){
+			if(with_category == "Housing"){
 				var recomHousing = overallbudget * .35;
 				var tempHousing = catHousingRent + with_budgetInput;
 				if(tempHousing > recomHousing){

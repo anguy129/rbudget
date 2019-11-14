@@ -26,5 +26,11 @@ function signIn() {
 function setEmail(email){
 	mainEmail = email;
 	localStorage.setItem("user_Email", mainEmail);
-}
+};
 
+function logout(){
+	alert("Logging out");
+	localStorage.clear();
+ 	firebase.auth().signOut();
+ 	location.href = "index.html";
+};

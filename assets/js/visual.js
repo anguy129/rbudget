@@ -32,8 +32,8 @@ function visual(){
 		catFood = doc.data().food;
 		catTransportation = doc.data().transportation;
 		catEducation = doc.data().education;
-		catLoanRepay = doc.data().loanPayment;
-		catChildCare = doc.data().childCare;
+		catLoanRepay = doc.data().loan_repayment;
+		catChildCare = doc.data().child_care;
 		catSavings = doc.data().savings;
 
 		if(doc.exists){
@@ -41,7 +41,7 @@ function visual(){
 			"category": "Entertainment",
 			"amount": catEntertainment
 			}, {
-			"category": "Housing/Rent",
+			"category": "Housing",
 			"amount": catHousingRent
 			}, {
 			"category": "Utilities",
