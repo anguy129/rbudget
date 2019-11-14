@@ -133,7 +133,7 @@ function withdraw(){
 				if(tempChild > recomChild){
 					alert("Exceeding recommended amount for Child Care");
 				}
-			}
+			}//loans
 			if(with_category == ("Loan Repayment")){
 				var recomLoans = overallbudget * .05;
 				var tempLoans = catLoanRepay + with_budgetInput;
