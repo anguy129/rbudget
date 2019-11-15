@@ -13,11 +13,13 @@ function signUp() {
 		alert("Your password must be at least 8 characters long.");
 	}
 	else {
-
+		alert("starting firestore");
 		var db = firebase.firestore();
+
 
 		setEmail(email);
 		//var budget = 0;
+
 
 		firebase.auth().createUserWithEmailAndPassword(email, password)
 		.then(function() {
