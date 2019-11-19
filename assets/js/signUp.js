@@ -29,7 +29,7 @@ function signUp() {
 	  		var errorCode = error.code;
 	  		var errorMessage = error.message;
 	  		// github didn't deploy new code
-	  		//	alert(errorMessage);
+	  		alert(errorMessage);
 	  		// ...
 		});
 	}
