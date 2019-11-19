@@ -31,11 +31,15 @@ function deposit(){
 		})
 		.then(function() {
 		    console.log("Document successfully written!");
+		    location.href='homepage.html';
 		})
 		.catch(function(error) {
 		    console.error("Error writing document: ", error);
+
 	});
 	alert("Thank You!");
+	//location.href = "homepage.html";
+
 }
 
 function withdraw(){
@@ -84,6 +88,7 @@ function withdraw(){
 			})
 			.then(function() {
 			    console.log("Document successfully written!");
+			    location.href='homepage.html';
 			})
 			.catch(function(error) {
 			    console.error("Error writing document: ", error);
@@ -98,8 +103,8 @@ function withdraw(){
 			catFood = doc.data().food;
 			catTransportation = doc.data().transportation;
 			catEducation = doc.data().education;
-			catLoanRepay = doc.data().loanPayment;
-			catChildCare = doc.data().childCare;
+			catLoanRepay = doc.data().loan_repayment;
+			catChildCare = doc.data().child_care;
 			catSavings = doc.data().savings;
 			
 			//Recommended Amounts of Budget
@@ -183,6 +188,7 @@ function withdraw(){
 				}
 			}
 			alert("Thank You");
+			//location.href = "homepage.html";
 		});
 	}
 }
