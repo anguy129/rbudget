@@ -84,7 +84,7 @@ function statement(){
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var date = new Date();
 
-	//getting the data from this collection
+	//getting the data from this collection orderBy('Date', 'desc')
 	db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).orderBy('Date', 'desc').get().then(snapshot => {
 	
 		// get snapshot of data for each allows us to cycle through each document
