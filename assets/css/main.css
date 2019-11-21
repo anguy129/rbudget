@@ -360,6 +360,29 @@ input, select, textarea {
 		text-align: right;
 	}
 
+/* Profile */
+
+	#profileImg {
+		width: 11rem;
+		height: 11rem;
+		float: left;
+		border-radius: 50%;
+	}
+
+	#profileInfo {
+		padding-left: 2rem;
+		display: inline-block;
+		top: -2rem;
+	}
+
+	#profileInfo p {
+		margin-bottom: 0;
+	}
+
+	#profileInfo input {
+		border: transparent;
+		margin-bottom: 0;
+	}
 /* Form */
 
 	form {
@@ -541,6 +564,7 @@ input, select, textarea {
 	input[type="number"],
 	input[type="password"],
 	input[type="email"],
+	input[type="tel"],
 	select {
 		height: 2.75rem;
 	}
@@ -1685,6 +1709,16 @@ input, select, textarea {
 				#main article .close:active:before {
 					background-color: rgba(255, 255, 255, 0.175);
 				}
+
+			#main article .edit {
+				display: inline-block;
+				position: relative;
+				float: right;
+				cursor: pointer;
+				text-align: center;
+				overflow: hidden;
+				white-space: nowrap;
+			}
 
 		@media screen and (max-width: 736px) {
 

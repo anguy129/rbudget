@@ -112,11 +112,16 @@
 						<!-- Profile -->
 							<article id="profile">
 								<h2 class="major">Profile</h2>
-								<p><img style="padding: 0 15px; float: left;" src="images/defaultprofile.png" width="200" height="200"></p>
-								<p><font size="6 px">	<b>FirstName</b> LastName</font> <br>
-								   <font size="4 px">	Email: default@generic.com <br> 
-														Phone: (***)***-**** <br>
-														Mailing Addres: 111 Generic St, Typical, CA 11111</font></p>
+								<div>
+									<img id="profileImg" src="images/defaultprofile.png">
+									<div id="profileInfo">
+										<input type="text" name="name" id="profileName" class="editable" placeholder="FirstName LastName" disabled>
+										<p> Email: </p> <input type="email" name="email" id="profileEmail" class="editable" placeholder="email@email.com" disabled>
+										<p> Phone: </p> <input type="tel" name="phone" id="profilePhone" class="editable" placeholder="(123)456-7890" disabled>
+										<p> Address: </p> <input type="text" name="address" id="profileAddress" class="editable" placeholder="1234 Address St." disabled>
+									</div>
+								</div>
+								<button class="edit" onclick="edit(); transformButton();">Edit</button>
 							</article>
 
 
@@ -495,7 +500,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/budget.js"></script>
 			<script src="assets/js/statement.js"></script>
 			<script src="assets/js/visual.js"></script>
-
+			<script src="assets/js/edit.js"></script>
 
 	</body>
 </html>
