@@ -5,14 +5,14 @@ function setGoal(){
 
     var user_email = localStorage.getItem("user_Email");
     var goal_deposit = +document.getElementById("deposit_budget_goal").value;
-    var goalDescription = document.getElementById("goal_description").text;
+    var goalDescription = document.getElementById("goal_description").value;
+    alert(goal_deposit);
+    alert(goalDescription);
     db.collection(user_email).doc("Budget").collection("goals").doc(goalDescription).set({
         //inputs
       GoalAmount: goal_deposit,
-      GoalDescription: goalDescription
+      GoalDescription1: goalDescription
     })
-    alert("got in db");
-
         .then(function() {
 		    console.log("Document successfully written!");
 		    location.href='homepage.html';
