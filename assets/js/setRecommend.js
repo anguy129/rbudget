@@ -10,6 +10,7 @@ function setRecommend(){
 	var setTransportation = +document.getElementById("setTransportation").value;
 	var setLoans = +document.getElementById("setLoans").value;
 	var setChildCare = +document.getElementById("setChildCare").value;
+
 	/*
 	alert("Housing: " + setHousing);
 	alert("Food: " + setFood);
@@ -21,12 +22,31 @@ function setRecommend(){
 	alert("Loans: " + setLoans);
 	alert("Child Care: " + setChildCare);
 	*/
+
 	var totalPercentage = setHousing + setFood + setUtilities + setSavings + setEducation + setEntertainment + setTransportation + setLoans + setChildCare;
 	alert(totalPercentage);
 	if(totalPercentage == 100){
 		alert("Setting Recommendations");
 
 		var db = firebase.firestore();
+		db.collection(user_email).doc("Recommendations").set({
+			Housing: setHousing,
+			Food: setFood,
+			Utilities: setUtilities,
+			Savings: setSavings,
+			Education: setEducation,
+			Entertainment: setEntertainment,
+			Transportation: setTransportation,
+			Loans: setLoans,
+			ChildCare: setChildCare
+			})
+			.then(function() {
+			    console.log("Document successfully written!");
+			})
+			.catch(function(error) {
+			    console.error("Error writing document: ", error);
+		});
+
 		db.collection(user_email).doc("Budget").update({
 			selfRecommend: 1
 			})
