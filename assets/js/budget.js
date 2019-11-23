@@ -236,25 +236,3 @@ function getBudget(){
 	});
 	
 }
-
-
-
-/*
-function setBudget(){
-	var budgetInput = document.getElementById("budget").value;
-	//var budgetGet = 420;
-	var db = firebase.firestore();
-
-	db.collection("My Budget").add({
-		budget: budgetInput
-		//document.getElementById("budget").value
-		})
-		.then(function(docRef) {
-			console.log("Document written with ID: ", docRef.id);
-		})
-		.catch(function(error) {
-		    console.error("Error adding document: ", error);
-	});	
-}
-*/
-

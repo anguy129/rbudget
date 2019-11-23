@@ -45,7 +45,7 @@
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#profile">Profile</a></li>
+								<li><a href="#profile" onclick="loadProfile();">Profile</a></li>
 								<li><a href="#statement" onclick="statement();">Statement</a></li>
 								<li><a href="#analytics" onclick="visual();">Analytics</a></li>
 								<li><a href="#contact">Contact</a></li>								<!--<li><a href="#elements">Elements</a></li>-->
@@ -121,7 +121,7 @@
 										<p> Address: </p> <input type="text" name="address" id="profileAddress" class="editable" placeholder="1234 Address St." disabled>
 									</div>
 								</div>
-								<button class="edit" onclick="edit(); transformButton();">Edit</button>
+								<button class="edit" id="editSave" onclick="edit();">Edit</button>
 							</article>
 
 
@@ -501,6 +501,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/statement.js"></script>
 			<script src="assets/js/visual.js"></script>
 			<script src="assets/js/edit.js"></script>
+			<script src="assets/js/profile.js"></script>
 
 	</body>
 </html>
