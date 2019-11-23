@@ -363,11 +363,45 @@ input, select, textarea {
 
 /* Profile */
 
+	.img_wrap {
+		position: relative;
+	}
+
+	.profImgBtn {
+		position: absolute;
+		top: 4rem;
+		bottom: 0;
+		left: 3rem;
+		right: 0;
+		background: rgba(29, 106, 154, 0.72);
+		color: #fff;
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity .2s, visibility .2s;
+	}
+
+	.profImgBtn:hover {
+		background: rgba(29, 106, 154, 0.72);
+	}
+
+	.img_wrap:hover .profImgBtn {
+	  visibility: visible;
+	  opacity: 1;
+	}
+
 	#profileImg {
 		width: 11rem;
 		height: 11rem;
 		float: left;
 		border-radius: 50%;
+	}
+
+	#profileImg:hover {
+		filter: blur(2px);
+
+		.overlay {
+			opacity: 1;
+		}
 	}
 
 	#profileInfo {
