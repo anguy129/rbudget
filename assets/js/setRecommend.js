@@ -24,9 +24,8 @@ function setRecommend(){
 	*/
 
 	var totalPercentage = setHousing + setFood + setUtilities + setSavings + setEducation + setEntertainment + setTransportation + setLoans + setChildCare;
-	alert(totalPercentage);
 	if(totalPercentage == 100){
-		alert("Setting Recommendations");
+		alert("Setting Your New Recommendations");
 
 		var db = firebase.firestore();
 		db.collection(user_email).doc("Recommendations").set({
