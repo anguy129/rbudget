@@ -94,102 +94,209 @@ function withdraw(){
 			    console.error("Error writing document: ", error);
 		});
 
-		db.collection(user_email).doc("Budget").get().then(function(doc) {
-			
+		db.collection(user_email).doc("Recommendations").get().then(function(doc) {
+    // Document was found in the cache. If no cached document exists,
+    // an error will be returned to the 'catch' block below.
+   		    education = doc.data().Education;
+			entertainment = doc.data().Entertainment;
+			food = doc.data().Food;
+			housing = doc.data().Housing;
+			loans = doc.data().Loans;
+			savings = doc.data().Savings;
+			transportation = doc.data().Transportation;
+			utilities = doc.data().Utilities;
+			childCare = doc.data().ChildCare;
 
-			catEntertainment = doc.data().entertainment;
-			catHousingRent = doc.data().housing;
-			catUtilities = doc.data().utilities;
-			catFood = doc.data().food;
-			catTransportation = doc.data().transportation;
-			catEducation = doc.data().education;
-			catLoanRepay = doc.data().loan_repayment;
-			catChildCare = doc.data().child_care;
-			catSavings = doc.data().savings;
-			
-			//Recommended Amounts of Budget
-			//Entertainment = 10%
-			//Housing/Rent = 40%
-			//Utilities = 5%
-			//Food = 20%
-			//Transportation = 5%
-			//Debt: Education, Loans, ChildCare = 15%
-			//Savings = 5%
+			db.collection(user_email).doc("Budget").get().then(function(doc) {
+				
 
-			if(with_category == "Entertainment"){	//amount to withdraw for a specific Category
-				var recomEntertain = overallbudget * .10;	//take the recommended amount from overall
-				var tempEntertain = catEntertainment + with_budgetInput;
-				if(tempEntertain > recomEntertain){
-					alert("Exceeding recommended amount for Entertainment");
-				}
-			}
-			//Savings
-			if(with_category == "Savings"){
-				var recomSavings = overallbudget * .05;	//take the recommended amount from overall
-				var tempSavings = catSavings + with_budgetInput;
-				if(tempSavings > recomSavings){
-					alert("Exceeding recommended amount for Savings. Nice Job!");
-				}
-			}
-			//Debts: Child Care & Loans = 10% OR 5% each
-			if(with_category == ("Child Care")){
-				var recomChild = overallbudget * .05;
-				var tempChild = catChildCare + with_budgetInput;
-				if(tempChild > recomChild){
-					alert("Exceeding recommended amount for Child Care");
-				}
-			}//loans
-			if(with_category == ("Loan Repayment")){
-				var recomLoans = overallbudget * .05;
-				var tempLoans = catLoanRepay + with_budgetInput;
-				if(tempLoans > recomLoans){
-					alert("Exceeding recommended amount for Loan Repayment");
-				}
-			}
-			//Education
-			if(with_category == ("Education")){
-				var recomLoans = overallbudget * .10;
-				var tempLoans = catLoanRepay + with_budgetInput;
-				if(tempLoans > recomLoans){
-					alert("Exceeding recommended amount for Education");
-				}
-			}
-			//Transportation
-			if(with_category == "Transportation"){
-				var recomTransportation = overallbudget * .05;	//take the recommended amount from overall
-				var tempTransportation = catTransportation + with_budgetInput;
-				if(tempTransportation > recomTransportation){
-					alert("Exceeding recommended amount for Transportation");
-				}
-			}
+				catEntertainment = doc.data().entertainment;
+				catHousingRent = doc.data().housing;
+				catUtilities = doc.data().utilities;
+				catFood = doc.data().food;
+				catTransportation = doc.data().transportation;
+				catEducation = doc.data().education;
+				catLoanRepay = doc.data().loan_repayment;
+				catChildCare = doc.data().child_care;
+				catSavings = doc.data().savings;
+				selfRecommended = doc.data().selfRecommend;
 
-			if(with_category == "Housing"){
-				var recomHousing = overallbudget * .35;
-				var tempHousing = catHousingRent + with_budgetInput;
-				if(tempHousing > recomHousing){
-					alert("Exceeding recommended amount for Housing");
-				}
-			}
+				//Recommended Amounts of Budget
+				//Entertainment = 10%
+				//Housing/Rent = 40%
+				//Utilities = 5%
+				//Food = 20%
+				//Transportation = 5%
+				//Debt: Education, Loans, ChildCare = 15%
+				//Savings = 5%
 
-			if(with_category == "Utilities"){
-				var recomUtilities = overallbudget * .05;
-				var tempUtilities = catUtilities + with_budgetInput;
-				if(tempUtilities > recomUtilities){
-					alert("Exceeding recommended amount for Utilities");
-				}
-			}
+				entertainment = entertainment / 100;
+				housing = housing / 100;
+				utilities = utilities / 100;
+				food = food / 100;
+				transportation = transportation / 100;
+				education = education / 100;
+				loans = loans / 100;
+				childCare = childCare / 100;
+				savings = savings / 100;
 
-			//Food
-			if (with_category == "Food"){
-				var recomFood = overallbudget * .20;	//take the recommended amount from overall
-				var tempFood = catFood + with_budgetInput;
-				if(tempFood > recomFood){
-					alert("Exceeding recommended amount for Food");
+				if(selfRecommended == 0){
+
+					if(with_category == "Entertainment"){	//amount to withdraw for a specific Category
+						var recomEntertain = overallbudget * .10;	//take the recommended amount from overall
+						var tempEntertain = catEntertainment + with_budgetInput;
+						if(tempEntertain > recomEntertain){
+							alert("Exceeding recommended amount for Entertainment");
+						}
+					}
+					//Savings
+					else if(with_category == "Savings"){
+						var recomSavings = overallbudget * .05;	//take the recommended amount from overall
+						var tempSavings = catSavings + with_budgetInput;
+						if(tempSavings > recomSavings){
+							alert("Exceeding recommended amount for Savings. Nice Job!");
+						}
+					}
+					//Debts: Child Care & Loans = 10% OR 5% each
+					else if(with_category == ("Child Care")){
+						var recomChild = overallbudget * .05;
+						var tempChild = catChildCare + with_budgetInput;
+						if(tempChild > recomChild){
+							alert("Exceeding recommended amount for Child Care");
+						}
+					}//loans
+					else if(with_category == ("Loan Repayment")){
+						var recomLoans = overallbudget * .05;
+						var tempLoans = catLoanRepay + with_budgetInput;
+						if(tempLoans > recomLoans){
+							alert("Exceeding recommended amount for Loan Repayment");
+						}
+					}
+					//Education
+					else if(with_category == ("Education")){
+						var recomLoans = overallbudget * .10;
+						var tempLoans = catLoanRepay + with_budgetInput;
+						if(tempLoans > recomLoans){
+							alert("Exceeding recommended amount for Education");
+						}
+					}
+					//Transportation
+					else if(with_category == "Transportation"){
+						var recomTransportation = overallbudget * .05;	//take the recommended amount from overall
+						var tempTransportation = catTransportation + with_budgetInput;
+						if(tempTransportation > recomTransportation){
+							alert("Exceeding recommended amount for Transportation");
+						}
+					}
+
+					else if(with_category == "Housing"){
+						var recomHousing = overallbudget * .35;
+						var tempHousing = catHousingRent + with_budgetInput;
+						if(tempHousing > recomHousing){
+							alert("Exceeding recommended amount for Housing");
+						}
+					}
+
+					else if(with_category == "Utilities"){
+						var recomUtilities = overallbudget * .05;
+						var tempUtilities = catUtilities + with_budgetInput;
+						if(tempUtilities > recomUtilities){
+							alert("Exceeding recommended amount for Utilities");
+						}
+					}
+
+					//Food
+					else{
+						var recomFood = overallbudget * .20;	//take the recommended amount from overall
+						var tempFood = catFood + with_budgetInput;
+						if(tempFood > recomFood){
+							alert("Exceeding recommended amount for Food");
+						}
+					}
+					alert("Thank You");
+					//location.href = "homepage.html";
 				}
-			}
-			alert("Thank You");
-			//location.href = "homepage.html";
-		});
+				else{
+					if(with_category == "Entertainment"){	//amount to withdraw for a specific Category
+						var recomEntertain = overallbudget * entertainment;	//take the recommended amount from overall
+						var tempEntertain = catEntertainment + with_budgetInput;
+						if(tempEntertain > recomEntertain){
+							alert("Exceeding recommended amount for Entertainment");
+						}
+					}
+					//Savings
+					else if(with_category == "Savings"){
+						var recomSavings = overallbudget * savings;	//take the recommended amount from overall
+						var tempSavings = catSavings + with_budgetInput;
+						if(tempSavings > recomSavings){
+							alert("Exceeding recommended amount for Savings. Nice Job!");
+						}
+					}
+					//Debts: Child Care & Loans = 10% OR 5% each
+					else if(with_category == ("Child Care")){
+						var recomChild = overallbudget * childCare;
+						var tempChild = catChildCare + with_budgetInput;
+						if(tempChild > recomChild){
+							alert("Exceeding recommended amount for Child Care");
+						}
+					}//loans
+					else if(with_category == ("Loan Repayment")){
+						var recomLoans = overallbudget * loans;
+						var tempLoans = catLoanRepay + with_budgetInput;
+						if(tempLoans > recomLoans){
+							alert("Exceeding recommended amount for Loan Repayment");
+						}
+					}
+					//Education
+					else if(with_category == ("Education")){
+						var recomLoans = overallbudget * education;
+						var tempLoans = catLoanRepay + with_budgetInput;
+						if(tempLoans > recomLoans){
+							alert("Exceeding recommended amount for Education");
+						}
+					}
+					//Transportation
+					else if(with_category == "Transportation"){
+						var recomTransportation = overallbudget * transportation;	//take the recommended amount from overall
+						var tempTransportation = catTransportation + with_budgetInput;
+						if(tempTransportation > recomTransportation){
+							alert("Exceeding recommended amount for Transportation");
+						}
+					}
+
+					else if(with_category == "Housing"){
+						var recomHousing = overallbudget * housing;
+						var tempHousing = catHousingRent + with_budgetInput;
+						if(tempHousing > recomHousing){
+							alert("Exceeding recommended amount for Housing");
+						}
+					}
+
+					else if(with_category == "Utilities"){
+						var recomUtilities = overallbudget * utilities;
+						var tempUtilities = catUtilities + with_budgetInput;
+						if(tempUtilities > recomUtilities){
+							alert("Exceeding recommended amount for Utilities");
+						}
+					}
+
+					//Food
+					else{
+						var recomFood = overallbudget * food;	//take the recommended amount from overall
+						var tempFood = catFood + with_budgetInput;
+						if(tempFood > recomFood){
+							alert("Exceeding recommended amount for Food");
+						}
+					}
+					alert("Thank You");
+					//location.href = "homepage.html";
+				}
+			});
+
+			console.log("Cached document data:", doc.data());
+		}).catch(function(error) {
+		    console.log("Error getting cached document:", error);
+		}); //first db.collection call
 	}
 }
 
