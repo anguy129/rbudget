@@ -14,6 +14,7 @@ function deposit(){
 	var depo_description = document.getElementById("deposit_description").value;
 	var total_Budget = +document.getElementById("deposit_budget").value;
 	var date = new Date();
+	
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var numbers = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"];
 	var d = Date(Date.now()); 
@@ -27,7 +28,8 @@ function deposit(){
 	    Description: depo_description,
 	    Balance: total_Budget,
 	    Date: currDate,
-	    Type: "Deposit"
+		Type: "Deposit",
+		Timestamp:firebase.firestore.FieldValue.serverTimestamp()
 		})
 		.then(function() {
 		    console.log("Document successfully written!");
@@ -84,7 +86,8 @@ function withdraw(){
 		    Description: with_description,
 		    Balance: total_Budget,
 		    Date: currDate,
-		    Type: "Withdraw"
+			Type: "Withdraw",
+			Timestamp:firebase.firestore.FieldValue.serverTimestamp()
 			})
 			.then(function() {
 			    console.log("Document successfully written!");
