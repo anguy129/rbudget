@@ -85,7 +85,7 @@ function statement(){
 	var date = new Date();
 
 	//getting the data from this collection orderBy('Date', 'desc')
-	db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).orderBy('Date', 'desc').get().then(snapshot => {
+	db.collection(user_email).doc("Budget").collection(months[date.getMonth()]).orderBy("Timestamp", "desc").get().then(snapshot => {
 	
 		// get snapshot of data for each allows us to cycle through each document
 		snapshot.docs.forEach(doc => { 
