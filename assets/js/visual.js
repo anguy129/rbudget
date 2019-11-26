@@ -240,29 +240,29 @@ function visual(){
 	
 		// Add data		
 		var user_email = localStorage.getItem("user_Email");
-		var catEntertainment;
-		var catHousingRent;
-		var catUtilities;
-		var catFood;
-		var catTransportation;
-		var catEducation;
-		var catLoanRepay;
-		var catChildCare;
-		var catSavings;
+		var tempEntertainment;
+		var tempHousingRent;
+		var tempUtilities;
+		var tempFood;
+		var tempTransportation;
+		var tempEducation;
+		var tempLoanRepay;
+		var tempChildCare;
+		var tempSavings;
 		var overallBudget;
 		
 		var db = firebase.firestore();
 		
 		db.collection(user_email).doc("Budget").get().then(function(doc) {
-			catEntertainment = doc.data().entertainment;
-			catHousingRent = doc.data().housing;
-			catUtilities = doc.data().utilities;
-			catFood = doc.data().food;
-			catTransportation = doc.data().transportation;
-			catEducation = doc.data().education;
-			catLoanRepay = doc.data().loan_repayment;
-			catChildCare = doc.data().child_care;
-			catSavings = doc.data().savings;
+			tempEntertainment = doc.data().entertainment;
+			tempHousingRent = doc.data().housing;
+			tempUtilities = doc.data().utilities;
+			tempFood = doc.data().food;
+			tempTransportation = doc.data().transportation;
+			tempEducation = doc.data().education;
+			tempLoanRepay = doc.data().loan_repayment;
+			tempChildCare = doc.data().child_care;
+			tempSavings = doc.data().savings;
 	
 			if(doc.exists){
 				chart.data = [ {
