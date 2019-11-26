@@ -1,6 +1,4 @@
 const statementlist = document.querySelector('#statements_log');
-//li
-//ul
 
 //create the element and render the log of statements 
 function renderStatement(doc){
