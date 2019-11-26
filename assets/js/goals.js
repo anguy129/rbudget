@@ -149,7 +149,7 @@ function getGoals(){
                 db.collection(user_email).doc("Budget").collection("goals").doc("Goal_1").set({
                      GoalAmount: 999999,
                      GoalDescription1: "Enter New Goal",
-                     goalPercentage1: 999999,
+                     goalPercentage1: 0,
 
                     })
                     .then(function() {
@@ -246,7 +246,7 @@ function getGoals(){
                 db.collection(user_email).doc("Budget").collection("goals").doc("Goal_2").set({
                      GoalAmount: 999999,
                      GoalDescription1: "Enter New Goal",
-                     goalPercentage1: 999999,
+                     goalPercentage1: 0,
                     
                     })
                     .then(function() {
@@ -343,7 +343,7 @@ function getGoals(){
                 db.collection(user_email).doc("Budget").collection("goals").doc("Goal_3").set({
                      GoalAmount: 999999,
                      GoalDescription1: "Enter New Goal",
-                     goalPercentage1: 999999,
+                     goalPercentage1: 0,
                 })
                     .then(function() {
                         console.log("Document successfully written!");
