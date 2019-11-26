@@ -150,15 +150,15 @@ function getGoals(){
                 });
 
                 db.collection(user_email).doc("Budget").collection("goals").doc("Goal_1").set({
-                     GoalAmount: 0,
-                     GoalDescription1: '',
-                     goalPercentage1: 0,
-                     purchased1: 1
+                     GoalAmount: 999999,
+                     GoalDescription1: "Enter New Goal",
+                     goalPercentage1: 999999,
                 });
+
 
             });
         });
-        //location.href = 'homepage.html';
+        
     }
 
     //GOAL#2///////////////////////////////////////////////////////////////
