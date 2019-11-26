@@ -40,6 +40,25 @@ function setGoal(){
 		.catch(function(error) {
 		    console.error("Error writing document: ", error);
     });
+    ///Goal#2
+
+    var user_email = localStorage.getItem("user_Email");
+    var goal_deposit3 = +document.getElementById("deposit_budget_goal3").value;
+    var goalDescription3 = document.getElementById("goal_description3").value;
+    var goalPercentage3 = document.getElementById("percentage_goal3").value;
+    db.collection(user_email).doc("Budget").collection("goals").doc("Goal_3").set({
+        //inputs
+     GoalAmount: goal_deposit2,
+     GoalDescription1: goalDescription2,
+     goalPercentage1: goalPercentage2
+    })
+        .then(function() {
+		    console.log("Document successfully written!");
+		    location.href='homepage.html';
+		})
+		.catch(function(error) {
+		    console.error("Error writing document: ", error);
+    });
     alert("You Have Set A Budget Goal!");
 
 }//function
@@ -137,15 +156,15 @@ function getGoals(){
             percentage = +doc.data().goalPercentage1;
             amount = doc.data().GoalAmount;
             percentage = percentage / 100;
-            /*
+            
     		if(doc.exists){
     			console.log("Document data:", doc.data());
 
                 if((savingsAmount * percentage) >= amount){
                     var newDiv = document.createElement("h2");
-                    var newContent = document.createTextNode("You have the savings required for Goal #1 !");
+                    var newContent = document.createTextNode("You have the savings required for Goal #2 !");
                     newDiv.appendChild(newContent);
-                    var element1 = document.getElementById("goal1");
+                    var element1 = document.getElementById("goal2");
                     element1.appendChild(newDiv);
                     
 
@@ -165,7 +184,7 @@ function getGoals(){
     	        // doc.data() will be undefined in this case
     	        console.log("No such document!");
             }
-            */
+        
 
     		}).catch(function(error) {
     		    console.log("Error getting document:", error);
