@@ -151,10 +151,8 @@
     var positiveColor = interfaceColors.getFor("positive");
     var negativeColor = interfaceColors.getFor("negative");
     
-    createSeries("negative2", "Unlikely", negativeColor.lighten(0.5));
-    createSeries("negative1", "Never", negativeColor);
-    createSeries("positive1", "Sometimes", positiveColor.lighten(0.5));
-    createSeries("positive2", "Very often", positiveColor);
+    createSeries("negative", "Under", negativeColor);
+    createSeries("positive", "Over", positiveColor);
     
     }); // end am4core.ready()
     </script>

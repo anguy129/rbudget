@@ -329,7 +329,7 @@ function visual(){
 				// Legend
 				chart.legend = new am4charts.Legend();
 				chart.legend.position = "right";
-				chart.legend.width = 100;
+				chart.legend.width = 50;
 				
 				// Use only absolute numbers
 				chart.numberFormatter.numberFormat = "#.#s";
@@ -358,8 +358,8 @@ function visual(){
 				var positiveColor = interfaceColors.getFor("positive");
 				var negativeColor = interfaceColors.getFor("negative");
 
-				createSeries("negative1", "Never", negativeColor);
-				createSeries("positive2", "Very often", positiveColor);
+				createSeries("negative1", "Under", negativeColor);
+				createSeries("positive2", "Over", positiveColor);
 			} else {
 				// doc.data() will be undefined in this case
 				console.log("No such document!");
