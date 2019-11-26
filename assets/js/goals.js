@@ -92,8 +92,11 @@ function getGoals(){
                     button1.style.float = 'left';
                     button1.style.display = 'inline-block';
                     button1.style.position = 'relative';
-
                     button1.appendChild(newButton);
+
+
+                    button1.addEventListener("click", purchase1);
+
                     
                 } 
 
@@ -110,6 +113,11 @@ function getGoals(){
     }).catch(function(error) {
         console.log("Error getting cached document:", error);
     }); //first db.collection call
+
+
+    function purchase1(){
+        
+    }
 
     //GOAL#2
      //Goal#2 
@@ -167,6 +175,7 @@ function getGoals(){
     }).catch(function(error) {
         console.log("Error getting cached document:", error);
     }); //first db.collection call
+
 }
     
 
