@@ -223,17 +223,14 @@ function getGoals(){
     }); //first db.collection call
 
     function purchase2(){
-        alert("Purchased2");
          db.collection(user_email).doc("Budget").get().then(function(doc) {
 
             savingsAmount = doc.data().savings;
-            alert("Before " + savingsAmount);
 
             db.collection(user_email).doc("Budget").collection("goals").doc("Goal_2").get().then(function(doc) {
                 amount = doc.data().GoalAmount;
 
                 savingsAmount = savingsAmount - amount;
-                alert("After: " + savingsAmount);
 
                 db.collection(user_email).doc("Budget").update({
                     savings: savingsAmount
