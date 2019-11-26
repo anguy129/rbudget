@@ -14,31 +14,48 @@ function edit() {
 		}
 	};
 
-	if (!editing) {
-		editing = true;
-		transformButton();
-	}
+	transformButton();
 };
 
 function transformButton() {
 	var saveBtn = document.getElementById("editSave");
 	var cancelBtn = document.createElement("BUTTON");
 
-	document.querySelector('.edit').textContent = 'Save';
-	document.querySelector('.edit').setAttribute( 'style', 'color: rgb(27, 31, 34) !important');
-	document.querySelector('.edit').style.backgroundColor = '#ffffff';
-	document.querySelector('.edit').style.fontWeight = '600';
-	cancelBtn.textContent = 'Cancel';
-	cancelBtn.style.float = 'right';
-	cancelBtn.className = 'edit';
-	document.getElementById("profile").appendChild(cancelBtn);
+	if (!editing) {
+		document.querySelector('.edit').textContent = 'Save';
+		document.querySelector('.edit').setAttribute( 'style', 'color: rgb(27, 31, 34) !important');
+		document.querySelector('.edit').style.backgroundColor = '#ffffff';
+		document.querySelector('.edit').style.fontWeight = '600';
+		cancelBtn.textContent = 'Cancel';
+		cancelBtn.style.float = 'right';
+		cancelBtn.className = 'edit';
+		cancelBtn.id = 'cancelBtn';
+		document.getElementById("profile").appendChild(cancelBtn);
 
-	saveBtn.addEventListener("click", save);
+		saveBtn.removeAttribute("onclick");
+		saveBtn.addEventListener("click", save);
+
+		editing = true;
+	}
+	else if (editing) {
+		document.querySelector('.edit').textContent = 'Edit';
+		document.querySelector('.edit').setAttribute( 'style', 'color: rgb(255, 255, 255) !important');
+		document.querySelector('.edit').style.backgroundColor = 'transparent';
+		document.querySelector('.edit').style.fontWeight = '300';
+
+		document.getElementById("cancelBtn").remove();
+		saveBtn.removeEventListener("click", save);
+		saveBtn.addEventListener("click", edit);
+
+		editing = false;
+	}
 };
 
 function save() {
 	var fields = document.getElementsByClassName("editable");
 	var user_email = localStorage.getItem("user_Email");
+
+	alert("hello");
 
 	if (fields[0].value == "" || fields[1].value == "") {
 		alert("Name and email are required fields");
@@ -65,4 +82,12 @@ function save() {
 			"address": fields[3].value
 		});
 	}
+
+	alert(fields.length);
+	for(i=0; i<fields.length; i++){
+		fields[i].disabled = true;
+		fields[i].style.border = "none";
+	};
+
+	transformButton();
 };
