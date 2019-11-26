@@ -1,5 +1,4 @@
 const statementlist = document.querySelector('#statements_log');
-
 //li
 //ul
 
