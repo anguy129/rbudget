@@ -161,7 +161,7 @@ function getGoals(){
         
     }
 
-    //GOAL#2///////////////////////////////////////////////////////////////
+    //GOAL#2/////////////////////////////////////////////////////////////
      //Goal#2 
      var user_email = localStorage.getItem("user_Email");
      var goal_deposit2 = document.getElementById("deposit_budget_goal2");
