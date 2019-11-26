@@ -1,5 +1,5 @@
 //This function is for the user to set their goals and save it to the firestore database
-function setGoal(){
+function setGoal1(){
     //Goal #1
     var db = firebase.firestore();
 
@@ -16,13 +16,17 @@ function setGoal(){
     })
         .then(function() {
 		    console.log("Document successfully written!");
+            alert("You Have Set A Budget For Goal #1!");
 		    location.href='homepage.html';
 		})
 		.catch(function(error) {
 		    console.error("Error writing document: ", error);
     });
 
-    ///Goal#2
+}//function
+
+function setGoal2(){
+     ///Goal#2
     var user_email = localStorage.getItem("user_Email");
     var goal_deposit2 = +document.getElementById("deposit_budget_goal2").value;
     var goalDescription2 = document.getElementById("goal_description2").value;
@@ -34,14 +38,18 @@ function setGoal(){
      goalPercentage1: goalPercentage2
     })
         .then(function() {
-		    console.log("Document successfully written!");
-		    location.href='homepage.html';
-		})
-		.catch(function(error) {
-		    console.error("Error writing document: ", error);
+            console.log("Document successfully written!");
+            alert("You Have Set A Budget For Goal #2!");
+            location.href='homepage.html';
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
     });
 
-    ///Goal#3
+}
+
+function setGoal3(){
+     ///Goal#3
     var user_email = localStorage.getItem("user_Email");
     var goal_deposit3 = +document.getElementById("deposit_budget_goal3").value;
     var goalDescription3 = document.getElementById("goal_description3").value;
@@ -53,17 +61,16 @@ function setGoal(){
      goalPercentage1: goalPercentage3
     })
         .then(function() {
-		    console.log("Document successfully written!");
-		    location.href='homepage.html';
-		})
-		.catch(function(error) {
-		    console.error("Error writing document: ", error);
+            console.log("Document successfully written!");
+            alert("You Have Set A Budget For Goal #3!");
+            location.href='homepage.html';
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
     });
     //Let the user know they have made a goal
-    alert("You Have Set A Budget Goal!");
+}
 
-}//function
-//
 //the getGoals function will be called when the goals page is loaded
 function getGoals(){
     //This will allow the page to display the users info that they previously wrote
