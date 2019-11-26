@@ -11,7 +11,8 @@ function setGoal(){
         //inputs
      GoalAmount: goal_deposit,
      GoalDescription1: goalDescription,
-     goalPercentage1: goalPercentage
+     goalPercentage1: goalPercentage,
+
     })
         .then(function() {
 		    console.log("Document successfully written!");
@@ -88,12 +89,13 @@ function getGoals(){
             percentage = +doc.data().goalPercentage1;
             amount = doc.data().GoalAmount;
             percentage = percentage / 100;
+            perchased1 = doc.data().purchased1;
 
     		if(doc.exists){
     			console.log("Document data:", doc.data());
                 ////Generate An html statement if the user has met their goal reqs////
                 //Check the users savings to see if the user has met their goal
-                if((savingsAmount * percentage) >= amount){
+                if(((savingsAmount * percentage) >= amount)){
                     var newDiv = document.createElement("h2");
                     var newContent = document.createTextNode("You have the savings required for Goal #1 !");
                     newDiv.appendChild(newContent);
@@ -131,7 +133,32 @@ function getGoals(){
 
     function purchase1(){
         alert("Purchased1");
-        
+         db.collection(user_email).doc("Budget").get().then(function(doc) {
+
+            savingsAmount = doc.data().savings;
+            alert("Before " + savingsAmount);
+
+            db.collection(user_email).doc("Budget").collection("goals").doc("Goal_1").get().then(function(doc) {
+                amount = doc.data().GoalAmount;
+
+                savingsAmount = savingsAmount - amount;
+                alert("After: " + savingsAmount);
+
+                db.collection(user_email).doc("Budget").update({
+                    savings: savingsAmount
+
+                });
+
+                db.collection(user_email).doc("Budget").collection("goals").doc("Goal_1").set({
+                     GoalAmount: 0,
+                     GoalDescription1: '',
+                     goalPercentage1: 0,
+                     purchased1: 1
+                });
+
+            });
+        });
+        //location.href = 'homepage.html';
     }
 
     //GOAL#2///////////////////////////////////////////////////////////////
