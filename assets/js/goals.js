@@ -104,7 +104,7 @@ function getGoals(){
                     var newButton = document.createElement("button");
                     var buttonContent = document.createTextNode("Purchased");
                     newButton.appendChild(buttonContent);
-                    var button1 = document.getElementById("submitPurchaseButton");
+                    var button1 = document.getElementById("submitPurchaseButton1");
                     button1.style.float = 'left';
                     button1.style.display = 'inline-block';
                     button1.style.position = 'relative';
@@ -130,7 +130,7 @@ function getGoals(){
     }); //first db.collection call
 
     function purchase1(){
-        alert("Purchased");
+        alert("Purchased1");
         
     }
 
@@ -168,12 +168,15 @@ function getGoals(){
                     var newButton = document.createElement("button");
                     var buttonContent = document.createTextNode("Purchased");
                     newButton.appendChild(buttonContent);
-                    var button1 = document.getElementById("submitPurchaseButton");
-                    button1.style.float = 'left';
-                    button1.style.display = 'inline-block';
-                    button1.style.position = 'relative';
+                    var button2 = document.getElementById("submitPurchaseButton2");
+                    button2.style.float = 'left';
+                    button2.style.display = 'inline-block';
+                    button2.style.position = 'relative';
 
-                    button1.appendChild(newButton);
+                    button2.appendChild(newButton);
+
+                    button2.addEventListener("click", purchase2);
+
                     
                 } 
 
@@ -191,6 +194,14 @@ function getGoals(){
     }).catch(function(error) {
         console.log("Error getting cached document:", error);
     }); //first db.collection call
+
+    function purchase2(){
+        alert("Purchased2");
+        
+    }
+
+
+
     //////////////////
     //Goal#3/////////////////////////////////////////////////
     
