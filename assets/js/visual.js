@@ -104,38 +104,13 @@ function visual(){
 	
 	var db = firebase.firestore();
 
-	db.collection(user_email).doc("Recommendations").get().then(function(doc) {
-    // Document was found in the cache. If no cached document exists,
-    // an error will be returned to the 'catch' block below.
-   		    education = doc.data().Education;
-			entertainment = doc.data().Entertainment;
-			food = doc.data().Food;
-			housing = doc.data().Housing;
-			loans = doc.data().Loans;
-			savings = doc.data().Savings;
-			transportation = doc.data().Transportation;
-			utilities = doc.data().Utilities;
-			childCare = doc.data().ChildCare;
-
-	
-		db.collection(user_email).doc("Budget").get().then(function(doc) {
+	db.collection(user_email).doc("Budget").get().then(function(doc) {
 			overallBudget = doc.data().overallBudget;
 			selfRecommended = doc.data().selfRecommend;
 			//alert(selfRecommended);
-			
-			housing = housing / 100;
-			food = food / 100;
-			utilities = utilities / 100;
-			savings = savings / 100;
-			education = education / 100;
-			entertainment = entertainment / 100;
-			transportation = transportation / 100;
-			loans = loans / 100;
-			childCare = childCare / 100;
-
-			if(doc.exists){
-				if(selfRecommended == 0){
-					chart.data = [ {
+			//alert(overallBudget);
+			if(selfRecommended == 0){
+				chart.data = [ {
 					"category": "Entertainment",
 					"amount": overallBudget * 0.10
 					}, {
@@ -163,8 +138,33 @@ function visual(){
 					"category": "Savings",
 					"amount": overallBudget * 0.05
 					} ];
-				}
-				else{
+
+			}
+			else{
+
+				db.collection(user_email).doc("Recommendations").get().then(function(doc) {
+    // Document was found in the cache. If no cached document exists,
+    // an error will be returned to the 'catch' block below.
+		   		    education = doc.data().Education;
+					entertainment = doc.data().Entertainment;
+					food = doc.data().Food;
+					housing = doc.data().Housing;
+					loans = doc.data().Loans;
+					savings = doc.data().Savings;
+					transportation = doc.data().Transportation;
+					utilities = doc.data().Utilities;
+					childCare = doc.data().ChildCare;
+					
+					housing = housing / 100;
+					food = food / 100;
+					utilities = utilities / 100;
+					savings = savings / 100;
+					education = education / 100;
+					entertainment = entertainment / 100;
+					transportation = transportation / 100;
+					loans = loans / 100;
+					childCare = childCare / 100;
+
 					chart.data = [ {
 					"category": "Entertainment",
 					"amount": overallBudget * entertainment
@@ -193,29 +193,26 @@ function visual(){
 					"category": "Savings",
 					"amount": overallBudget * savings
 					} ];
-				}
-				
-				// Add and configure Series
-				var pieSeries = chart.series.push(new am4charts.PieSeries());
-				pieSeries.dataFields.value = "amount";
-				pieSeries.dataFields.category = "category";
-				pieSeries.slices.template.stroke = am4core.color("#fff");
-				pieSeries.slices.template.strokeWidth = 1;
-				pieSeries.slices.template.strokeOpacity = 1;
-				
-				// This creates initial animation
-				pieSeries.hiddenState.properties.opacity = 1;
-				pieSeries.hiddenState.properties.endAngle = -90;
-				pieSeries.hiddenState.properties.startAngle = -90;
 
-		    } else {
-		        // doc.data() will be undefined in this case
-		        console.log("No such document!");
-		    }
-
-			}).catch(function(error) {
+				}).catch(function(error) {
 			    console.log("Error getting document:", error);
-		}); //nested db.collection call
+				}); //nested db.collection call
+
+			}
+
+			var pieSeries = chart.series.push(new am4charts.PieSeries());
+			pieSeries.dataFields.value = "amount";
+			pieSeries.dataFields.category = "category";
+			pieSeries.slices.template.stroke = am4core.color("#fff");
+			pieSeries.slices.template.strokeWidth = 1;
+			pieSeries.slices.template.strokeOpacity = 1;
+			
+			// This creates initial animation
+			pieSeries.hiddenState.properties.opacity = 1;
+			pieSeries.hiddenState.properties.endAngle = -90;
+			pieSeries.hiddenState.properties.startAngle = -90;
+
+
 
 		console.log("Cached document data:", doc.data());
 	}).catch(function(error) {
@@ -223,6 +220,7 @@ function visual(){
 	}); //first db.collection call
 
 	}); // end am4core.ready()
+	
 
 	am4core.ready(function() {
 									
