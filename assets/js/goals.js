@@ -58,6 +58,18 @@ function getGoals(){
                     newDiv.appendChild(newContent);
                     var element1 = document.getElementById("goal1");
                     element1.appendChild(newDiv);
+                    
+
+                    var newButton = document.createElement("button");
+                    var buttonContent = document.createTextNode("Purchased");
+                    newButton.appendChild(buttonContent);
+                    var button1 = document.getElementById("submitPurchaseButton");
+                    button1.style.float = 'left';
+                    button1.style.display = 'inline-block';
+                    button1.style.position = 'relative';
+
+                    button1.appendChild(newButton);
+                    
                 } 
 
     	    } else {
