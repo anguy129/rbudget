@@ -107,8 +107,8 @@ function visual(){
 	db.collection(user_email).doc("Budget").get().then(function(doc) {
 			overallBudget = doc.data().overallBudget;
 			selfRecommended = doc.data().selfRecommend;
-			alert(selfRecommended);
-			alert(overallBudget);
+			//alert(selfRecommended);
+			//alert(overallBudget);
 			if(selfRecommended == 0){
 				chart.data = [ {
 					"category": "Entertainment",
@@ -142,11 +142,18 @@ function visual(){
 			}
 			else{
 
-				db.collection(user_email).doc("Budget").get().then(function(doc) {
-					overallBudget = doc.data().overallBudget;
-					selfRecommended = doc.data().selfRecommend;
-					alert(selfRecommended);
-					alert(overallBudget);
+				db.collection(user_email).doc("Recommendations").get().then(function(doc) {
+    // Document was found in the cache. If no cached document exists,
+    // an error will be returned to the 'catch' block below.
+		   		    education = doc.data().Education;
+					entertainment = doc.data().Entertainment;
+					food = doc.data().Food;
+					housing = doc.data().Housing;
+					loans = doc.data().Loans;
+					savings = doc.data().Savings;
+					transportation = doc.data().Transportation;
+					utilities = doc.data().Utilities;
+					childCare = doc.data().ChildCare;
 					
 					housing = housing / 100;
 					food = food / 100;
