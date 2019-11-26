@@ -223,13 +223,13 @@ function getGoals(){
     }); //first db.collection call
 
     function purchase2(){
-        alert("Purchased1");
+        alert("Purchased2");
          db.collection(user_email).doc("Budget").get().then(function(doc) {
 
             savingsAmount = doc.data().savings;
             alert("Before " + savingsAmount);
 
-            db.collection(user_email).doc("Budget").collection("goals").doc("Goal_1").get().then(function(doc) {
+            db.collection(user_email).doc("Budget").collection("goals").doc("Goal_2").get().then(function(doc) {
                 amount = doc.data().GoalAmount;
 
                 savingsAmount = savingsAmount - amount;
@@ -240,7 +240,7 @@ function getGoals(){
 
                 });
 
-                db.collection(user_email).doc("Budget").collection("goals").doc("Goal_1").set({
+                db.collection(user_email).doc("Budget").collection("goals").doc("Goal_2").set({
                      GoalAmount: 999999,
                      GoalDescription1: "Enter New Goal",
                      goalPercentage1: 999999,
@@ -248,7 +248,7 @@ function getGoals(){
 
 
             });
-        });
+        }); 
         
     }
 
