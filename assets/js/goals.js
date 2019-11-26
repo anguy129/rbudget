@@ -311,7 +311,29 @@ function getGoals(){
     }); //first db.collection call
 
     function purchase3(){
-        alert("purchase3");
+        db.collection(user_email).doc("Budget").get().then(function(doc) {
+
+            savingsAmount = doc.data().savings;
+
+            db.collection(user_email).doc("Budget").collection("goals").doc("Goal_2").get().then(function(doc) {
+                amount = doc.data().GoalAmount;
+
+                savingsAmount = savingsAmount - amount;
+
+                db.collection(user_email).doc("Budget").update({
+                    savings: savingsAmount
+
+                });
+
+                db.collection(user_email).doc("Budget").collection("goals").doc("Goal_2").set({
+                     GoalAmount: 999999,
+                     GoalDescription1: "Enter New Goal",
+                     goalPercentage1: 999999,
+                });
+
+
+            });
+        }); 
     }
 
 
