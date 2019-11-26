@@ -116,6 +116,7 @@ function getGoals(){
 
 
     function purchase1(){
+        alert("Purchased");
         
     }
 
