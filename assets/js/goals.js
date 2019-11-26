@@ -130,6 +130,7 @@ function getGoals(){
     }); //first db.collection call
 
     function purchase1(){
+        alert("Purchased");
         
     }
 
