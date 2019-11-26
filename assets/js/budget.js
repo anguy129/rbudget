@@ -1,6 +1,6 @@
 //GLOBAL VARIABLES
 
-	//var overallBudget;
+//var overallBudget;
 
 function deposit(){
 	//Getting user information
@@ -121,7 +121,6 @@ function withdraw(){
 				//Savings = 5%
 
 				if(selfRecommended == 0){
-
 					if(with_category == "Entertainment"){	//amount to withdraw for a specific Category
 						var recomEntertain = overallbudget * .10;	//take the recommended amount from overall
 						var tempEntertain = catEntertainment + with_budgetInput;
@@ -301,8 +300,6 @@ function withdraw(){
 					    console.log("Error getting cached document:", error);
 					}); //first db.collection call
 				}
-			}).catch(function(error) {
-					    console.log("Error getting cached document:", error);
 			});
 	}
 }
