@@ -380,29 +380,29 @@ function visual(){
 			"negative": -6,
 			  "positive": 5,
 			}, {
-			"category": "Food",
-			"negative": -6,
-			  "positive": 5,
-			}, {
-			"category": "Transportation",
-			"negative": -6,
-			  "positive": 5,
-			}, {
-			"category": "Education",
-			"negative": -6,
-			  "positive": 5,
-			}, {
-			"category": "Loan Repayment",
-			"negative": -6,
-			  "positive": 5,
-			}, {
-			"category": "Child Care",
-			"negative": -6,
-			  "positive": 5,
-			}, {
-			"category": "Savings",
-			"negative": -6,
-			  "positive": 5,
+			// "category": "Food",
+			// "negative": -6,
+			//   "positive": 5,
+			// }, {
+			// "category": "Transportation",
+			// "negative": -6,
+			//   "positive": 5,
+			// }, {
+			// "category": "Education",
+			// "negative": -6,
+			//   "positive": 5,
+			// }, {
+			// "category": "Loan Repayment",
+			// "negative": -6,
+			//   "positive": 5,
+			// }, {
+			// "category": "Child Care",
+			// "negative": -6,
+			//   "positive": 5,
+			// }, {
+			// "category": "Savings",
+			// "negative": -6,
+			//   "positive": 5,
 			} ];
 			
 			// Create axes
