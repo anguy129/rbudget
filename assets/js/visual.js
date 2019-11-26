@@ -253,119 +253,213 @@ function visual(){
 		
 		var db = firebase.firestore();
 		
-		db.collection(user_email).doc("Budget").get().then(function(doc) {
-			tempEntertainment = doc.data().entertainment;
-			tempHousingRent = doc.data().housing;
-			tempUtilities = doc.data().utilities;
-			tempFood = doc.data().food;
-			tempTransportation = doc.data().transportation;
-			tempEducation = doc.data().education;
-			tempLoanRepay = doc.data().loan_repayment;
-			tempChildCare = doc.data().child_care;
-			tempSavings = doc.data().savings;
+		// db.collection(user_email).doc("Budget").get().then(function(doc) {
+		// 	tempEntertainment = doc.data().entertainment;
+		// 	tempHousingRent = doc.data().housing;
+		// 	tempUtilities = doc.data().utilities;
+		// 	tempFood = doc.data().food;
+		// 	tempTransportation = doc.data().transportation;
+		// 	tempEducation = doc.data().education;
+		// 	tempLoanRepay = doc.data().loan_repayment;
+		// 	tempChildCare = doc.data().child_care;
+		// 	tempSavings = doc.data().savings;
 	
-			if(doc.exists){
-				chart.data = [ {
-				"category": "Entertainment",
-				"negative": -6,
-      			"positive": 5,
-				}, {
-				"category": "Housing",
-				"negative": -6,
-      			"positive": 5,
-				}, {
-				"category": "Utilities",
-				"negative": -6,
-      			"positive": 5,
-				}, {
-				// "category": "Food",
-				// "negative": -6,
-      			// "positive": 5,
-				// }, {
-				// "category": "Transportation",
-				// "negative": -6,
-      			// "positive": 5,
-				// }, {
-				// "category": "Education",
-				// "negative": -6,
-      			//"positive": 5,
-				//}, {
-				//"category": "Loan Repayment",
-				//"negative": -6,
-      			//"positive": 5,
-				//}, {
-				//"category": "Child Care",
-				//"negative": -6,
-      			//"positive": 5,
-				//}, {
-				//"category": "Savings",
-				//"negative": -6,
-      			//"positive": 5,
-				} ];
+		// 	if(doc.exists){
+		// 		chart.data = [ {
+		// 		"category": "Entertainment",
+		// 		"negative": -6,
+      	// 		"positive": 5,
+		// 		}, {
+		// 		"category": "Housing",
+		// 		"negative": -6,
+      	// 		"positive": 5,
+		// 		}, {
+		// 		"category": "Utilities",
+		// 		"negative": -6,
+      	// 		"positive": 5,
+		// 		}, {
+		// 		// "category": "Food",
+		// 		// "negative": -6,
+      	// 		// "positive": 5,
+		// 		// }, {
+		// 		// "category": "Transportation",
+		// 		// "negative": -6,
+      	// 		// "positive": 5,
+		// 		// }, {
+		// 		// "category": "Education",
+		// 		// "negative": -6,
+      	// 		//"positive": 5,
+		// 		//}, {
+		// 		//"category": "Loan Repayment",
+		// 		//"negative": -6,
+      	// 		//"positive": 5,
+		// 		//}, {
+		// 		//"category": "Child Care",
+		// 		//"negative": -6,
+      	// 		//"positive": 5,
+		// 		//}, {
+		// 		//"category": "Savings",
+		// 		//"negative": -6,
+      	// 		//"positive": 5,
+		// 		} ];
 				
-				// Create axes
-				var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-				categoryAxis.dataFields.category = "category";
-				categoryAxis.renderer.grid.template.location = 0;
-				categoryAxis.renderer.inversed = true;
-				categoryAxis.renderer.minGridDistance = 20;
-				categoryAxis.renderer.axisFills.template.disabled = false;
-				categoryAxis.renderer.axisFills.template.fillOpacity = 0.05;
+		// 		// Create axes
+		// 		var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+		// 		categoryAxis.dataFields.category = "category";
+		// 		categoryAxis.renderer.grid.template.location = 0;
+		// 		categoryAxis.renderer.inversed = true;
+		// 		categoryAxis.renderer.minGridDistance = 20;
+		// 		categoryAxis.renderer.axisFills.template.disabled = false;
+		// 		categoryAxis.renderer.axisFills.template.fillOpacity = 0.05;
 					
 				
-				var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
-				valueAxis.min = -100;
-				valueAxis.max = 100;
-				valueAxis.renderer.minGridDistance = 50;
-				valueAxis.renderer.ticks.template.length = 5;
-				valueAxis.renderer.ticks.template.disabled = false;
-				valueAxis.renderer.ticks.template.strokeOpacity = 0.4;
-				valueAxis.renderer.labels.template.adapter.add("text", function(text) {
-				  return text == "Male" || text == "Female" ? text : text + "%";
-				})
+		// 		var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+		// 		valueAxis.min = -100;
+		// 		valueAxis.max = 100;
+		// 		valueAxis.renderer.minGridDistance = 50;
+		// 		valueAxis.renderer.ticks.template.length = 5;
+		// 		valueAxis.renderer.ticks.template.disabled = false;
+		// 		valueAxis.renderer.ticks.template.strokeOpacity = 0.4;
+		// 		valueAxis.renderer.labels.template.adapter.add("text", function(text) {
+		// 		  return text == "Male" || text == "Female" ? text : text + "%";
+		// 		})
 				
-				// Legend
-				chart.legend = new am4charts.Legend();
-				chart.legend.position = "right";
-				chart.legend.width = 50;
+		// 		// Legend
+		// 		chart.legend = new am4charts.Legend();
+		// 		chart.legend.position = "right";
+		// 		chart.legend.width = 50;
 				
-				// Use only absolute numbers
-				chart.numberFormatter.numberFormat = "#.#s";
+		// 		// Use only absolute numbers
+		// 		chart.numberFormatter.numberFormat = "#.#s";
 				
-				// Create series
-				function createSeries(field, name, color) {
-				  var series = chart.series.push(new am4charts.ColumnSeries());
-				  series.dataFields.valueX = field;
-				  series.dataFields.categoryY = "category";
-				  series.stacked = true;
-				  series.name = name;
-				  series.stroke = color;
-				  series.fill = color;
+		// 		// Create series
+		// 		function createSeries(field, name, color) {
+		// 		  var series = chart.series.push(new am4charts.ColumnSeries());
+		// 		  series.dataFields.valueX = field;
+		// 		  series.dataFields.categoryY = "category";
+		// 		  series.stacked = true;
+		// 		  series.name = name;
+		// 		  series.stroke = color;
+		// 		  series.fill = color;
 				  
-				  var label = series.bullets.push(new am4charts.LabelBullet);
-				  label.label.text = "{valueX}%";
-				  label.label.fill = am4core.color("#fff");
-				  label.label.strokeWidth = 0;
-				  label.label.truncate = false;
-				  label.label.hideOversized = true;
-				  label.locationX = 0.5;
-				  return series;
-				}
+		// 		  var label = series.bullets.push(new am4charts.LabelBullet);
+		// 		  label.label.text = "{valueX}%";
+		// 		  label.label.fill = am4core.color("#fff");
+		// 		  label.label.strokeWidth = 0;
+		// 		  label.label.truncate = false;
+		// 		  label.label.hideOversized = true;
+		// 		  label.locationX = 0.5;
+		// 		  return series;
+		// 		}
 				
-				var interfaceColors = new am4core.InterfaceColorSet();
-				var positiveColor = interfaceColors.getFor("positive");
-				var negativeColor = interfaceColors.getFor("negative");
+		// 		var interfaceColors = new am4core.InterfaceColorSet();
+		// 		var positiveColor = interfaceColors.getFor("positive");
+		// 		var negativeColor = interfaceColors.getFor("negative");
 
-				createSeries("negative1", "Under", negativeColor);
-				createSeries("positive2", "Over", positiveColor);
-			} else {
-				// doc.data() will be undefined in this case
-				console.log("No such document!");
+		// 		createSeries("negative1", "Under", negativeColor);
+		// 		createSeries("positive2", "Over", positiveColor);
+		// 	} else {
+		// 		// doc.data() will be undefined in this case
+		// 		console.log("No such document!");
+		// 	}
+	
+		// 	}).catch(function(error) {
+		// 		console.log("Error getting document:", error);
+		// });
+		
+			chart.data = [ {
+			"category": "Entertainment",
+			"negative": -6,
+			  "positive": 5,
+			}, {
+			"category": "Housing",
+			"negative": -6,
+			  "positive": 5,
+			}, {
+			"category": "Utilities",
+			"negative": -6,
+			  "positive": 5,
+			}, {
+			"category": "Food",
+			"negative": -6,
+			  "positive": 5,
+			}, {
+			"category": "Transportation",
+			"negative": -6,
+			  "positive": 5,
+			}, {
+			"category": "Education",
+			"negative": -6,
+			  "positive": 5,
+			}, {
+			"category": "Loan Repayment",
+			"negative": -6,
+			  "positive": 5,
+			}, {
+			"category": "Child Care",
+			"negative": -6,
+			  "positive": 5,
+			}, {
+			"category": "Savings",
+			"negative": -6,
+			  "positive": 5,
+			} ];
+			
+			// Create axes
+			var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+			categoryAxis.dataFields.category = "category";
+			categoryAxis.renderer.grid.template.location = 0;
+			categoryAxis.renderer.inversed = true;
+			categoryAxis.renderer.minGridDistance = 20;
+			categoryAxis.renderer.axisFills.template.disabled = false;
+			categoryAxis.renderer.axisFills.template.fillOpacity = 0.05;
+				
+			
+			var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+			valueAxis.min = -100;
+			valueAxis.max = 100;
+			valueAxis.renderer.minGridDistance = 50;
+			valueAxis.renderer.ticks.template.length = 5;
+			valueAxis.renderer.ticks.template.disabled = false;
+			valueAxis.renderer.ticks.template.strokeOpacity = 0.4;
+			valueAxis.renderer.labels.template.adapter.add("text", function(text) {
+			  return text == "Male" || text == "Female" ? text : text + "%";
+			})
+			
+			// Legend
+			chart.legend = new am4charts.Legend();
+			chart.legend.position = "right";
+			chart.legend.width = 50;
+			
+			// Use only absolute numbers
+			chart.numberFormatter.numberFormat = "#.#s";
+			
+			// Create series
+			function createSeries(field, name, color) {
+			  var series = chart.series.push(new am4charts.ColumnSeries());
+			  series.dataFields.valueX = field;
+			  series.dataFields.categoryY = "category";
+			  series.stacked = true;
+			  series.name = name;
+			  series.stroke = color;
+			  series.fill = color;
+			  
+			  var label = series.bullets.push(new am4charts.LabelBullet);
+			  label.label.text = "{valueX}%";
+			  label.label.fill = am4core.color("#fff");
+			  label.label.strokeWidth = 0;
+			  label.label.truncate = false;
+			  label.label.hideOversized = true;
+			  label.locationX = 0.5;
+			  return series;
 			}
-	
-			}).catch(function(error) {
-				console.log("Error getting document:", error);
-		});
-	
+			
+			var interfaceColors = new am4core.InterfaceColorSet();
+			var positiveColor = interfaceColors.getFor("positive");
+			var negativeColor = interfaceColors.getFor("negative");
+
+			createSeries("negative1", "Under", negativeColor);
+			createSeries("positive2", "Over", positiveColor);
+
 		}); // end am4core.ready()
 }
