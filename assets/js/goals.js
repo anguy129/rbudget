@@ -97,7 +97,7 @@ function getGoals(){
                 //Check the users savings to see if the user has met their goal
                 if(((savingsAmount * percentage) >= amount)){
                     var newDiv = document.createElement("h2");
-                    var newContent = document.createTextNode("You have the savings required for Goal #1 !");
+                    var newContent = document.createTextNode("*You have the savings required for Goal #1 !*");
                     newDiv.appendChild(newContent);
                     var element1 = document.getElementById("goal1");
                     element1.appendChild(newDiv);
@@ -192,7 +192,7 @@ function getGoals(){
                 //Check the users savings to see if the user has met their goal
                 if((savingsAmount * percentage) >= amount){
                     var newDiv = document.createElement("h2");
-                    var newContent = document.createTextNode("You have the savings required for Goal #2 !");
+                    var newContent = document.createTextNode("*You have the savings required for Goal #2 !*");
                     newDiv.appendChild(newContent);
                     var element1 = document.getElementById("goal2");
                     element1.appendChild(newDiv);
@@ -291,7 +291,7 @@ function getGoals(){
                 //Check the users savings to see if the user has met their goal
                 if((savingsAmount * percentage) >= amount){
                     var newDiv = document.createElement("h2");
-                    var newContent = document.createTextNode("You have the savings required for Goal #3 !");
+                    var newContent = document.createTextNode("*You have the savings required for Goal #3 !*");
                     newDiv.appendChild(newContent);
                     var element1 = document.getElementById("goal3");
                     element1.appendChild(newDiv);
