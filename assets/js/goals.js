@@ -238,12 +238,14 @@ function getGoals(){
                     var newButton = document.createElement("button");
                     var buttonContent = document.createTextNode("Purchased");
                     newButton.appendChild(buttonContent);
-                    var button1 = document.getElementById("submitPurchaseButton");
-                    button1.style.float = 'left';
-                    button1.style.display = 'inline-block';
-                    button1.style.position = 'relative';
+                    var button3 = document.getElementById("submitPurchaseButton2");
+                    button3.style.float = 'left';
+                    button3.style.display = 'inline-block';
+                    button3.style.position = 'relative';
 
-                    button1.appendChild(newButton);
+                    button3.appendChild(newButton);
+
+                    button3.addEventListener("click", purchase3);
                     
                 } 
 
@@ -261,6 +263,10 @@ function getGoals(){
     }).catch(function(error) {
         console.log("Error getting cached document:", error);
     }); //first db.collection call
+
+    function purchase3(){
+        alert("purchase3");
+    }
 
 
 }
