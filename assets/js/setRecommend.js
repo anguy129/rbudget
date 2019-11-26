@@ -11,18 +11,6 @@ function setRecommend(){
 	var setLoans = +document.getElementById("setLoans").value;
 	var setChildCare = +document.getElementById("setChildCare").value;
 
-	/*
-	alert("Housing: " + setHousing);
-	alert("Food: " + setFood);
-	alert("Utilities: " + setUtilities);
-	alert("Savings: " + setSavings);
-	alert("Education: " + setEducation);
-	alert("Entertainment: " + setEntertainment);
-	alert("Transportation: " + setTransportation);
-	alert("Loans: " + setLoans);
-	alert("Child Care: " + setChildCare);
-	*/
-
 	var totalPercentage = setHousing + setFood + setUtilities + setSavings + setEducation + setEntertainment + setTransportation + setLoans + setChildCare;
 	if(totalPercentage == 100){
 		alert("Setting Your New Recommendations");
