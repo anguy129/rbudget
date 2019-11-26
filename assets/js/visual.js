@@ -235,10 +235,10 @@ function visual(){
     	var chart = am4core.create("chartdiv3", am4charts.XYChart);
     
     	// Title
-    	var title = chart.titles.push(new am4core.Label());
-    	title.text = "Over/Under";
-    	title.fontSize = 25;
-    	title.marginBottom = 15;
+    	//var title = chart.titles.push(new am4core.Label());
+    	//title.text = "Over/Under";
+    	//title.fontSize = 25;
+    	//title.marginBottom = 15;
 	
 		// Add data		
 		var user_email = localStorage.getItem("user_Email");
@@ -358,10 +358,8 @@ function visual(){
 				var positiveColor = interfaceColors.getFor("positive");
 				var negativeColor = interfaceColors.getFor("negative");
 				
-				createSeries("negative2", "Unlikely", negativeColor.lighten(0.5));
-				createSeries("negative1", "Never", negativeColor);
-				createSeries("positive1", "Sometimes", positiveColor.lighten(0.5));
-				createSeries("positive2", "Very often", positiveColor);
+				createSeries("negative", "Under", negativeColor);
+				createSeries("positive", "Over", positiveColor);
 			} else {
 				// doc.data() will be undefined in this case
 				console.log("No such document!");
