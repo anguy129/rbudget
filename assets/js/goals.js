@@ -1,5 +1,5 @@
+//This function is for the user to set their goals and save it to the firestore database
 function setGoal(){
-   // alert("got in the function");
     //Goal #1
     var db = firebase.firestore();
 
@@ -22,7 +22,6 @@ function setGoal(){
     });
 
     ///Goal#2
-
     var user_email = localStorage.getItem("user_Email");
     var goal_deposit2 = +document.getElementById("deposit_budget_goal2").value;
     var goalDescription2 = document.getElementById("goal_description2").value;
@@ -40,17 +39,17 @@ function setGoal(){
 		.catch(function(error) {
 		    console.error("Error writing document: ", error);
     });
-    ///Goal#2
 
+    ///Goal#3
     var user_email = localStorage.getItem("user_Email");
     var goal_deposit3 = +document.getElementById("deposit_budget_goal3").value;
     var goalDescription3 = document.getElementById("goal_description3").value;
     var goalPercentage3 = document.getElementById("percentage_goal3").value;
     db.collection(user_email).doc("Budget").collection("goals").doc("Goal_3").set({
         //inputs
-     GoalAmount: goal_deposit2,
-     GoalDescription1: goalDescription2,
-     goalPercentage1: goalPercentage2
+     GoalAmount: goal_deposit3,
+     GoalDescription1: goalDescription3,
+     goalPercentage1: goalPercentage3
     })
         .then(function() {
 		    console.log("Document successfully written!");
@@ -59,18 +58,16 @@ function setGoal(){
 		.catch(function(error) {
 		    console.error("Error writing document: ", error);
     });
+    //Let the user know they have made a goal
     alert("You Have Set A Budget Goal!");
 
 }//function
-
-const goal1_Notification = document.querySelector('#goals1_tag');
-
+//
 //the getGoals function will be called when the goals page is loaded
 function getGoals(){
-    ////Generate An html statement if the user has met their goal reqs
-  ///
+    //This will allow the page to display the users info that they previously wrote
 
-
+    //get the database
     var db = firebase.firestore();
     //Goal#1 Pull Information
     var user_email = localStorage.getItem("user_Email");
@@ -79,7 +76,6 @@ function getGoals(){
     var goalDescription = document.getElementById("goal_description");
     var savingsAmount;
    
-    
     db.collection(user_email).doc("Budget").get().then(function(doc) {
 
         savingsAmount = doc.data().savings;
@@ -95,7 +91,8 @@ function getGoals(){
 
     		if(doc.exists){
     			console.log("Document data:", doc.data());
-
+                ////Generate An html statement if the user has met their goal reqs////
+                //Check the users savings to see if the user has met their goal
                 if((savingsAmount * percentage) >= amount){
                     var newDiv = document.createElement("h2");
                     var newContent = document.createTextNode("You have the savings required for Goal #1 !");
@@ -115,8 +112,7 @@ function getGoals(){
 
 
                     button1.addEventListener("click", purchase1);
-
-                    
+   
                 } 
 
     	    } else {
@@ -133,12 +129,11 @@ function getGoals(){
         console.log("Error getting cached document:", error);
     }); //first db.collection call
 
-
     function purchase1(){
         
     }
 
-    //GOAL#2
+    //GOAL#2///////////////////////////////////////////////////////////////
      //Goal#2 
      var user_email = localStorage.getItem("user_Email");
      var goal_deposit2 = document.getElementById("deposit_budget_goal2");
@@ -159,7 +154,8 @@ function getGoals(){
             
     		if(doc.exists){
     			console.log("Document data:", doc.data());
-
+                ////Generate An html statement if the user has met their goal reqs////
+                //Check the users savings to see if the user has met their goal
                 if((savingsAmount * percentage) >= amount){
                     var newDiv = document.createElement("h2");
                     var newContent = document.createTextNode("You have the savings required for Goal #2 !");
@@ -194,12 +190,66 @@ function getGoals(){
     }).catch(function(error) {
         console.log("Error getting cached document:", error);
     }); //first db.collection call
+    //////////////////
+    //Goal#3/////////////////////////////////////////////////
+    
+     var user_email = localStorage.getItem("user_Email");
+     var goal_deposit3 = document.getElementById("deposit_budget_goal3");
+     var goalDescription3 = document.getElementById("goal_description3");
+     var goalPercentage3 = document.getElementById("percentage_goal3");
+
+     db.collection(user_email).doc("Budget").get().then(function(doc) {
+
+        savingsAmount = doc.data().savings;
+
+        db.collection(user_email).doc("Budget").collection("goals").doc("Goal_3").get().then(function(doc) {
+            goal_deposit3.value = doc.data().GoalAmount;
+            goalPercentage3.value = doc.data().goalPercentage1;
+            goalDescription3.value = doc.data().GoalDescription1;
+
+            percentage = +doc.data().goalPercentage1;
+            amount = doc.data().GoalAmount;
+            percentage = percentage / 100;
+            
+    		if(doc.exists){
+    			console.log("Document data:", doc.data());
+                ////Generate An html statement if the user has met their goal reqs////
+                //Check the users savings to see if the user has met their goal
+                if((savingsAmount * percentage) >= amount){
+                    var newDiv = document.createElement("h2");
+                    var newContent = document.createTextNode("You have the savings required for Goal #3 !");
+                    newDiv.appendChild(newContent);
+                    var element1 = document.getElementById("goal3");
+                    element1.appendChild(newDiv);
+                    
+
+                    var newButton = document.createElement("button");
+                    var buttonContent = document.createTextNode("Purchased");
+                    newButton.appendChild(buttonContent);
+                    var button1 = document.getElementById("submitPurchaseButton");
+                    button1.style.float = 'left';
+                    button1.style.display = 'inline-block';
+                    button1.style.position = 'relative';
+
+                    button1.appendChild(newButton);
+                    
+                } 
+
+    	    } else {
+    	        // doc.data() will be undefined in this case
+    	        console.log("No such document!");
+            }
+        
+
+    		}).catch(function(error) {
+    		    console.log("Error getting document:", error);
+        });
+
+    console.log("Cached document data:", doc.data());
+    }).catch(function(error) {
+        console.log("Error getting cached document:", error);
+    }); //first db.collection call
+
 
 }
     
-
-/*
-    
-    //
-		
-*/
