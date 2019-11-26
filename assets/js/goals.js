@@ -150,6 +150,15 @@ function getGoals(){
                      GoalAmount: 999999,
                      GoalDescription1: "Enter New Goal",
                      goalPercentage1: 999999,
+
+                    })
+                    .then(function() {
+                        console.log("Document successfully written!");
+                        alert("Enjoy Your New Purchase")
+                        location.href='homepage.html';
+                    })
+                    .catch(function(error) {
+                        console.error("Error writing document: ", error);
                 });
 
 
