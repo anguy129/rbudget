@@ -315,7 +315,7 @@ function reset_deposit(){
 function reset_withdraw(){
 	var clear_withdraw = document.getElementById("withdrawAmnt");		
 	var clear_withdraw_description = document.getElementById("withdraw_description");
-	clear_description.value = '';
+	clear_withdraw_description.value = '';
 	clear_withdraw.value = '';
 }
 
