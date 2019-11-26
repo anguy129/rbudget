@@ -31,70 +31,48 @@
     // Add data
     chart.data = [{
       "category": "Search engines",
-      "negative1": -0.1,
-      "negative2": -0.9,
-      "positive1": 5,
-      "positive2": 94
+      "negative": -0.1,
+      "positive": 94
     }, {
       "category": "Online encyclopedias",
-      "negative1": -2,
-      "negative2": -4,
-      "positive1": 19,
-      "positive2": 75
+      "negative": -2,
+      "positive": 75
     }, {
       "category": "Peers",
-      "negative1": -2,
-      "negative2": -10,
-      "positive1": 46,
-      "positive2": 42
+      "negative": -2,
+      "positive": 42
     }, {
       "category": "Social media",
-      "negative1": -2,
-      "negative2": -13,
-      "positive1": 33,
-      "positive2": 52
+      "negative": -2,
+      "positive": 52
     }, {
       "category": "Study guides",
-      "negative1": -6,
-      "negative2": -19,
-      "positive1": 34,
-      "positive2": 41
+      "negative": -6,
+      "positive": 41
     }, {
       "category": "News websites",
-      "negative1": -3,
-      "negative2": -23,
-      "positive1": 49,
-      "positive2": 25
+      "negative": -3,
+      "positive": 25
     }, {
       "category": "Textbooks",
-      "negative1": -5,
-      "negative2": -28,
-      "positive1": 49,
-      "positive2": 18
+      "negative": -5,
+      "positive": 18
     }, {
       "category": "Librarian",
-      "negative1": -14,
-      "negative2": -34,
-      "positive1": 37,
-      "positive2": 16
+      "negative": -14,
+      "positive": 16
     }, {
       "category": "Printed books",
-      "negative1": -9,
-      "negative2": -41,
-      "positive1": 38,
-      "positive2": 12
+      "negative": -9,
+      "positive": 12
     }, {
       "category": "Databases",
-      "negative1": -18,
-      "negative2": -36,
-      "positive1": 29,
-      "positive2": 17
+      "negative": -18,
+      "positive": 17
     }, {
       "category": "Student search engines",
-      "negative1": -17,
-      "negative2": -39,
-      "positive1": 34,
-      "positive2": 10
+      "negative": -17,
+      "positive": 10
     }];
     
     
@@ -151,10 +129,8 @@
     var positiveColor = interfaceColors.getFor("positive");
     var negativeColor = interfaceColors.getFor("negative");
     
-    createSeries("negative2", "Unlikely", negativeColor.lighten(0.5));
-    createSeries("negative1", "Never", negativeColor);
-    createSeries("positive1", "Sometimes", positiveColor.lighten(0.5));
-    createSeries("positive2", "Very often", positiveColor);
+    createSeries("negative", "Under", negativeColor);
+    createSeries("positive", "Over", positiveColor);
     
     }); // end am4core.ready()
     </script>
