@@ -50,3 +50,28 @@ function setRecommend(){
 	}
 
 }
+
+function resetCategories(){
+	
+	var user_email = localStorage.getItem("user_Email");
+	var db = firebase.firestore();
+	
+	db.collection(user_email).doc("Budget").update({
+		entertainment: 0,
+		housing: 0,
+		utilities: 0,
+		food: 0,
+		transportation: 0,
+		education: 0,
+		loan_repayment: 0,
+		child_care: 0,
+		})
+		.then(function() {
+		    console.log("Document successfully written!");
+		    alert("Categories Reset");
+		    location.href='homepage.html';
+		})
+		.catch(function(error) {
+		    console.error("Error writing document: ", error);
+	});
+}
