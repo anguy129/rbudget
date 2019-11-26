@@ -1,6 +1,6 @@
 //GLOBAL VARIABLES
 
-	//var overallBudget;
+//var overallBudget;
 
 function deposit(){
 	//Getting user information
@@ -97,19 +97,6 @@ function withdraw(){
 			    console.error("Error writing document: ", error);
 		});
 
-		db.collection(user_email).doc("Recommendations").get().then(function(doc) {
-    // Document was found in the cache. If no cached document exists,
-    // an error will be returned to the 'catch' block below.
-   		    education = doc.data().Education;
-			entertainment = doc.data().Entertainment;
-			food = doc.data().Food;
-			housing = doc.data().Housing;
-			loans = doc.data().Loans;
-			savings = doc.data().Savings;
-			transportation = doc.data().Transportation;
-			utilities = doc.data().Utilities;
-			childCare = doc.data().ChildCare;
-
 			db.collection(user_email).doc("Budget").get().then(function(doc) {
 				
 
@@ -133,18 +120,7 @@ function withdraw(){
 				//Debt: Education, Loans, ChildCare = 15%
 				//Savings = 5%
 
-				entertainment = entertainment / 100;
-				housing = housing / 100;
-				utilities = utilities / 100;
-				food = food / 100;
-				transportation = transportation / 100;
-				education = education / 100;
-				loans = loans / 100;
-				childCare = childCare / 100;
-				savings = savings / 100;
-
 				if(selfRecommended == 0){
-
 					if(with_category == "Entertainment"){	//amount to withdraw for a specific Category
 						var recomEntertain = overallbudget * .10;	//take the recommended amount from overall
 						var tempEntertain = catEntertainment + with_budgetInput;
@@ -220,6 +196,31 @@ function withdraw(){
 					//location.href = "homepage.html";
 				}
 				else{
+
+					db.collection(user_email).doc("Recommendations").get().then(function(doc) {
+    // Document was found in the cache. If no cached document exists,
+    // an error will be returned to the 'catch' block below.
+			   		    education = doc.data().Education;
+						entertainment = doc.data().Entertainment;
+						food = doc.data().Food;
+						housing = doc.data().Housing;
+						loans = doc.data().Loans;
+						savings = doc.data().Savings;
+						transportation = doc.data().Transportation;
+						utilities = doc.data().Utilities;
+						childCare = doc.data().ChildCare;
+
+
+						entertainment = entertainment / 100;
+						housing = housing / 100;
+						utilities = utilities / 100;
+						food = food / 100;
+						transportation = transportation / 100;
+						education = education / 100;
+						loans = loans / 100;
+						childCare = childCare / 100;
+						savings = savings / 100;
+
 					if(with_category == "Entertainment"){	//amount to withdraw for a specific Category
 						var recomEntertain = overallbudget * entertainment;	//take the recommended amount from overall
 						var tempEntertain = catEntertainment + with_budgetInput;
@@ -293,15 +294,16 @@ function withdraw(){
 					}
 					alert("Thank You");
 					//location.href = "homepage.html";
+
+								console.log("Cached document data:", doc.data());
+					}).catch(function(error) {
+					    console.log("Error getting cached document:", error);
+					}); //first db.collection call
 				}
 			});
-
-			console.log("Cached document data:", doc.data());
-		}).catch(function(error) {
-		    console.log("Error getting cached document:", error);
-		}); //first db.collection call
 	}
 }
+
 
 function reset_deposit(){
 	var clear_deposit = document.getElementById("depositAmnt");		
