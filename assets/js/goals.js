@@ -290,7 +290,7 @@ function getGoals(){
                     var newButton = document.createElement("button");
                     var buttonContent = document.createTextNode("Purchased");
                     newButton.appendChild(buttonContent);
-                    var button3 = document.getElementById("submitPurchaseButton2");
+                    var button3 = document.getElementById("submitPurchaseButton3");
                     button3.style.float = 'left';
                     button3.style.display = 'inline-block';
                     button3.style.position = 'relative';
