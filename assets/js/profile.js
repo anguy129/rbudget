@@ -10,6 +10,11 @@ function loadProfile() {
 		name = doc.data().name;
 		phone = doc.data().phone;
 
+		// Store current info in browser
+		localStorage.setItem("user_Name", name);
+		localStorage.setItem("user_Address", address);
+		localStorage.setItem("user_Phone", phone);
+
 		profileInfo.namedItem("address").value = address;
 		profileInfo.namedItem("email").value = email;
 		profileInfo.namedItem("name").value = name;
@@ -19,3 +24,13 @@ function loadProfile() {
 		profileInfo.namedItem("name").style.paddingLeft = "0";
 	});
 };
+
+function loadProfileImg() {
+	var uploadBtn = document.getElementById('upload');
+	var profImg = document.getElementById('profileImg');
+
+	uploadBtn.click();
+	uploadBtn.onchange = function(event) {
+		profImg.src = URL.createObjectURL(uploadBtn.files[0]);
+	}
+}
