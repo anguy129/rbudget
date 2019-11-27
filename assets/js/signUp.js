@@ -1,6 +1,14 @@
 /* Create new password based user on Firebase */
 var mainEmail;
-//const db = firebase.firestore();
+
+document.getElementById("signUp_password1")
+	.addEventListener("keyup", function(event) {
+		event.preventDefault();
+		if (event.keyCode === 13) {
+			document.getElementById("enterButton").click();
+		}
+});
+
 function signUp() {
 	email = document.getElementById("signUp_email").value;
 	password = document.getElementById("signUp_password0").value;
