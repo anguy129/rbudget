@@ -1,8 +1,5 @@
 const statementlist = document.querySelector('#statements_log');
 
-//li
-//ul
-
 //create the element and render the log of statements 
 function renderStatement(doc){
 	//use li as a tag to identify the document
@@ -56,26 +53,6 @@ function renderStatement(doc){
 	
 
 }//renderStatement
-/*function renderStatement(doc){
-	//use li as a tag to identify the document
-	 //list
-	let li = document.createElement('li');
-
-	//set attributes of li tag to the id of the document
-	li.setAttribute('data-id', doc.id); 
-	li.setAttribute('id', 'statementlist');
-	li.textContent = "Date: " + doc.data().Date ;
-	statementlist.appendChild(li);
-	let lis = document.createElement('li');
-
-	lis.setAttribute('data-id', doc.id); 
-	lis.setAttribute('id', 'statementlist');
-	lis.textContent =  "Description: " + doc.data().Description + " " + "Category: " + doc.data().Category + " " + "Amount: " + doc.data().Amount + " " + "Type: " + doc.data().Type + " " + "Balance: " + doc.data().Balance ;
-	//date description category amount type balance
-	statementlist.appendChild(lis);
-
-}//renderStatement
-*/
 
 function statement(){
 
