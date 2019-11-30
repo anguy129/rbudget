@@ -58,7 +58,7 @@ function visual(){
 				// Add data
 				chart.data = [{
 				"category": "Entertainment",
-				"value": 50
+				"value": logEntertainment - recEntertainment
 				}, {
 				"category": "Housing",
 				"value": -25
