@@ -23,6 +23,16 @@ function visual(){
 		var logLoanRepay;
 		var logChildCare;
 		var logSavings;
+		var recEntertainment;
+		var recHousing;
+		var recUtilities;
+		var recFood;
+		var recTransportation;
+		var recEducation;
+		var recLoans;
+		var recChildCare;
+		var recSavings;
+
 		
 		db.collection(user_email).doc("Budget").get().then(function(doc) {
 			overallBudget = doc.data().overallBudget;
@@ -64,6 +74,15 @@ function visual(){
 					console.log("Error getting document:", error);
 				}); //nested db.collection call
 			}
+				logEntertainment = logEntertainment-recEntertainment;
+				logHousingRent = logHousingRent-recHousing;
+				logUtilities = logUtilities-recUtilities;
+				logFood = logFood-recFood;
+				logTransportation = logTransportation-recTransportation;
+				logEducation = logEducation-recEducation;
+				logLoanRepay = logLoanRepay-recLoans;
+				logChildCare = logChildCare-recChildCare;
+				logSavings = logSavings-recSavings;
 
 				// Add data
 				chart.data = [{
@@ -120,43 +139,43 @@ function visual(){
 			
 			// Create series
 			function createSeries(field, name) {
-			var series = chart.series.push(new am4charts.ColumnSeries());
-			series.dataFields.valueX = field;
-			series.dataFields.categoryY = "category";
-			series.stacked = true;
-			series.name = name;
-			series.stroke = am4core.color("#5a5");
-			series.fill = am4core.color("#5a5");
-			series.columns.template.adapter.add("fill", function(fill, target) {
-				if (target.dataItem && (target.dataItem.valueX < 0)) {
-				return am4core.color("#a55");
-				}
-				else {
-				return fill;
-				}
-			});
-			series.columns.template.adapter.add("stroke", function(stroke, target) {
-				if (target.dataItem && (target.dataItem.valueX < 0)) {
-				return am4core.color("#a55");
-				}
-				else {
-				return stroke;
-				}
-			});
+				var series = chart.series.push(new am4charts.ColumnSeries());
+				series.dataFields.valueX = field;
+				series.dataFields.categoryY = "category";
+				series.stacked = true;
+				series.name = name;
+				series.stroke = am4core.color("#5a5");
+				series.fill = am4core.color("#5a5");
+				series.columns.template.adapter.add("fill", function(fill, target) {
+					if (target.dataItem && (target.dataItem.valueX < 0)) {
+					return am4core.color("#a55");
+					}
+					else {
+					return fill;
+					}
+				});
+				series.columns.template.adapter.add("stroke", function(stroke, target) {
+					if (target.dataItem && (target.dataItem.valueX < 0)) {
+					return am4core.color("#a55");
+					}
+					else {
+					return stroke;
+					}
+				});
 
-			series.columns.template.tooltipText = "{categoryY}\n[bold]{valueX}";
-			series.columns.template.alwaysShowTooltip = false;
-			series.columns.template.tooltipY = 12;
-			
-			var label = series.bullets.push(new am4charts.LabelBullet);
-			label.label.text = "{valueX}";
-			label.label.fill = am4core.color("#fff");
-			label.label.strokeWidth = 0;
-			label.label.truncate = false;
-			label.label.hideOversized = true;
-			label.locationX = 0.5;
+				series.columns.template.tooltipText = "{categoryY}\n[bold]${valueX}";
+				series.columns.template.alwaysShowTooltip = false;
+				series.columns.template.tooltipY = 12;
+				
+				var label = series.bullets.push(new am4charts.LabelBullet);
+				label.label.text = "{valueX}";
+				label.label.fill = am4core.color("#fff");
+				label.label.strokeWidth = 0;
+				label.label.truncate = false;
+				label.label.hideOversized = true;
+				label.locationX = 0.5;
 
-			return series;
+				return series;
 			}
 			
 			createSeries("value", "Under");
