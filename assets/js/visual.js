@@ -10,7 +10,12 @@ function visual(){
     
     	// Create chart instance
     	var chart = am4core.create("chartdiv3", am4charts.XYChart);
-    
+	
+		var title = chart.titles.push(new am4core.Label());
+		title.text = "Over/Under";
+		title.fontSize = 10;
+		title.marginBottom = 10;
+
 		var user_email = localStorage.getItem("user_Email");
 		var db = firebase.firestore();
 
@@ -234,6 +239,12 @@ function visual(){
 	
 	// Create chart instance
 	var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+	var title = chart.titles.push(new am4core.Label());
+	title.text = "Your Spending";
+	title.fontSize = 10;
+	title.marginBottom = 10;
+
 	// Add data
 	
 	var user_email = localStorage.getItem("user_Email");
@@ -328,6 +339,12 @@ function visual(){
 	
 	// Create chart instance
 	var chart = am4core.create("chartdiv2", am4charts.PieChart);
+
+	var title = chart.titles.push(new am4core.Label());
+	title.text = "Our Recommendation";
+	title.fontSize = 10;
+	title.marginBottom = 10;
+
 	// Add data
 	
 	var user_email = localStorage.getItem("user_Email");
