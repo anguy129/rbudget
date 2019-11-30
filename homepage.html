@@ -133,19 +133,71 @@
 							<article id="analytics">
 								<h2 class="major">Analytics</h2>
 								
-								<h3>Over/Under</h3>
+								<span style="display: inline;">
+									<button type="button" class="button_1" onclick="menu(1);">Over/Under</button>
+									<button type="button" class="button_1" onclick="menu(2);">Your Spending</button>
+									<button type="button" class="button_1" onclick="menu(3);">Our Recommendations</button>
+								</span>
+								
+								<font size = "4 px">
+									<style>
+										body { background-color: #30303d; color: #fff; }
+										#chartdiv {
+											width: 100%;
+											height: 500px;
+										}
+										#chartdiv2 {
+											width: 100%;
+											height: 500px;
+										}	
+									</style>
+									<div id="chartdiv3" style="display: none"></div>
+									<div id="chartdiv" style="display: none"></div>
+									<div id="chartdiv2"></div>
+								</font>
+								
+								<script>
+									function menu(option){
+										var x = document.getElementById("chartdiv3"); 
+										var y = document.getElementById("chartdiv"); 
+										var z = document.getElementById("chartdiv2"); 
+										if(option == 1){	
+											if (x.style.display === "none") {
+												x.style.display = "block";
+												y.style.display = "none";
+												z.style.display = "none";	
+											} else {
+												x.style.display = "none";
+											}
+										}
+										else if(option == 2){
+											if (y.style.display === "none") {
+												x.style.display = "none";
+												y.style.display = "block";
+												z.style.display = "none";	
+											} else {
+												y.style.display = "none";
+											}
+										}
+										else if(option == 3){	
+											if (z.style.display === "none") {
+												x.style.display = "none";
+												y.style.display = "none";
+												z.style.display = "block";	
+											} else {
+												z.style.display = "none";
+											}
+										}
+									}
+								</script>
+
+								<!-- <h3>Over/Under</h3>
 								<font size="4 px">
 								<style>
 									body { background-color: #30303d; color: #fff; }
-									#chartdiv {
-									  width: 100%;
-									  height: 500px;
-									}
-									
-									</style>
-									
-									<!-- HTML -->
-									<div id="chartdiv3"></div>
+								</style>
+									 
+								<div id="chartdiv3"></div>
 
 								</font>
 
@@ -156,13 +208,10 @@
 									#chartdiv {
 									  width: 100%;
 									  height: 500px;
-									}
+									}	
+								</style>
 									
-									</style>
-									
-									<!-- HTML -->
-									<div id="chartdiv"></div>
-
+								<div id="chartdiv"></div>
 								</font>
 
 								<h3>Our Recommendations</h3>
@@ -172,15 +221,15 @@
 									#chartdiv2 {
 									  width: 100%;
 									  height: 500px;
-									}
-									
-									</style>
-									
-									<!-- HTML -->
-									<div id="chartdiv2"></div>
-									
-								</font>
+									}	
+								</style> 
+								
+								<div id="chartdiv2"></div>	
+								</font>-->
 
+
+								<br> <br> 
+								
 								<style>
 									#centerRecButton {
 									  display: flex;
@@ -412,5 +461,6 @@
 			<script src="assets/js/profile.js"></script>
 			<script src="assets/js/setRecommend.js"></script>
 			<script src="assets/js/goals.js"></script>
+			<script src="assets/js/menu.js"></script>
 	</body>
 </html>
