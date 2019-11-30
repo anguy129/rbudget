@@ -147,8 +147,8 @@ function visual(){
 			
 			
 			var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
-			valueAxis.min = -100;
-			valueAxis.max = 100;
+			valueAxis.min = -overallBudget;
+			valueAxis.max = overallBudget;
 			valueAxis.renderer.minGridDistance = 50;
 			valueAxis.renderer.ticks.template.length = 5;
 			valueAxis.renderer.ticks.template.disabled = false;
