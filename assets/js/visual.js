@@ -11,131 +11,174 @@ function visual(){
     	// Create chart instance
     	var chart = am4core.create("chartdiv3", am4charts.XYChart);
     
-    	 // Title
-    var title = chart.titles.push(new am4core.Label());
-    title.text = "Research tools used by students";
-    title.fontSize = 25;
-    title.marginBottom = 15;
-    
-    // Add data
-    chart.data = [{
-      "category": "Search engines",
-      "negative": -0.1,
-      "positive": 94
-    }, {
-      "category": "Online encyclopedias",
-      "negative": -2,
-      "positive": 75
-    }, {
-      "category": "Peers",
-      "negative": -2,
-      "positive": 42
-    }, {
-      "category": "Social media",
-      "negative": -2,
-      "positive": 52
-    }, {
-      "category": "Study guides",
-      "negative": -6,
-      "positive": 41
-    }, {
-      "category": "News websites",
-      "negative": -3,
-      "positive": 25
-    }, {
-      "category": "Textbooks",
-      "negative": -5,
-      "positive": 18
-    }, {
-      "category": "Librarian",
-      "negative": -14,
-      "positive": 16
-    }, {
-      "category": "Printed books",
-      "negative": -9,
-      "positive": 12
-    }];
-    
-    
-    // Create axes
-    var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = "category";
-    categoryAxis.renderer.grid.template.location = 0;
-    categoryAxis.renderer.inversed = true;
-    categoryAxis.renderer.minGridDistance = 20;
-    categoryAxis.renderer.axisFills.template.disabled = false;
-    categoryAxis.renderer.axisFills.template.fillOpacity = 0.05;
-    
-    
-    var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
-    valueAxis.min = -100;
-    valueAxis.max = 100;
-    valueAxis.renderer.minGridDistance = 50;
-    valueAxis.renderer.ticks.template.length = 5;
-    valueAxis.renderer.ticks.template.disabled = false;
-    valueAxis.renderer.ticks.template.strokeOpacity = 0.4;
-    valueAxis.renderer.labels.template.adapter.add("text", function(text) {
-      return text == "Male" || text == "Female" ? text : text + "";
-    })
-    
-    // Legend
-    chart.legend = new am4charts.Legend();
-    chart.legend.position = "right";
-    chart.legend.width = 50;
-    
-    // Use only absolute numbers
-    chart.numberFormatter.numberFormat = "#.#s";
-    
-    // Create series
-    function createSeries(field, name, color) {
-      var series = chart.series.push(new am4charts.ColumnSeries());
-      series.dataFields.valueX = field;
-      series.dataFields.categoryY = "category";
-      series.stacked = true;
-      series.name = name;
-      series.stroke = color;
-	  series.fill = color;
-	  series.columns.template.tooltipText = "{categoryY}\n[bold]{valueX}";
-	  series.columns.template.alwaysShowTooltip = false;
-	  series.columns.template.tooltipY = 0;
-      
-      var label = series.bullets.push(new am4charts.LabelBullet);
-      label.label.text = "{valueX}";
-      label.label.fill = am4core.color("#fff");
-      label.label.strokeWidth = 0;
-      label.label.truncate = false;
-      label.label.hideOversized = true;
-      label.locationX = 0.5;
-      return series;
-    }
-    
-    var interfaceColors = new am4core.InterfaceColorSet();
-    var positiveColor = interfaceColors.getFor("positive");
-    var negativeColor = interfaceColors.getFor("negative");
-    
-    createSeries("negative", "Under", negativeColor);
-    createSeries("positive", "Over", positiveColor);
-	
-	
-	var cellSize = 40;
-	chart.events.on("datavalidated", function(ev) {
+		var user_email = localStorage.getItem("user_Email");
+		var db = firebase.firestore();
+		
+		db.collection(user_email).doc("Budget").get().then(function(doc) {
+			overallBudget = doc.data().overallBudget;
+			selfRecommended = doc.data().selfRecommend;
 
-  	// Get objects of interest
-	var chart = ev.target;
-  	var categoryAxis = chart.yAxes.getIndex(0);
+			logEntertainment = doc.data().entertainment;
+			logHousingRent = doc.data().housing;
+			logUtilities = doc.data().utilities;
+			logFood = doc.data().food;
+			logTransportation = doc.data().transportation;
+			logEducation = doc.data().education;
+			logLoanRepay = doc.data().loan_repayment;
+			logChildCare = doc.data().child_care;
+			logSavings = doc.data().savings;
 
-  	// Calculate how we need to adjust chart height
-  	var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
+			if(selfRecommended == 0) {
+				recEntertainment = overallBudget * 0.10;
+				recHousing = overallBudget * 0.35;
+				recUtilities = overallBudget * 0.05;
+				recFood = overallBudget * 0.20;
+				recTransportation = overallBudget * 0.05;
+				recEducation = overallBudget * 0.10;
+				recLoans = overallBudget * 0.05;
+				recChildCare = overallBudget * 0.05;
+				recSavings = overallBudget * 0.05;
+			}
+			else {
+				db.collection(user_email).doc("Recommendations").get().then(function(doc) {
+					recEducation = doc.data().Education;
+					recEntertainment = doc.data().Entertainment;
+					recFood = doc.data().Food;
+					recHousing = doc.data().Housing;
+					recLoans = doc.data().Loans;
+					recSavings = doc.data().Savings;
+					recTransportation = doc.data().Transportation;
+					recUtilities = doc.data().Utilities;
+					recChildCare = doc.data().ChildCare;
+				}).catch(function(error) {
+					console.log("Error getting document:", error);
+				}); //nested db.collection call
+			}
 
-  	// get current chart height
-  	var targetHeight = chart.pixelHeight + adjustHeight;
+			if(doc.exists){
+				// Add data
+				chart.data = [{
+				"category": "Entertainment",
+				"value": logEntertainment - recEntertainment
+				}, {
+				"category": "Housing",
+				"value": logHousingRent -recHousing
+				}, {
+				"category": "Utilities",
+				"value": logUtilities - recUtilities
+				}, {
+				"category": "Food",
+				"value": logFood - recFood
+				}, {
+				"category": "Transportation",
+				"value": logTransportation - recTransportation
+				}, {
+				"category": "Education",
+				"value": logEducation - recEducation
+				}, {
+				"category": "Loan Repayment",
+				"value": logLoanRepay - recLoans
+				}, {
+				"category": "Child Care",
+				"value": logChildCare - recChildCare
+				}, {
+				"category": "Savings",
+				"value": logSavings - recSavings
+			}];
+		
+		
+			// Create axes
+			var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+			categoryAxis.dataFields.category = "category";
+			categoryAxis.renderer.grid.template.location = 0;
+			categoryAxis.renderer.inversed = true;
+			categoryAxis.renderer.minGridDistance = 20;
+			categoryAxis.renderer.axisFills.template.disabled = false;
+			categoryAxis.renderer.axisFills.template.fillOpacity = 0.05;
+			
+			
+			var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+			valueAxis.min = -100;
+			valueAxis.max = 100;
+			valueAxis.renderer.minGridDistance = 50;
+			valueAxis.renderer.ticks.template.length = 5;
+			valueAxis.renderer.ticks.template.disabled = false;
+			valueAxis.renderer.ticks.template.strokeOpacity = 0.4;
+			valueAxis.renderer.labels.template.adapter.add("text", function(text) {
+			return text == "Male" || text == "Female" ? text : text + "";
+			})
+			
+			
+			// Create series
+			function createSeries(field, name) {
+			var series = chart.series.push(new am4charts.ColumnSeries());
+			series.dataFields.valueX = field;
+			series.dataFields.categoryY = "category";
+			series.stacked = true;
+			series.name = name;
+			series.stroke = am4core.color("#5a5");
+			series.fill = am4core.color("#5a5");
+			series.columns.template.adapter.add("fill", function(fill, target) {
+				if (target.dataItem && (target.dataItem.valueX < 0)) {
+				return am4core.color("#a55");
+				}
+				else {
+				return fill;
+				}
+			});
+			series.columns.template.adapter.add("stroke", function(stroke, target) {
+				if (target.dataItem && (target.dataItem.valueX < 0)) {
+				return am4core.color("#a55");
+				}
+				else {
+				return stroke;
+				}
+			});
 
-  	// Set it on chart's container
-  	chart.svgContainer.htmlElement.style.height = targetHeight + "px";
-});
+			series.columns.template.tooltipText = "{categoryY}\n[bold]{valueX}";
+			series.columns.template.alwaysShowTooltip = false;
+			series.columns.template.tooltipY = 12;
+			
+			var label = series.bullets.push(new am4charts.LabelBullet);
+			label.label.text = "{valueX}";
+			label.label.fill = am4core.color("#fff");
+			label.label.strokeWidth = 0;
+			label.label.truncate = false;
+			label.label.hideOversized = true;
+			label.locationX = 0.5;
 
-
+			return series;
+			}
+			
+			createSeries("value", "Under");
+			//createSeries("positive", "Over", positiveColor);
+			
+			
+			var cellSize = 40;
+			chart.events.on("datavalidated", function(ev) {
+				// Get objects of interest
+				var chart = ev.target;
+				var categoryAxis = chart.yAxes.getIndex(0);
+				// Calculate how we need to adjust chart height
+				var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
+				// get current chart height
+				var targetHeight = chart.pixelHeight + adjustHeight;
+				// Set it on chart's container
+				chart.svgContainer.htmlElement.style.height = targetHeight + "px";
+			});
+		} 
+		else {
+			// doc.data() will be undefined in this case
+			console.log("No such document!");
+		}
+		}).catch(function(error) {
+			console.log("Error getting document:", error);
+		});
     }); // end am4core.ready()
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	am4core.ready(function() {
 									
@@ -225,6 +268,11 @@ function visual(){
 	});
 
 	}); // end am4core.ready()	
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     am4core.ready(function() {
 									
