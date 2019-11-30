@@ -55,35 +55,34 @@ function visual(){
 				}); //nested db.collection call
 			}
 
-			if(doc.exists){
 				// Add data
 				chart.data = [{
 				"category": "Entertainment",
-				"value": logEntertainment - recEntertainment
+				"value": 50
 				}, {
 				"category": "Housing",
-				"value": logHousingRent -recHousing
+				"value": -25
 				}, {
 				"category": "Utilities",
-				"value": logUtilities - recUtilities
+				"value": 75
 				}, {
 				"category": "Food",
-				"value": logFood - recFood
+				"value": 6
 				}, {
 				"category": "Transportation",
-				"value": logTransportation - recTransportation
+				"value": 23
 				}, {
 				"category": "Education",
-				"value": logEducation - recEducation
+				"value": -36
 				}, {
 				"category": "Loan Repayment",
-				"value": logLoanRepay - recLoans
+				"value": 46
 				}, {
 				"category": "Child Care",
-				"value": logChildCare - recChildCare
+				"value": -17
 				}, {
 				"category": "Savings",
-				"value": logSavings - recSavings
+				"value":-27
 			}];
 		
 		
@@ -166,11 +165,7 @@ function visual(){
 				// Set it on chart's container
 				chart.svgContainer.htmlElement.style.height = targetHeight + "px";
 			});
-		} 
-		else {
-			// doc.data() will be undefined in this case
-			console.log("No such document!");
-		}
+
 		}).catch(function(error) {
 			console.log("Error getting document:", error);
 		});
