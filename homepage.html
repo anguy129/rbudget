@@ -132,19 +132,53 @@
 						<!-- analytics -->
 							<article id="analytics">
 								<h2 class="major">Analytics</h2>
-								<h3>Over/Under</h3>
+								
+								<span style="display: inline;">
+									<button type="button" class="primary" onclick="menu(1);">Over/Under</button>
+									<button type="button" class="primary" onclick="menu(2);">Your Spending</button>
+									<button type="button" class="primary" onclick="menu(3);">Our Recommendations</button>
+								</span>
+
+								<div id="chartdiv3" style="display: none"></div>
+								<div id="chartdiv2" style="display: none"></div>
+								<div id="chartdiv" style="display: none"></div>
+
+								<script>
+									function menu(option){
+										if(option == 1){
+											var x = document.getElementById("chartdiv3"); 	
+											if (x.style.display === "none") {
+												x.style.display = "block";	
+											} else {
+												x.style.display = "none";
+											}
+										}
+										if(option == 2){
+											var x = document.getElementById("chartdiv"); 	
+											if (x.style.display === "none") {
+												x.style.display = "block";	
+											} else {
+												x.style.display = "none";
+											}
+										}
+										if(option == 3){
+											var x = document.getElementById("chartdiv2"); 	
+											if (x.style.display === "none") {
+												x.style.display = "block";	
+											} else {
+												x.style.display = "none";
+											}
+										}
+									}
+								</script>
+
+								<!-- <h3>Over/Under</h3>
 								<font size="4 px">
 								<style>
 									body { background-color: #30303d; color: #fff; }
-									/* #chartdiv {
-									  width: 100%;
-									  height: 10000px;
-									} */
-									
-									</style>
+								</style>
 									 
-									<!-- HTML -->
-									<div id="chartdiv3"></div>
+								<div id="chartdiv3"></div>
 
 								</font>
 
@@ -156,11 +190,9 @@
 									  width: 100%;
 									  height: 500px;
 									}	
+								</style>
 									
-									</style>
-									
-									<div id="chartdiv"></div>
-
+								<div id="chartdiv"></div>
 								</font>
 
 								<h3>Our Recommendations</h3>
@@ -170,14 +202,14 @@
 									#chartdiv2 {
 									  width: 100%;
 									  height: 500px;
-									}
-									
-									</style>
-									
-									<div id="chartdiv2"></div>
-									
-								</font>
+									}	
+								</style> 
+								
+								<div id="chartdiv2"></div>	
+								</font>-->
 
+								<br>
+								
 								<style>
 									#centerRecButton {
 									  display: flex;
@@ -409,5 +441,6 @@
 			<script src="assets/js/profile.js"></script>
 			<script src="assets/js/setRecommend.js"></script>
 			<script src="assets/js/goals.js"></script>
+			<script src="assets/js/menu.js"></script>
 	</body>
 </html>
