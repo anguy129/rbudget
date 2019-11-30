@@ -343,7 +343,7 @@ function visual(){
 	var title = chart.titles.push(new am4core.Label());
 	title.text = "Our Recommendation";
 	title.fontSize = 20;
-	title.marginBottom = 50;
+	title.marginBottom = 0;
 
 	// Add data
 	
