@@ -15,12 +15,12 @@ function visual(){
 		var db = firebase.firestore();
 
 		var logEntertainment;
-		var logHousingRent;
+		var logHousing;
 		var logUtilities;
 		var logFood;
 		var logTransportation;
 		var logEducation;
-		var logLoanRepay;
+		var logLoans;
 		var logChildCare;
 		var logSavings;
 		var recEntertainment;
