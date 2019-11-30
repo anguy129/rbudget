@@ -114,7 +114,7 @@ function visual(){
     createSeries("positive", "Over", positiveColor);
 	
 	
-	var cellSize = 60;
+	var cellSize = 40;
 	chart.events.on("datavalidated", function(ev) {
 
   	// Get objects of interest
