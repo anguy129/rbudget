@@ -243,7 +243,7 @@ function visual(){
 	var title = chart.titles.push(new am4core.Label());
 	title.text = "Your Spending";
 	title.fontSize = 20;
-	title.marginBottom = 10;
+	title.marginBottom = 0;
 
 	// Add data
 	
