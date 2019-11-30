@@ -332,6 +332,17 @@ function visual(){
 	
 	var user_email = localStorage.getItem("user_Email");
 	var overallBudget;
+	var selfRecommended;
+	var entertainment;
+	var education;
+	var food;
+	var housing;
+	var loans;
+	var savings;
+	var transportation;
+	var utilities;
+	var childCare;
+
 	
 	var db = firebase.firestore();
 
