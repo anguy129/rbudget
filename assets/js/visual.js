@@ -71,15 +71,15 @@ function visual(){
 			}
 			else {
 				db.collection(user_email).doc("Recommendations").get().then(function(doc) {
-					recEducation = doc.data().Education;
-					recEntertainment = doc.data().Entertainment;
-					recFood = doc.data().Food;
-					recHousing = doc.data().Housing;
-					recLoans = doc.data().Loans;
-					recSavings = doc.data().Savings;
-					recTransportation = doc.data().Transportation;
-					recUtilities = doc.data().Utilities;
-					recChildCare = doc.data().ChildCare;
+					recEducation = doc.data().Education/100;
+					recEntertainment = doc.data().Entertainment/100;
+					recFood = doc.data().Food/100;
+					recHousing = doc.data().Housing/100;
+					recLoans = doc.data().Loans/100;
+					recSavings = doc.data().Savings/100;
+					recTransportation = doc.data().Transportation/100;
+					recUtilities = doc.data().Utilities/100;
+					recChildCare = doc.data().ChildCare/100;
 
 					logEntertainment = logEntertainment-(overallBudget*recEntertainment);
 					logHousingRent = logHousingRent-recHousing;
