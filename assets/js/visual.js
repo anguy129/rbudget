@@ -94,7 +94,10 @@ function visual(){
       series.stacked = true;
       series.name = name;
       series.stroke = color;
-      series.fill = color;
+	  series.fill = color;
+	  series.columns.template.tooltipText = "{categoryY}\n[bold]{valueX}";
+	  series.columns.template.alwaysShowTooltip = false;
+	  series.columns.template.tooltipY = 0;
       
       var label = series.bullets.push(new am4charts.LabelBullet);
       label.label.text = "{valueX}";
