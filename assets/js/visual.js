@@ -59,6 +59,35 @@ function visual(){
 				recChildCare = overallBudget * 0.05;
 				recSavings = overallBudget * 0.05;
 
+				// Add data
+				chart.data = [{
+					"category": "Entertainment",
+					"value": recEntertainment
+					}, {
+					"category": "Housing",
+					"value": -25
+					}, {
+					"category": "Utilities",
+					"value": 75
+					}, {
+					"category": "Food",
+					"value": 6
+					}, {
+					"category": "Transportation",
+					"value": 23
+					}, {
+					"category": "Education",
+					"value": -36
+					}, {
+					"category": "Loan Repayment",
+					"value": 46
+					}, {
+					"category": "Child Care",
+					"value": -17
+					}, {
+					"category": "Savings",
+					"value":-27
+				}];
 			}
 			else {
 				db.collection(user_email).doc("Recommendations").get().then(function(doc) {
@@ -71,49 +100,50 @@ function visual(){
 					recTransportation = doc.data().Transportation*overallBudget/100;
 					recUtilities = doc.data().Utilities*overallBudget/100;
 					recChildCare = doc.data().ChildCare*overallBudget/100;
+
+					logEntertainment = logEntertainment-recEntertainment;
+					logHousingRent = logHousingRent-recHousing;
+					logUtilities = logUtilities-recUtilities;
+					logFood = logFood-recFood;
+					logTransportation = logTransportation-recTransportation;
+					logEducation = logEducation-recEducation;
+					logLoanRepay = logLoanRepay-recLoans;
+					logChildCare = logChildCare-recChildCare;
+					logSavings = logSavings-recSavings;
+
+					// Add data
+				chart.data = [{
+					"category": "Entertainment",
+					"value": recEntertainment
+					}, {
+					"category": "Housing",
+					"value": -25
+					}, {
+					"category": "Utilities",
+					"value": 75
+					}, {
+					"category": "Food",
+					"value": 6
+					}, {
+					"category": "Transportation",
+					"value": 23
+					}, {
+					"category": "Education",
+					"value": -36
+					}, {
+					"category": "Loan Repayment",
+					"value": 46
+					}, {
+					"category": "Child Care",
+					"value": -17
+					}, {
+					"category": "Savings",
+					"value":-27
+				}];
 				}).catch(function(error) {
 					console.log("Error getting document:", error);
 				}); //nested db.collection call
 			}
-			logEntertainment = logEntertainment-recEntertainment;
-			logHousingRent = logHousingRent-recHousing;
-			logUtilities = logUtilities-recUtilities;
-			logFood = logFood-recFood;
-			logTransportation = logTransportation-recTransportation;
-			logEducation = logEducation-recEducation;
-			logLoanRepay = logLoanRepay-recLoans;
-			logChildCare = logChildCare-recChildCare;
-			logSavings = logSavings-recSavings;
-
-				// Add data
-				chart.data = [{
-				"category": "Entertainment",
-				"value": recEntertainment
-				}, {
-				"category": "Housing",
-				"value": -25
-				}, {
-				"category": "Utilities",
-				"value": 75
-				}, {
-				"category": "Food",
-				"value": 6
-				}, {
-				"category": "Transportation",
-				"value": 23
-				}, {
-				"category": "Education",
-				"value": -36
-				}, {
-				"category": "Loan Repayment",
-				"value": 46
-				}, {
-				"category": "Child Care",
-				"value": -17
-				}, {
-				"category": "Savings",
-				"value":-27
-			}];
 		
 		
 			// Create axes
