@@ -58,6 +58,16 @@ function visual(){
 				recLoans = overallBudget * 0.05;
 				recChildCare = overallBudget * 0.05;
 				recSavings = overallBudget * 0.05;
+
+				logEntertainment = logEntertainment-recEntertainment;
+				logHousingRent = logHousingRent-recHousing;
+				logUtilities = logUtilities-recUtilities;
+				logFood = logFood-recFood;
+				logTransportation = logTransportation-recTransportation;
+				logEducation = logEducation-recEducation;
+				logLoanRepay = logLoanRepay-recLoans;
+				logChildCare = logChildCare-recChildCare;
+				logSavings = logSavings-recSavings;
 			}
 			else {
 				db.collection(user_email).doc("Recommendations").get().then(function(doc) {
@@ -70,19 +80,21 @@ function visual(){
 					recTransportation = doc.data().Transportation;
 					recUtilities = doc.data().Utilities;
 					recChildCare = doc.data().ChildCare;
+
+					logEntertainment = logEntertainment-(overallBudget*recEntertainment);
+					logHousingRent = logHousingRent-recHousing;
+					logUtilities = logUtilities-recUtilities;
+					logFood = logFood-recFood;
+					logTransportation = logTransportation-recTransportation;
+					logEducation = logEducation-recEducation;
+					logLoanRepay = logLoanRepay-recLoans;
+					logChildCare = logChildCare-recChildCare;
+					logSavings = logSavings-recSavings;
 				}).catch(function(error) {
 					console.log("Error getting document:", error);
 				}); //nested db.collection call
 			}
-				logEntertainment = logEntertainment-recEntertainment;
-				logHousingRent = logHousingRent-recHousing;
-				logUtilities = logUtilities-recUtilities;
-				logFood = logFood-recFood;
-				logTransportation = logTransportation-recTransportation;
-				logEducation = logEducation-recEducation;
-				logLoanRepay = logLoanRepay-recLoans;
-				logChildCare = logChildCare-recChildCare;
-				logSavings = logSavings-recSavings;
+				
 
 				// Add data
 				chart.data = [{
