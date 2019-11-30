@@ -361,6 +361,33 @@ input, select, textarea {
 		text-align: right;
 	}
 
+/* About */
+
+	#about {
+		text-align: center;
+		display: inline-flex;
+		flex-flow: row wrap;
+		justify-content: center;
+	}
+
+	#about .abtProf {
+		width: 20%;
+		height: auto;
+		margin: 1rem;
+	}
+
+	#about h2 {
+		font-size: 110%;
+		text-decoration: underline white;
+	}
+
+	#aboutImg {
+		width: 11rem;
+		height: 11rem;
+		margin: auto;
+		border-radius: 50%;
+	}
+
 /* Profile */
 
 	.img_wrap {
