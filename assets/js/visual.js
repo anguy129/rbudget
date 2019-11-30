@@ -1,11 +1,5 @@
 function visual(){
-	<style>
-		body { background-color: #30303d; color: #fff; }
-		#chartdiv {
-		  width: 100%;
-		  height: 500px;
-	}	
-	</style>
+	
 
 	am4core.ready(function() {
 									
