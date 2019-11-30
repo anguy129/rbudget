@@ -146,11 +146,9 @@
 										height: 500px;
 									}	
 								</style>
-								<span>
 								<div id="chartdiv3" style="display: none"></div>
 								<div id="chartdiv" style="display: none"></div>
 								<div id="chartdiv2" style="display: none"></div>
-								</span>
 								
 								<script>
 									function menu(option){
@@ -159,20 +157,26 @@
 										var z = document.getElementById("chartdiv2"); 
 										if(option == 1){	
 											if (x.style.display === "none") {
-												x.style.display = "block";	
+												x.style.display = "block";
+												y.style.display = "none";
+												z.style.display = "none";	
 											} else {
 												x.style.display = "none";
 											}
 										}
-										if(option == 2){
+										else if(option == 2){
 											if (y.style.display === "none") {
-												y.style.display = "block";	
+												x.style.display = "none";
+												y.style.display = "block";
+												z.style.display = "none";	
 											} else {
 												y.style.display = "none";
 											}
 										}
-										if(option == 3){	
+										else if(option == 3){	
 											if (z.style.display === "none") {
+												x.style.display = "none";
+												y.style.display = "none";
 												z.style.display = "block";	
 											} else {
 												z.style.display = "none";
