@@ -44,7 +44,7 @@ function visual(){
 			logFood = doc.data().food;
 			logTransportation = doc.data().transportation;
 			logEducation = doc.data().education;
-			logLoand = doc.data().loan_repayment;
+			logLoans = doc.data().loan_repayment;
 			logChildCare = doc.data().child_care;
 			logSavings = doc.data().savings;
 
