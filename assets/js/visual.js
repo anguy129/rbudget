@@ -39,12 +39,12 @@ function visual(){
 			selfRecommended = doc.data().selfRecommend;
 
 			logEntertainment = doc.data().entertainment;
-			logHousingRent = doc.data().housing;
+			logHousing = doc.data().housing;
 			logUtilities = doc.data().utilities;
 			logFood = doc.data().food;
 			logTransportation = doc.data().transportation;
 			logEducation = doc.data().education;
-			logLoanRepay = doc.data().loan_repayment;
+			logLoand = doc.data().loan_repayment;
 			logChildCare = doc.data().child_care;
 			logSavings = doc.data().savings;
 
@@ -62,31 +62,31 @@ function visual(){
 				// Add data
 				chart.data = [{
 					"category": "Entertainment",
-						"value": logEntertainment-recEntertainment
-						}, {
-						"category": "Housing",
-						"value": logHousingRent-recHousing
-						}, {
-						"category": "Utilities",
-						"value": logUtilities-recUtilities
-						}, {
-						"category": "Food",
-						"value": logFood-recFood
-						}, {
-						"category": "Transportation",
-						"value": logTransportation-recTransportation
-						}, {
-						"category": "Education",
-						"value": logEducation-recEducation
-						}, {
-						"category": "Loan Repayment",
-						"value": logLoanRepay-recLoans
-						}, {
-						"category": "Child Care",
-						"value": logChildCare-recChildCare
-						}, {
-						"category": "Savings",
-						"value": logSavings-recSavings
+					"value": recEntertainment-logEntertainment
+					}, {
+					"category": "Housing",
+					"value": recHousing-logHousing
+					}, {
+					"category": "Utilities",
+					"value": recUtilities-logUtilities
+					}, {
+					"category": "Food",
+					"value": recFood-logFood
+					}, {
+					"category": "Transportation",
+					"value": recTransportation-logTransportation
+					}, {
+					"category": "Education",
+					"value": recEducation-logEducation
+					}, {
+					"category": "Loan Repayment",
+					"value": recLoans-logLoans
+					}, {
+					"category": "Child Care",
+					"value": recChildCare-logChildCare
+					}, {
+					"category": "Savings",
+					"value": recSavings-logSavings
 				}];
 			}
 			else {
@@ -104,31 +104,31 @@ function visual(){
 					// Add data
 					chart.data = [{
 						"category": "Entertainment",
-						"value": logEntertainment-recEntertainment
+						"value": recEntertainment-logEntertainment
 						}, {
 						"category": "Housing",
-						"value": logHousingRent-recHousing
+						"value": recHousing-logHousing
 						}, {
 						"category": "Utilities",
-						"value": logUtilities-recUtilities
+						"value": recUtilities-logUtilities
 						}, {
 						"category": "Food",
-						"value": logFood-recFood
+						"value": recFood-logFood
 						}, {
 						"category": "Transportation",
-						"value": logTransportation-recTransportation
+						"value": recTransportation-logTransportation
 						}, {
 						"category": "Education",
-						"value": logEducation-recEducation
+						"value": recEducation-logEducation
 						}, {
 						"category": "Loan Repayment",
-						"value": logLoanRepay-recLoans
+						"value": recLoans-logLoans
 						}, {
 						"category": "Child Care",
-						"value": logChildCare-recChildCare
+						"value": recChildCare-logChildCare
 						}, {
 						"category": "Savings",
-						"value": logSavings-recSavings
+						"value": recSavings-logSavings
 					}];
 				}).catch(function(error) {
 					console.log("Error getting document:", error);
