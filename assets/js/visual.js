@@ -54,14 +54,6 @@ function visual(){
       "category": "Printed books",
       "negative": -9,
       "positive": 12
-    }, {
-      "category": "Databases",
-      "negative": -18,
-      "positive": 17
-    }, {
-      "category": "Student search engines",
-      "negative": -17,
-      "positive": 10
     }];
     
     
