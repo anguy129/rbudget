@@ -13,6 +13,16 @@ function visual(){
     
 		var user_email = localStorage.getItem("user_Email");
 		var db = firebase.firestore();
+
+		var logEntertainment;
+		var logHousingRent;
+		var logUtilities;
+		var logFood;
+		var logTransportation;
+		var logEducation;
+		var logLoanRepay;
+		var logChildCare;
+		var logSavings;
 		
 		db.collection(user_email).doc("Budget").get().then(function(doc) {
 			overallBudget = doc.data().overallBudget;
@@ -58,7 +68,7 @@ function visual(){
 				// Add data
 				chart.data = [{
 				"category": "Entertainment",
-				"value": logEntertainment - recEntertainment
+				"value": logEntertainment
 				}, {
 				"category": "Housing",
 				"value": -25
