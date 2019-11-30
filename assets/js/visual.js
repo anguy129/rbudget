@@ -83,7 +83,7 @@ function visual(){
     valueAxis.renderer.ticks.template.disabled = false;
     valueAxis.renderer.ticks.template.strokeOpacity = 0.4;
     valueAxis.renderer.labels.template.adapter.add("text", function(text) {
-      return text == "Male" || text == "Female" ? text : text + "%";
+      return text == "Male" || text == "Female" ? text : text + "";
     })
     
     // Legend
@@ -105,7 +105,7 @@ function visual(){
       series.fill = color;
       
       var label = series.bullets.push(new am4charts.LabelBullet);
-      label.label.text = "{valueX}%";
+      label.label.text = "{valueX}";
       label.label.fill = am4core.color("#fff");
       label.label.strokeWidth = 0;
       label.label.truncate = false;
@@ -120,7 +120,26 @@ function visual(){
     
     createSeries("negative", "Under", negativeColor);
     createSeries("positive", "Over", positiveColor);
-    
+	
+	
+	var cellSize = 30;
+	chart.events.on("datavalidated", function(ev) {
+
+  	// Get objects of interest
+	var chart = ev.target;
+  	var categoryAxis = chart.yAxes.getIndex(0);
+
+  	// Calculate how we need to adjust chart height
+  	var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
+
+  	// get current chart height
+  	var targetHeight = chart.pixelHeight + adjustHeight;
+
+  	// Set it on chart's container
+  	chart.svgContainer.htmlElement.style.height = targetHeight + "px";
+});
+
+
     }); // end am4core.ready()
 
 	am4core.ready(function() {
