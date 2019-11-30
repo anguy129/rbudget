@@ -13,7 +13,7 @@ function visual(){
 	
 		var title = chart.titles.push(new am4core.Label());
 		title.text = "Over/Under";
-		title.fontSize = 10;
+		title.fontSize = 20;
 		title.marginBottom = 10;
 
 		var user_email = localStorage.getItem("user_Email");
@@ -242,7 +242,7 @@ function visual(){
 
 	var title = chart.titles.push(new am4core.Label());
 	title.text = "Your Spending";
-	title.fontSize = 10;
+	title.fontSize = 20;
 	title.marginBottom = 10;
 
 	// Add data
@@ -342,7 +342,7 @@ function visual(){
 
 	var title = chart.titles.push(new am4core.Label());
 	title.text = "Our Recommendation";
-	title.fontSize = 10;
+	title.fontSize = 20;
 	title.marginBottom = 10;
 
 	// Add data
