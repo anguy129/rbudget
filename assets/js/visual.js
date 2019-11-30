@@ -10,118 +10,225 @@ function visual(){
     
     	// Create chart instance
     	var chart = am4core.create("chartdiv3", am4charts.XYChart);
-    
-    	 // Title
-    var title = chart.titles.push(new am4core.Label());
-    title.text = "Research tools used by students";
-    title.fontSize = 25;
-    title.marginBottom = 15;
-    
-    // Add data
-    chart.data = [{
-      "category": "Search engines",
-      "negative": -0.1,
-      "positive": 94
-    }, {
-      "category": "Online encyclopedias",
-      "negative": -2,
-      "positive": 75
-    }, {
-      "category": "Peers",
-      "negative": -2,
-      "positive": 42
-    }, {
-      "category": "Social media",
-      "negative": -2,
-      "positive": 52
-    }, {
-      "category": "Study guides",
-      "negative": -6,
-      "positive": 41
-    }, {
-      "category": "News websites",
-      "negative": -3,
-      "positive": 25
-    }, {
-      "category": "Textbooks",
-      "negative": -5,
-      "positive": 18
-    }, {
-      "category": "Librarian",
-      "negative": -14,
-      "positive": 16
-    }, {
-      "category": "Printed books",
-      "negative": -9,
-      "positive": 12
-    }, {
-      "category": "Databases",
-      "negative": -18,
-      "positive": 17
-    }, {
-      "category": "Student search engines",
-      "negative": -17,
-      "positive": 10
-    }];
-    
-    
-    // Create axes
-    var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = "category";
-    categoryAxis.renderer.grid.template.location = 0;
-    categoryAxis.renderer.inversed = true;
-    categoryAxis.renderer.minGridDistance = 20;
-    categoryAxis.renderer.axisFills.template.disabled = false;
-    categoryAxis.renderer.axisFills.template.fillOpacity = 0.05;
-    
-    
-    var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
-    valueAxis.min = -100;
-    valueAxis.max = 100;
-    valueAxis.renderer.minGridDistance = 50;
-    valueAxis.renderer.ticks.template.length = 5;
-    valueAxis.renderer.ticks.template.disabled = false;
-    valueAxis.renderer.ticks.template.strokeOpacity = 0.4;
-    valueAxis.renderer.labels.template.adapter.add("text", function(text) {
-      return text == "Male" || text == "Female" ? text : text + "%";
-    })
-    
-    // Legend
-    chart.legend = new am4charts.Legend();
-    chart.legend.position = "right";
-    chart.legend.width = 50;
-    
-    // Use only absolute numbers
-    chart.numberFormatter.numberFormat = "#.#s";
-    
-    // Create series
-    function createSeries(field, name, color) {
-      var series = chart.series.push(new am4charts.ColumnSeries());
-      series.dataFields.valueX = field;
-      series.dataFields.categoryY = "category";
-      series.stacked = true;
-      series.name = name;
-      series.stroke = color;
-      series.fill = color;
-      
-      var label = series.bullets.push(new am4charts.LabelBullet);
-      label.label.text = "{valueX}%";
-      label.label.fill = am4core.color("#fff");
-      label.label.strokeWidth = 0;
-      label.label.truncate = false;
-      label.label.hideOversized = true;
-      label.locationX = 0.5;
-      return series;
-    }
-    
-    var interfaceColors = new am4core.InterfaceColorSet();
-    var positiveColor = interfaceColors.getFor("positive");
-    var negativeColor = interfaceColors.getFor("negative");
-    
-    createSeries("negative", "Under", negativeColor);
-    createSeries("positive", "Over", positiveColor);
-    
+	
+		var title = chart.titles.push(new am4core.Label());
+		title.text = "Over/Under";
+		title.fontSize = 20;
+		title.marginBottom = 10;
+
+		var user_email = localStorage.getItem("user_Email");
+		var db = firebase.firestore();
+
+		var logEntertainment;
+		var logHousing;
+		var logUtilities;
+		var logFood;
+		var logTransportation;
+		var logEducation;
+		var logLoans;
+		var logChildCare;
+		var logSavings;
+		var recEntertainment;
+		var recHousing;
+		var recUtilities;
+		var recFood;
+		var recTransportation;
+		var recEducation;
+		var recLoans;
+		var recChildCare;
+		var recSavings;
+
+		
+		db.collection(user_email).doc("Budget").get().then(function(doc) {
+			overallBudget = doc.data().overallBudget;
+			selfRecommended = doc.data().selfRecommend;
+
+			logEntertainment = doc.data().entertainment;
+			logHousing = doc.data().housing;
+			logUtilities = doc.data().utilities;
+			logFood = doc.data().food;
+			logTransportation = doc.data().transportation;
+			logEducation = doc.data().education;
+			logLoans = doc.data().loan_repayment;
+			logChildCare = doc.data().child_care;
+			logSavings = doc.data().savings;
+
+			if(selfRecommended == 0) {
+				recEntertainment = overallBudget * 0.10;
+				recHousing = overallBudget * 0.35;
+				recUtilities = overallBudget * 0.05;
+				recFood = overallBudget * 0.20;
+				recTransportation = overallBudget * 0.05;
+				recEducation = overallBudget * 0.10;
+				recLoans = overallBudget * 0.05;
+				recChildCare = overallBudget * 0.05;
+				recSavings = overallBudget * 0.05;
+
+				// Add data
+				chart.data = [{
+					"category": "Entertainment",
+					"value": recEntertainment-logEntertainment
+					}, {
+					"category": "Housing",
+					"value": recHousing-logHousing
+					}, {
+					"category": "Utilities",
+					"value": recUtilities-logUtilities
+					}, {
+					"category": "Food",
+					"value": recFood-logFood
+					}, {
+					"category": "Transportation",
+					"value": recTransportation-logTransportation
+					}, {
+					"category": "Education",
+					"value": recEducation-logEducation
+					}, {
+					"category": "Loan Repayment",
+					"value": recLoans-logLoans
+					}, {
+					"category": "Child Care",
+					"value": recChildCare-logChildCare
+					}, {
+					"category": "Savings",
+					"value": recSavings-logSavings
+				}];
+			}
+			else {
+				db.collection(user_email).doc("Recommendations").get().then(function(doc) {
+					recEducation = doc.data().Education*overallBudget/100;
+					recEntertainment = doc.data().Entertainment*overallBudget/100;
+					recFood = doc.data().Food*overallBudget/100;
+					recHousing = doc.data().Housing*overallBudget/100;
+					recLoans = doc.data().Loans*overallBudget/100;
+					recSavings = doc.data().Savings*overallBudget/100;
+					recTransportation = doc.data().Transportation*overallBudget/100;
+					recUtilities = doc.data().Utilities*overallBudget/100;
+					recChildCare = doc.data().ChildCare*overallBudget/100;
+
+					// Add data
+					chart.data = [{
+						"category": "Entertainment",
+						"value": recEntertainment-logEntertainment
+						}, {
+						"category": "Housing",
+						"value": recHousing-logHousing
+						}, {
+						"category": "Utilities",
+						"value": recUtilities-logUtilities
+						}, {
+						"category": "Food",
+						"value": recFood-logFood
+						}, {
+						"category": "Transportation",
+						"value": recTransportation-logTransportation
+						}, {
+						"category": "Education",
+						"value": recEducation-logEducation
+						}, {
+						"category": "Loan Repayment",
+						"value": recLoans-logLoans
+						}, {
+						"category": "Child Care",
+						"value": recChildCare-logChildCare
+						}, {
+						"category": "Savings",
+						"value": recSavings-logSavings
+					}];
+				}).catch(function(error) {
+					console.log("Error getting document:", error);
+				}); //nested db.collection call
+			}
+		
+		
+			// Create axes
+			var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+			categoryAxis.dataFields.category = "category";
+			categoryAxis.renderer.grid.template.location = 0;
+			categoryAxis.renderer.inversed = true;
+			categoryAxis.renderer.minGridDistance = 20;
+			categoryAxis.renderer.axisFills.template.disabled = false;
+			categoryAxis.renderer.axisFills.template.fillOpacity = 0.05;
+			
+			
+			var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+			valueAxis.min = -overallBudget/2;
+			valueAxis.max = overallBudget/2;
+			valueAxis.renderer.minGridDistance = 50;
+			valueAxis.renderer.ticks.template.length = 5;
+			valueAxis.renderer.ticks.template.disabled = false;
+			valueAxis.renderer.ticks.template.strokeOpacity = 0.4;
+			valueAxis.renderer.labels.template.adapter.add("text", function(text) {
+			return text == "Male" || text == "Female" ? text : text + "";
+			})
+			
+			
+			// Create series
+			function createSeries(field, name) {
+				var series = chart.series.push(new am4charts.ColumnSeries());
+				series.dataFields.valueX = field;
+				series.dataFields.categoryY = "category";
+				series.stacked = true;
+				series.name = name;
+				series.stroke = am4core.color("#5a5");
+				series.fill = am4core.color("#5a5");
+				series.columns.template.adapter.add("fill", function(fill, target) {
+					if (target.dataItem && (target.dataItem.valueX < 0)) {
+					return am4core.color("#a55");
+					}
+					else {
+					return fill;
+					}
+				});
+				series.columns.template.adapter.add("stroke", function(stroke, target) {
+					if (target.dataItem && (target.dataItem.valueX < 0)) {
+					return am4core.color("#a55");
+					}
+					else {
+					return stroke;
+					}
+				});
+
+				series.columns.template.tooltipText = "{categoryY}\n[bold]${valueX}";
+				series.columns.template.alwaysShowTooltip = false;
+				series.columns.template.tooltipY = 12;
+				
+				var label = series.bullets.push(new am4charts.LabelBullet);
+				label.label.text = "{valueX}";
+				label.label.fill = am4core.color("#fff");
+				label.label.strokeWidth = 0;
+				label.label.truncate = false;
+				label.label.hideOversized = true;
+				label.locationX = 0.5;
+
+				return series;
+			}
+			
+			createSeries("value", "Under");
+			//createSeries("positive", "Over", positiveColor);
+			
+			
+			var cellSize = 40;
+			chart.events.on("datavalidated", function(ev) {
+				// Get objects of interest
+				var chart = ev.target;
+				var categoryAxis = chart.yAxes.getIndex(0);
+				// Calculate how we need to adjust chart height
+				var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
+				// get current chart height
+				var targetHeight = chart.pixelHeight + adjustHeight;
+				// Set it on chart's container
+				chart.svgContainer.htmlElement.style.height = targetHeight + "px";
+			});
+
+		}).catch(function(error) {
+			console.log("Error getting document:", error);
+		});
     }); // end am4core.ready()
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	am4core.ready(function() {
 									
@@ -132,6 +239,12 @@ function visual(){
 	
 	// Create chart instance
 	var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+	var title = chart.titles.push(new am4core.Label());
+	title.text = "Your Spending";
+	title.fontSize = 20;
+	title.marginBottom = 0;
+
 	// Add data
 	
 	var user_email = localStorage.getItem("user_Email");
@@ -212,6 +325,11 @@ function visual(){
 
 	}); // end am4core.ready()	
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     am4core.ready(function() {
 									
 	// Themes begin
@@ -221,10 +339,27 @@ function visual(){
 	
 	// Create chart instance
 	var chart = am4core.create("chartdiv2", am4charts.PieChart);
+
+	var title = chart.titles.push(new am4core.Label());
+	title.text = "Our Recommendation";
+	title.fontSize = 20;
+	title.marginBottom = 0;
+
 	// Add data
 	
 	var user_email = localStorage.getItem("user_Email");
 	var overallBudget;
+	var selfRecommended;
+	var entertainment;
+	var education;
+	var food;
+	var housing;
+	var loans;
+	var savings;
+	var transportation;
+	var utilities;
+	var childCare;
+
 	
 	var db = firebase.firestore();
 

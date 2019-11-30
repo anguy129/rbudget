@@ -305,6 +305,10 @@ function withdraw(){
 }
 
 
+function resetFields(element) {
+	var clear = document.getElementById(element);
+}
+
 function reset_deposit(){
 	var clear_deposit = document.getElementById("depositAmnt");		
 	var clear_deposit_description = document.getElementById("deposit_description");

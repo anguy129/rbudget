@@ -48,7 +48,7 @@
 								<li><a href="#profile" onclick="loadProfile();">Profile</a></li>
 								<li><a href="#statement" onclick="statement();">Statement</a></li>
 								<li><a href="#analytics" onclick="visual();">Analytics</a></li>
-								<li><a href="#goals" onclick="getGoals();">Goals</a></li>								<!--<li><a href="#elements">Elements</a></li>-->
+								<li><a href="#goals" onclick="getGoals();">Goals</a></li>
 							</ul>
 						</nav>
 					</header>
@@ -112,10 +112,11 @@
 						<!-- Profile -->
 							<article id="profile">
 								<h2 class="major">Profile</h2>
-								<div>
+								<form>
 									<div class="img_wrap">
+										<input type="file" id="upload" name="profImg" accept="image/*" style="display: none;">
+										<button class="profImgBtn" onclick="loadProfileImg();">Edit</button>
 										<img id="profileImg" src="images/defaultprofile.png">
-										<button class="profImgBtn">Edit</button>
 									</div>
 									<div id="profileInfo">
 										<input type="text" name="name" id="profileName" class="editable" placeholder="FirstName LastName" disabled>
@@ -123,7 +124,7 @@
 										<p> Phone: </p> <input type="tel" name="phone" id="profilePhone" class="editable" placeholder="(123)456-7890" disabled>
 										<p> Address: </p> <input type="text" name="address" id="profileAddress" class="editable" placeholder="1234 Address St." disabled>
 									</div>
-								</div>
+								</form>
 								<button class="edit" id="editSave" onclick="edit();">Edit</button>
 							</article>
 
@@ -132,19 +133,71 @@
 							<article id="analytics">
 								<h2 class="major">Analytics</h2>
 								
-								<h3>Over/Under</h3>
+								<span style="display: inline;">
+									<button type="button" class="button_1" onclick="menu(1);">Over/Under</button>
+									<button type="button" class="button_1" onclick="menu(2);">Your Spending</button>
+									<button type="button" class="button_1" onclick="menu(3);">Our Recommendations</button>
+								</span>
+								
+								<font size = "4 px">
+									<style>
+										body { background-color: #30303d; color: #fff; }
+										#chartdiv {
+											width: 100%;
+											height: 500px;
+										}
+										#chartdiv2 {
+											width: 100%;
+											height: 500px;
+										}	
+									</style>
+									<div id="chartdiv3" style="display: none"></div>
+									<div id="chartdiv" style="display: none"></div>
+									<div id="chartdiv2"></div>
+								</font>
+								
+								<script>
+									function menu(option){
+										var x = document.getElementById("chartdiv3"); 
+										var y = document.getElementById("chartdiv"); 
+										var z = document.getElementById("chartdiv2"); 
+										if(option == 1){	
+											if (x.style.display === "none") {
+												x.style.display = "block";
+												y.style.display = "none";
+												z.style.display = "none";	
+											} else {
+												x.style.display = "none";
+											}
+										}
+										else if(option == 2){
+											if (y.style.display === "none") {
+												x.style.display = "none";
+												y.style.display = "block";
+												z.style.display = "none";	
+											} else {
+												y.style.display = "none";
+											}
+										}
+										else if(option == 3){	
+											if (z.style.display === "none") {
+												x.style.display = "none";
+												y.style.display = "none";
+												z.style.display = "block";	
+											} else {
+												z.style.display = "none";
+											}
+										}
+									}
+								</script>
+
+								<!-- <h3>Over/Under</h3>
 								<font size="4 px">
 								<style>
 									body { background-color: #30303d; color: #fff; }
-									#chartdiv {
-									  width: 100%;
-									  height: 500px;
-									}
-									
-									</style>
-									
-									<!-- HTML -->
-									<div id="chartdiv3"></div>
+								</style>
+									 
+								<div id="chartdiv3"></div>
 
 								</font>
 
@@ -155,13 +208,10 @@
 									#chartdiv {
 									  width: 100%;
 									  height: 500px;
-									}
+									}	
+								</style>
 									
-									</style>
-									
-									<!-- HTML -->
-									<div id="chartdiv"></div>
-
+								<div id="chartdiv"></div>
 								</font>
 
 								<h3>Our Recommendations</h3>
@@ -171,15 +221,15 @@
 									#chartdiv2 {
 									  width: 100%;
 									  height: 500px;
-									}
-									
-									</style>
-									
-									<!-- HTML -->
-									<div id="chartdiv2"></div>
-									
-								</font>
+									}	
+								</style> 
+								
+								<div id="chartdiv2"></div>	
+								</font>-->
 
+
+								<br> <br> 
+								
 								<style>
 									#centerRecButton {
 									  display: flex;
@@ -416,5 +466,6 @@
 			<script src="assets/js/profile.js"></script>
 			<script src="assets/js/setRecommend.js"></script>
 			<script src="assets/js/goals.js"></script>
+			<script src="assets/js/menu.js"></script>
 	</body>
 </html>

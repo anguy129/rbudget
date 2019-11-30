@@ -29,6 +29,7 @@ function transformButton() {
 		cancelBtn.textContent = 'Cancel';
 		cancelBtn.style.float = 'right';
 		cancelBtn.className = 'edit';
+		cancelBtn.type = 'reset';
 		cancelBtn.id = 'cancelBtn';
 		document.getElementById("profile").appendChild(cancelBtn);
 
