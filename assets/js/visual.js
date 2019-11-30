@@ -59,47 +59,36 @@ function visual(){
 				recChildCare = overallBudget * 0.05;
 				recSavings = overallBudget * 0.05;
 
-				logEntertainment = logEntertainment-recEntertainment;
-				logHousingRent = logHousingRent-recHousing;
-				logUtilities = logUtilities-recUtilities;
-				logFood = logFood-recFood;
-				logTransportation = logTransportation-recTransportation;
-				logEducation = logEducation-recEducation;
-				logLoanRepay = logLoanRepay-recLoans;
-				logChildCare = logChildCare-recChildCare;
-				logSavings = logSavings-recSavings;
 			}
 			else {
 				db.collection(user_email).doc("Recommendations").get().then(function(doc) {
-					recEducation = doc.data().Education/100;
-					recEntertainment = doc.data().Entertainment/100;
-					recFood = doc.data().Food/100;
-					recHousing = doc.data().Housing/100;
-					recLoans = doc.data().Loans/100;
-					recSavings = doc.data().Savings/100;
-					recTransportation = doc.data().Transportation/100;
-					recUtilities = doc.data().Utilities/100;
-					recChildCare = doc.data().ChildCare/100;
-
-					logEntertainment = logEntertainment-(overallBudget*recEntertainment);
-					logHousingRent = logHousingRent-recHousing;
-					logUtilities = logUtilities-recUtilities;
-					logFood = logFood-recFood;
-					logTransportation = logTransportation-recTransportation;
-					logEducation = logEducation-recEducation;
-					logLoanRepay = logLoanRepay-recLoans;
-					logChildCare = logChildCare-recChildCare;
-					logSavings = logSavings-recSavings;
+					recEducation = doc.data().Education*overallBudget/100;
+					recEntertainment = doc.data().Entertainment*overallBudget/100;
+					recFood = doc.data().Food*overallBudget/100;
+					recHousing = doc.data().Housing*overallBudget/100;
+					recLoans = doc.data().Loans*overallBudget/100;
+					recSavings = doc.data().Savings*overallBudget/100;
+					recTransportation = doc.data().Transportation*overallBudget/100;
+					recUtilities = doc.data().Utilities*overallBudget/100;
+					recChildCare = doc.data().ChildCare*overallBudget/100;
 				}).catch(function(error) {
 					console.log("Error getting document:", error);
 				}); //nested db.collection call
 			}
-				
+			logEntertainment = logEntertainment-recEntertainment;
+			logHousingRent = logHousingRent-recHousing;
+			logUtilities = logUtilities-recUtilities;
+			logFood = logFood-recFood;
+			logTransportation = logTransportation-recTransportation;
+			logEducation = logEducation-recEducation;
+			logLoanRepay = logLoanRepay-recLoans;
+			logChildCare = logChildCare-recChildCare;
+			logSavings = logSavings-recSavings;
 
 				// Add data
 				chart.data = [{
 				"category": "Entertainment",
-				"value": logEntertainment
+				"value": recEntertainment
 				}, {
 				"category": "Housing",
 				"value": -25
