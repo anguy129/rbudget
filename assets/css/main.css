@@ -367,13 +367,24 @@ input, select, textarea {
 		text-align: center;
 		display: inline-flex;
 		flex-flow: row wrap;
+		flex-wrap: wrap;
 		justify-content: center;
 	}
 
-	#about .abtProf {
-		width: 20%;
-		height: auto;
-		margin: 1rem;
+	@media only screen and (min-width: 1024px) {
+		#about .abtProf {
+			width: 20%;
+			height: auto;
+			margin: 1rem;
+		}
+	}
+
+	@media only screen and (max-width: 1024px) {
+		#about .abtProf {
+			width: auto;
+			height: auto;
+			margin: 1rem;
+		}
 	}
 
 	#about h2 {
@@ -381,11 +392,16 @@ input, select, textarea {
 		text-decoration: underline white;
 	}
 
+	#about p2 {
+		font-size: 60%;
+	}
+
 	#aboutImg {
 		width: 11rem;
 		height: 11rem;
 		margin: auto;
 		border-radius: 50%;
+		object-fit: cover;
 	}
 
 /* Profile */
