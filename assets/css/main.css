@@ -396,6 +396,10 @@ input, select, textarea {
 		font-size: 60%;
 	}
 
+	#about p {
+		font-size: 80%;
+	}
+
 	#aboutImg {
 		width: 11rem;
 		height: 11rem;
