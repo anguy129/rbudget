@@ -1,11 +1,12 @@
 var editing = false;
 var db = firebase.firestore();
-
+var previousInfo = []
 
 function edit() {
 	var inputToEdit = document.getElementsByClassName("editable");
 
 	for(i=0; i<inputToEdit.length; i++){
+		previousInfo[i] = inputToEdit[i].value;
 		inputToEdit[i].disabled = false;
 		inputToEdit[i].style.border = "solid 1px #ffffff";
 		if (inputToEdit[i].name == "name" || inputToEdit[i].name == "email") {
@@ -31,6 +32,20 @@ function transformButton() {
 		cancelBtn.className = 'edit';
 		cancelBtn.type = 'reset';
 		cancelBtn.id = 'cancelBtn';
+		cancelBtn.onclick = function() {
+			var fields = document.getElementsByClassName("editable");
+
+			for(i=0; i<previousInfo.length; i++){
+				fields[i].value = previousInfo[i];
+			}
+
+			for(i=0; i<fields.length; i++){
+				fields[i].disabled = true;
+				fields[i].style.border = "none";
+			};
+
+			transformButton();
+		}
 		document.getElementById("profile").appendChild(cancelBtn);
 
 		saveBtn.removeAttribute("onclick");
@@ -89,3 +104,18 @@ function save() {
 
 	transformButton();
 };
+/*
+function cancel() {
+	var fields = document.getElementsByClassName("editable");
+
+	for(i=0; i<previousInfo.length; i++){
+		fields[i].value = previousInfo[i];
+	}
+
+	for(i=0; i<fields.length; i++){
+		fields[i].disabled = true;
+		fields[i].style.border = "none";
+	};
+
+	transformButton();
+};*/
