@@ -56,8 +56,6 @@ function save() {
 	var fields = document.getElementsByClassName("editable");
 	var user_email = localStorage.getItem("user_Email");
 
-	alert("hello");
-
 	if (fields[0].value == "" || fields[1].value == "") {
 		alert("Name and email are required fields");
 	}
@@ -84,7 +82,6 @@ function save() {
 		});
 	}
 
-	alert(fields.length);
 	for(i=0; i<fields.length; i++){
 		fields[i].disabled = true;
 		fields[i].style.border = "none";
